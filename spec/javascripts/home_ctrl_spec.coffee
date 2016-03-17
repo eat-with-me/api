@@ -2,7 +2,7 @@
 describe 'HomeCtrl', ( $scope)->
   $scope = null
   $controller = null
-  beforeEach module('NegloApp')
+  beforeEach module('EatingApp')
 
   beforeEach inject ($injector) ->
     $scope = $injector.get('$rootScope').$new()

@@ -1,4 +1,4 @@
-angular.module 'NegloApp'
+angular.module 'EatingApp'
   .config ($stateProvider, $urlRouterProvider) ->
     $urlRouterProvider.otherwise('home')
 

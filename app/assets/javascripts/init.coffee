@@ -1,4 +1,4 @@
-angular.module('NegloApp', ['templates', 'ui.router'])
+angular.module('EatingApp', ['templates', 'ui.router'])
   .config ($provide, $httpProvider) ->
     # CSFR token
     $httpProvider.defaults.headers.common['X-CSRF-Token'] =
