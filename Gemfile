@@ -27,6 +27,7 @@ gem 'sprockets', '~> 2.12.4'
 gem 'angular-rails-templates', '~> 0.2.0'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'slim-rails', '~> 0.2.1'
+gem 'devise'
 
 group :development, :test do
   # Access an IRB console on exception pages or by using <%= console %> in views

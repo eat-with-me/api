@@ -12,4 +12,8 @@ html ng-app="NegloApp"
       'data-turbolinks-track' => true
     = csrf_meta_tags
   body
+    p.notice
+      = notice
+    p.alert
+      = alert
     = yield
