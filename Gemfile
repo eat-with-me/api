@@ -51,6 +51,7 @@ end
 
 group :development do
   gem 'web-console', '~> 2.0'
+  gem 'rails-erd', '~> 1.4.5'
 end
 
 source 'https://rails-assets.org' do

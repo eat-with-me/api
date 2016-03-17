@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160317191035) do
+ActiveRecord::Schema.define(version: 20160317202736) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,6 +40,36 @@ ActiveRecord::Schema.define(version: 20160317191035) do
 
   add_index "meals", ["restaurant_id"], name: "index_meals_on_restaurant_id", using: :btree
 
+  create_table "meals_lists", force: :cascade do |t|
+    t.integer  "purchaser_id"
+    t.integer  "meal_id"
+    t.integer  "amount"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "meals_lists", ["meal_id"], name: "index_meals_lists_on_meal_id", using: :btree
+  add_index "meals_lists", ["purchaser_id"], name: "index_meals_lists_on_purchaser_id", using: :btree
+
+  create_table "orders", force: :cascade do |t|
+    t.time     "closing_time"
+    t.integer  "restaurant_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "orders", ["restaurant_id"], name: "index_orders_on_restaurant_id", using: :btree
+
+  create_table "purchasers", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "order_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "purchasers", ["order_id"], name: "index_purchasers_on_order_id", using: :btree
+  add_index "purchasers", ["user_id"], name: "index_purchasers_on_user_id", using: :btree
+
   create_table "restaurants", force: :cascade do |t|
     t.string   "name"
     t.string   "phone_number"
@@ -66,4 +96,9 @@ ActiveRecord::Schema.define(version: 20160317191035) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "meals", "restaurants"
+  add_foreign_key "meals_lists", "meals"
+  add_foreign_key "meals_lists", "purchasers"
+  add_foreign_key "orders", "restaurants"
+  add_foreign_key "purchasers", "orders"
+  add_foreign_key "purchasers", "users"
 end
