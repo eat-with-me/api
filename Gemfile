@@ -30,9 +30,6 @@ gem 'slim-rails', '~> 0.2.1'
 gem 'devise'
 
 group :development, :test do
-  # Access an IRB console on exception pages or by using <%= console %> in views
-  gem 'web-console', '~> 2.0'
-
   # Spring speeds up development by keeping your application running
   # in the background. Read more: https://github.com/rails/spring
   gem 'spring', '~> 1.3.6'
@@ -50,6 +47,10 @@ group :development, :test do
   gem 'rails-assets-angular-mocks', '~> 1.3.17'
   gem 'coffeelint', '~> 1.10.0'
   gem 'slim_lint'
+end
+
+group :development do
+  gem 'web-console', '~> 2.0'
 end
 
 source 'https://rails-assets.org' do
