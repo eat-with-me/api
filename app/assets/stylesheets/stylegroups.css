@@ -8,3 +8,13 @@
     border: 5px solid white;
     
 }
+#zamowienie {
+    width: 40em;  height: 7em;
+    border: 5px solid yellow;
+
+}
+#neworder {
+    width: 40em;  height: 7em;
+    border: 5px solid red;
+
+}

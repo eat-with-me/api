@@ -1,1 +1,18 @@
-| {{group.id}}
+h1 
+	center
+		| EAT WITH ME
+
+div ng-repeat=("order in orders") 
+	center
+		button id="zamowienie" 
+			| {{order.restaurant.name}} 
+		br
+		br
+div 
+	center
+		button id="neworder"
+			a ui-sref="neworder({groupid: groupid})"
+				| Nowe zamówienie
+			
+		br
+		br

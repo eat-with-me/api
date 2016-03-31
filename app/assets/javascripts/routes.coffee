@@ -18,5 +18,11 @@ angular.module 'EatingApp'
       	templateUrl: 'orders.html'
       	controller: 'OrdersCtrl'
       	})
+      .state('neworder',{
+        url: '/orders/:groupid/new',
+        templateUrl: 'neworder.html'
+        controller: 'NewOrderCtrl'
+        })
+        
 
       
