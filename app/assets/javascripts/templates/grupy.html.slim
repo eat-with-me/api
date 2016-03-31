@@ -1,19 +1,12 @@
 h1 
 	center
 		| EAT WITH ME
-div
-	center
-		button id="grupa"
-				|Akademik 
-		br
-		br
-		button id="grupa"
-				|Praca  
-		br
-		br
-		button id="grupa"
-				|Dom 				
 
-br
-br
-br
+div ng-repeat=("group in groups") 
+	center
+		button id="grupa" 
+			a ui-sref="orders({groupid: group.id})"
+				|	{{group.name}} 
+		br
+		br
+		
