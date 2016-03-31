@@ -5,6 +5,11 @@ angular.module 'EatingApp'
     $stateProvider
       .state('home', {
         url: '/home',
-        controller: 'HomeCtrl',
+        controller: 'ChujCiwDupe',
+        controller: 'HomeCtrl'
         templateUrl: 'home.html'
+      })
+      .state('groups', {
+        url: '/groups',
+        templateUrl: 'grupy.html'
       })
