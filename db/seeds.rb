@@ -8,4 +8,6 @@
 
 include FactoryGirl::Syntax::Methods
 
-create(:group_with_orders)
+create_list(:group_with_orders, 3)
+
+create_list(:restaurant_with_meals, 5)
