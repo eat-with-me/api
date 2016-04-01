@@ -25,6 +25,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'sprockets', '~> 2.12.4'
 gem 'angular-rails-templates', '~> 0.2.0'
+gem 'rails-assets-bootstrap', '~> 3.3.6'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'slim-rails', '~> 0.2.1'
 gem 'devise'

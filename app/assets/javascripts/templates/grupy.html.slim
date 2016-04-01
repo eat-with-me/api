@@ -1,13 +1,8 @@
-h1 
-	center
-		| EAT WITH ME
-
-div ng-repeat=("group in groups") 
-	center
-		button id="grupa" 
-			a ui-sref="orders({groupid: group.id})"
-				|	{{group.name}} 
-		br
-		br
-
-		
+.content.animate-panel
+  .row
+    .col-lg-3 ng-repeat=("group in groups")
+      .hpanel.hgreen.contact-panel ui-sref="orders({groupid: group.id})"
+        .panel-body
+          h3
+            a
+              |  {{group.name}}
