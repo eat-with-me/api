@@ -10,7 +10,7 @@ angular.module 'EatingApp'
       })
       .state('groups', {
         url: '/groups',
-        templateUrl: 'grupy.html'
+        templateUrl: 'groups.html'
         controller: 'GroupsCtrl'
       })
       .state('orders',{

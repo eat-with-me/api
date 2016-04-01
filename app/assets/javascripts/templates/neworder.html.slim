@@ -3,11 +3,10 @@ h1
 		| Nowe Zamówienie
 
 div ng-repeat=("restaurant in restaurants") 
-	left
-		button id="neworder" 
-			a ui-sref="restaurants({groupid: group.id})"
-				|	{{restaurant.name}} 
+		button id="neworder"
+				|	{{restaurant.name}} {{$index}}
 		br
 		br
+
 
 		
