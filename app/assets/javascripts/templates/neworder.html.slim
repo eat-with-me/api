@@ -2,11 +2,12 @@ h1
 	center
 		| Nowe Zamówienie
 
-div ng-repeat=("restaurant in restaurants") 
+ul
+	li ng-repeat=("item in col")
+		|	{{ item.name }}
+
+div ng-repeat=("restaurant in restaurants") ng-click="addTodo($index)"
 		button id="neworder"
-				|	{{restaurant.name}} {{$index}}
+				|	{{restaurant.name}}
 		br
 		br
-
-
-		
