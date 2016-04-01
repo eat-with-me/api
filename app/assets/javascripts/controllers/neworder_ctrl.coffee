@@ -3,4 +3,4 @@ angular.module 'EatingApp'
 
   	$http.get("/restaurants").success (data)->
     	console.log(data)
-    	$scope.orders = data
+    	$scope.restaurants = data

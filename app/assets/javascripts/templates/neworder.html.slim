@@ -1,2 +1,13 @@
 h1 
-	| Nowe zamówienie
+	center
+		| Nowe Zamówienie
+
+div ng-repeat=("restaurant in restaurants") 
+	left
+		button id="neworder" 
+			a ui-sref="restaurants({groupid: group.id})"
+				|	{{restaurant.name}} 
+		br
+		br
+
+		

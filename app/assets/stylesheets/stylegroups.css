@@ -1,8 +1,11 @@
-#grupa {
+
+.grupa {
+	display:block;
     width: 40em;  height: 7em;
     border: 5px solid black;
-
+    background-color: gray;
 }
+
 #menu {
     width: 20em;  height: 3em;
     border: 5px solid white;
