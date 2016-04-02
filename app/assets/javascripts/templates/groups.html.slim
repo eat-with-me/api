@@ -1,8 +1,15 @@
+h1 
+	center
+		| Grupy
+
 .content.animate-panel
   .row
-    .col-lg-3 ng-repeat=("group in groups")
-      .hpanel.hgreen.contact-panel ui-sref="orders({groupid: group.id})"
-        .panel-body
-          h3
-            a
-              |  {{group.name}}
+	    .col-sm-4 ng-repeat=("group in groups")
+	      .hpanel.hgreen.contact-panel ui-sref="orders({groupid: group.id})"
+	        .panel-body
+	          h3
+	          	center
+		            a
+		              | {{group.name}}
+
+

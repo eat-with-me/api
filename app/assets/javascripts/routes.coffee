@@ -23,6 +23,3 @@ angular.module 'EatingApp'
         templateUrl: 'neworder.html'
         controller: 'NewOrderCtrl'
         })
-        
-
-      

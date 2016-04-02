@@ -1,19 +1,22 @@
 h1 
 	center
-		| EAT WITH ME
+		| Zamówienia
 
-div ng-repeat=("order in orders") 
-	center
-		button id="zamowienie" 
-			| {{order.restaurant.name}} 
-		br
-		br
-		
-div 
-	center
-		button id="neworder"
-			a ui-sref="neworder({groupid: groupid})"
-				| Nowe zamówienie
-			
-		br
-		br
+.content.animate-panel
+  .row
+	    .col-sm-4 ng-repeat=("order in orders")
+	      .hpanel.hgreen.contact-panel 
+	        .panel-body
+	          h3
+	          	center
+		            a
+		              | {{order.restaurant.name}} 
+
+.content.animate-panel
+  .row
+    .col-lg-3 
+      .hpanel.hred.contact-panel ui-sref="neworder({groupid: groupid})"
+        .panel-body
+          h3 
+          	center	
+			    | Nowe zamówienie
