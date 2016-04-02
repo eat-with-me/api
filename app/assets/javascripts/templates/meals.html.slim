@@ -17,11 +17,19 @@ br
 .wrap
   	.floatleft
 	  	ul
-			li ng-repeat=("meal in restaurant.meals")
-				h4
-					|	{{ meal.name }} 
+			li ng-repeat=("meal in restaurant.meals") ng-click="addMeal(meal)"
+				h4  
+					|	{{ meal.name }} {{meal.price}}$
  	.floatright
-	  	ul
+	  	ul ng-repeat=("meal in todoList track by $index")  ng-click="removeMeal($index)"
 			li 
 				h4
-					|	co
+					|	{{meal.name}} {{meal.price}}$
+
+		br
+		h3 style=("width: 100px; float: center")
+					| SUMA: {{sum}}$
+
+		button style=("width: 100px; float: right") ng-click="clearMeal()"
+					| Wyczyść 
+

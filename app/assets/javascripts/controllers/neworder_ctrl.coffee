@@ -4,11 +4,14 @@ angular.module 'EatingApp'
     $http.get("/restaurants").success (data)->
         console.log(data)
         $scope.restaurants = data
+        
+        $scope.select = ""
 
     
         $scope.addTodo = (war) ->
             $scope.arr = war
             $scope.col = $scope.restaurants[$scope.arr].meals
+            $scope.select = war + 1
             
             #console.log($scope.restaurants[0].meals[0].name)
             #console.log($scope.col)
