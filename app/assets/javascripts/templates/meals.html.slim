@@ -6,26 +6,22 @@ br
 br
 
 .wrap
-	.floatleftt
-		h2
-			| Posiłki z {{restaurant.name}}:
-
 	.floatrightt
 		h2
 			| Wybrane posiłki:
 
-br
-br
+	.floatleftt
+		h2
+			| Posiłki z {{restaurant.name}}:
 
 .wrap
-  left
-  	ul
-		li ng-repeat=("meal in restaurant.meals")
-			h4
-				|	{{ meal.name }} 
-.wrap	
-  .floatright
-  	ul
-		li 
-			h4
-				|	co
+  	.floatleft
+	  	ul
+			li ng-repeat=("meal in restaurant.meals")
+				h4
+					|	{{ meal.name }} 
+ 	.floatright
+	  	ul
+			li 
+				h4
+					|	co
