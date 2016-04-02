@@ -1,7 +1,7 @@
 h1 
 	center
 		| Nowe Zamówienie
-button id=("zatwierdz") style=("width: 300px; float: right") 
+button id=("zatwierdz") style=("width: 300px; float: right") ui-sref="meals"
 	| Zatwierdz
 
 br
@@ -23,7 +23,7 @@ br
   .floatleft 
 		.content.animate-panel
 		  .row
-			    .col-md-12 ng-repeat=("restaurant in restaurants") ng-click="addTodo($index);"
+			    .col-md-12 ng-repeat=("restaurant in restaurants") ng-click="addTodo($index);" 
 			      .hpanel.hyellow.contact-panel 
 			        .panel-body
 			          h3

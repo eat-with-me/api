@@ -1,1 +1,31 @@
-| echodupa
+h1 
+	center
+		| Twoje zamówienie
+
+br
+br
+
+.wrap
+	.floatleftt
+		h2
+			| Posiłki z {{restaurant.name}}:
+
+	.floatrightt
+		h2
+			| Wybrane posiłki:
+
+br
+br
+
+.wrap
+  left
+  	ul
+		li ng-repeat=("meal in restaurant.meals")
+			h4
+				|	{{ meal.name }} 
+.wrap	
+  .floatright
+  	ul
+		li 
+			h4
+				|	co

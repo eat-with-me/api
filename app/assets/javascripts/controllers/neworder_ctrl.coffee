@@ -9,7 +9,7 @@ angular.module 'EatingApp'
         $scope.addTodo = (war) ->
             $scope.arr = war
             $scope.col = $scope.restaurants[$scope.arr].meals
-            #console.log("ty kurwa gnoju")
+            
             #console.log($scope.restaurants[0].meals[0].name)
             #console.log($scope.col)
         

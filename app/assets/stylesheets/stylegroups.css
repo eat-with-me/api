@@ -1,3 +1,15 @@
+/* old */
+body.main { 
+
+    background-color: red;
+    /*background: url(images/bg.jpg) no-repeat center center fixed; */
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    
+}
+
 
 .grupa {
 	display:block;
@@ -22,6 +34,8 @@
     font-style: italic;
 
 }
+/****************************************************************/
+
 #zatwierdz{
     text-align: center;
 }

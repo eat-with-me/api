@@ -5,7 +5,7 @@ h1
 .content.animate-panel
   .row
 	    .col-sm-4 ng-repeat=("order in orders")
-	      .hpanel.hgreen.contact-panel ui-sref="meals"
+	      .hpanel.hgreen.contact-panel ui-sref="meals({restaurantid: order.restaurant.id})"
 	        .panel-body
 	          h3
 	          	center
