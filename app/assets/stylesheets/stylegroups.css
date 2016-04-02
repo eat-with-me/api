@@ -19,5 +19,35 @@
 #neworder {
     width: 40em;  height: 7em;
     border: 5px solid red;
+    font-style: italic;
 
+}
+#zatwierdz{
+    text-align: center;
+}
+
+.wrap {
+    width: 100%;
+}
+
+.floatleft {
+    float:left; 
+    width: 50%;
+    overflow-y: scroll;
+    height:420px;
+}
+
+.floatright {
+float: right;
+    width: 50%;
+    height:420px;
+}
+.floatleftt {
+    float:left;
+    width: 50%;
+}
+
+.floatrightt {
+float: right;
+    width: 50%;
 }

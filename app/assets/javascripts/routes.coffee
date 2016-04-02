@@ -23,3 +23,7 @@ angular.module 'EatingApp'
         templateUrl: 'neworder.html'
         controller: 'NewOrderCtrl'
         })
+      .state('meals',{
+        url: '/restaurants/:restaurantid',
+        templateUrl: 'meals.html'
+        })

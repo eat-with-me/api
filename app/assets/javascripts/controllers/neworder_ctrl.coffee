@@ -5,6 +5,7 @@ angular.module 'EatingApp'
         console.log(data)
         $scope.restaurants = data
 
+    
         $scope.addTodo = (war) ->
             $scope.arr = war
             $scope.col = $scope.restaurants[$scope.arr].meals
