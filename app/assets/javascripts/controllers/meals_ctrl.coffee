@@ -8,6 +8,8 @@ angular.module 'EatingApp'
         console.log(data)
         
         $scope.todoList = []
+        $scope.arr = []
+
 
         $scope.sum = 0
         $scope.addMeal = (war) ->
@@ -23,5 +25,9 @@ angular.module 'EatingApp'
         $scope.clearMeal = ->
             $scope.sum = 0
             $scope.todoList = []
-            
 
+        $scope.showAlert = ->
+            console.log($scope.todoList)
+            $scope.arr = JSON.stringify($scope.todoList)
+            alert(JSON.stringify($scope.arr))
+            
