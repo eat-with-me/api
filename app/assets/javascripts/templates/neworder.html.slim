@@ -1,24 +1,33 @@
 h1 
 	center
 		| Nowe Zamówienie
-button.btn.btn-primary type="button" style=("width: 300px; float: right") ui-sref="meals({restaurantid: select})"
-	| Zatwierdz
+
 
 br
 br
 .wrap
 	.floatrightt
 		h2
-			| Posiłki
+			|Posiłki z 
 	.floatleftt
 		h2
 			|Restauracje
 .wrap
   .floatright 
-  	ul
-		li ng-repeat=("item in col")
-			h4
-				|	{{ item.name }} {{item.price}}$
+  	.table-responsive
+		table.table.table-responisve cellpadding="1" cellspacing="1" 
+			tr
+				th
+					| Nazwa posiłku
+				th
+					| Cena
+			tr ng-repeat=("item in col")
+				td
+					|{{ item.name }} 
+						
+				td			
+					|{{item.price}}$
+		
 
   .floatleft 
 		.content.animate-panel
@@ -30,3 +39,6 @@ br
 			          	center
 				            a
 				              | {{restaurant.name}}
+
+button.btn.btn-primary type="button" style=("width: 300px; float: right") ui-sref="meals({restaurantid: select})"
+			| Zatwierdź

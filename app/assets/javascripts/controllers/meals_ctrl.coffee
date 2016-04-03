@@ -9,6 +9,7 @@ angular.module 'EatingApp'
         
         $scope.todoList = []
         $scope.arr = []
+        $scope.sar = []
 
 
         $scope.sum = 0
@@ -28,6 +29,8 @@ angular.module 'EatingApp'
 
         $scope.showAlert = ->
             console.log($scope.todoList)
-            $scope.arr = JSON.stringify($scope.todoList)
-            alert(JSON.stringify($scope.arr))
+            for i in [0...$scope.todoList.length]
+                $scope.sar[i] = $scope.todoList[i].name
+            console.log($scope.arr)
+            alert("Rzeczy do zamówienia: " + "\n"+ "\n" +$scope.sar + "\n" + "\n"+ "\n"+ "Cena ogólna: " + $scope.sum+"$") 
             

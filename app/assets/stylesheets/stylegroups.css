@@ -54,7 +54,8 @@ body.main {
 .floatright {
 float: right;
     width: 50%;
-    height:420px;
+    overflow-y: scroll;
+    height:320px;
 }
 .floatleftt {
     float:left;
