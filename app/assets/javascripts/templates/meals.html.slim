@@ -16,20 +16,28 @@ br
 
 .wrap
   	.floatleft
-	  	ul
-			li ng-repeat=("meal in restaurant.meals") ng-click="addMeal(meal)"
-				h4  
-					|	{{ meal.name }} {{meal.price}}$
+	  	.panel-body.note-link ng-repeat=("meal in restaurant.meals") ng-click="addMeal(meal)"
+				h4 style=("text-align: left")
+					|	{{ meal.name }} 
+					span style=("float:right")
+						| {{meal.price}}$
  	.floatright
-	  	ul ng-repeat=("meal in todoList track by $index")  ng-click="removeMeal($index)"
+	  	ul ng-repeat=("meal in todoList track by $index")  
 			li 
-				h4
-					|	{{meal.name}} {{meal.price}}$
+				h4 style=("text-align: left")
+							|	{{meal.name}} {{meal.price}}$
+							button.btn.btn-primary.btn-xs type="button" style=("float: right") ng-click="removeMeal($index)"
+								span style=("width: 50; float:right")  
+									| Usuń
 
 		br
-		h3 style=("width: 100px; float: center")
-					| SUMA: {{sum}}$
+		h4 style=("text-align: left")
+					| SUMA: 
+					span style=("float:right")
+						| {{sum}}$
 
-		button style=("width: 100px; float: right") ng-click="clearMeal()"
+		button.btn.btn-primary.btn-xs type="button" style=("width: 100px; float: right") ng-click="clearMeal()"
 					| Wyczyść 
 
+
+  
