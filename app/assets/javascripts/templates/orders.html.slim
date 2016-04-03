@@ -1,18 +1,24 @@
-h1 
-	center
-		| Zamówienia
+.wrapper
+	.content
+		.row
+		  .col-md-6.col-md-offset-3
+		    .hpanel ui-sref="neworder({groupid: groupid})" style="cursor: pointer;"
+		      .panel-body
+		      	h4.text-success
+		      		i.fa.fa-plus>
+		        	| Dodaj nowe zamówienie
 
-.content.animate-panel
-  .row
-	    .col-sm-4 ng-repeat=("order in orders")
-	      .hpanel.hgreen.contact-panel ui-sref="meals({restaurantid: order.restaurant.id})"
-	        .panel-body
-	          h3
-	          	center
-		            a
-		              | {{order.restaurant.name}} 
-  .hpanel.hred.contact-panel ui-sref="neworder({groupid: groupid})"
-	.panel-body
-	  h3 
-	    center	
-			 | Nowe zamówienie
+		.row
+		  .col-md-6.col-md-offset-3
+		    .hpanel.filter-item ng-repeat=("order in orders") ui-sref="meals({restaurantid: order.restaurant.id})" style="cursor: pointer;"
+		      a href="#"
+		      .panel-body
+		        .pull-right.text-right
+		          small.stat-label Godzina zakończenia
+		          h4
+		            | 12:00
+		            / i.fa.fa-level-up.text-success
+		        h4.m-b-xs
+		        	| {{order.restaurant.name}}
+		        / p.small
+		        / 	| Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still

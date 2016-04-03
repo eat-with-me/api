@@ -1,13 +1,12 @@
-h1 
-	center
-		| Grupy
-
-.content.animate-panel
-  .row
-	    .col-sm-4 ng-repeat=("group in groups")
-	      .hpanel.hgreen.contact-panel ui-sref="orders({groupid: group.id})"
-	        .panel-body
-	          h3
-	          	center
-		            a
-		              | {{group.name}}
+.wrapper
+	.content
+		.row
+			.col-md-4.col-md-offset-4
+				.hpanel
+				  .panel-heading
+				    | Wybierz grupę
+				  .panel-body.no-padding
+				    .list-group
+				      a.list-group-item ng-repeat=("group in groups") ui-sref="orders({groupid: group.id})"
+					      h5.list-group-item-heading
+					      	| {{group.name}}
