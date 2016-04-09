@@ -10,27 +10,27 @@ SlimLint::RakeTask.new do |t|
   t.config = 'config/.slim-lint.yml'
 end
 
-task :test do
-  printf "\n------------------Slimlint------------------\n"
-  begin
-    Rake::Task['slim_lint'].execute
-    printf "\nAll .slim files are fine. Good job!\n"
-  rescue
-    printf "\nSlimlint finish with exceptions. Please fix it!\n"
-  end
+# task :test do
+#   printf "\n------------------Slimlint------------------\n"
+#   begin
+#     Rake::Task['slim_lint'].execute
+#     printf "\nAll .slim files are fine. Good job!\n"
+#   rescue
+#     printf "\nSlimlint finish with exceptions. Please fix it!\n"
+#   end
 
-  printf "\n-----------------Coffeelint------------------\n"
-  system 'coffeelint.rb -r app/assets/javascripts'
-  system 'coffeelint.rb -r spec/javascripts'
+#   printf "\n-----------------Coffeelint------------------\n"
+#   system 'coffeelint.rb -r app/assets/javascripts'
+#   system 'coffeelint.rb -r spec/javascripts'
 
-  printf "\n------------------Rubocop------------------\n"
-  system 'rubocop -R'
+#   printf "\n------------------Rubocop------------------\n"
+#   system 'rubocop -R'
 
-  printf "\n------------------Rspec------------------\n"
-  system 'rspec'
+#   printf "\n------------------Rspec------------------\n"
+#   system 'rspec'
 
-  printf "\n------------------Teaspoon------------------\n"
-  system 'teaspoon'
-end
+#   printf "\n------------------Teaspoon------------------\n"
+#   system 'teaspoon'
+# end
 
 Rails.application.load_tasks
