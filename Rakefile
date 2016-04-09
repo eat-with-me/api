@@ -2,13 +2,13 @@
 # for example lib/tasks/capistrano.rake, and they will automatically
 # be available to Rake.
 
-require File.expand_path('../config/application', __FILE__)
-require 'slim_lint/rake_task'
-require 'rubocop/rake_task'
+# require File.expand_path('../config/application', __FILE__)
+# require 'slim_lint/rake_task'
+# require 'rubocop/rake_task'
 
-SlimLint::RakeTask.new do |t|
-  t.config = 'config/.slim-lint.yml'
-end
+# SlimLint::RakeTask.new do |t|
+#   t.config = 'config/.slim-lint.yml'
+# end
 
 # task :test do
 #   printf "\n------------------Slimlint------------------\n"
@@ -33,4 +33,4 @@ end
 #   system 'teaspoon'
 # end
 
-Rails.application.load_tasks
+# Rails.application.load_tasks
