@@ -36,7 +36,6 @@ group :development, :test do
   gem 'spring', '~> 1.3.6'
 
   gem 'rspec-rails', '~> 3.3.3'
-  gem 'factory_girl_rails', '~> 4.5.0'
   gem 'database_cleaner', '~> 1.4.1'
   gem 'rubocop', '~> 0.33.0'
   gem 'simplecov', '~> 0.10.0'
@@ -55,7 +54,10 @@ group :development do
   gem 'rails-erd', '~> 1.4.5'
 end
 
-gem 'rails_12factor', group: :production
+group :production do
+  gem 'factory_girl_rails', '~> 4.5.0'
+  gem 'rails_12factor'
+end
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-angular', '~> 1.3.15'
