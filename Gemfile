@@ -55,6 +55,8 @@ group :development do
   gem 'rails-erd', '~> 1.4.5'
 end
 
+gem 'rails_12factor', group: :production
+
 source 'https://rails-assets.org' do
   gem 'rails-assets-angular', '~> 1.3.15'
   gem 'rails-assets-angular-ui-router', '~> 0.2.13'
