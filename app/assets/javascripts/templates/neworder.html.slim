@@ -6,25 +6,22 @@
 		      .panel-body
 		        h4.m-t-none.m-b-none Restauracje
 		        small.text-muted Wszystkie restauracje z których możesz zamówić jedzienie
-		      .panel-body ng-repeat=("restaurant in restaurants")
-		        a aria-expanded="true" data-parent="#accordion" data-toggle="collapse" ng-click="addTodo($index);" style="font-size: 18px;"
+		      .panel-body ng-repeat=("restaurant in restaurants") ng-click="addTodo($index);"
+		        a aria-expanded="true" data-parent="#accordion" data-toggle="collapse" style="font-size: 18px;" 
 		          i.fa.fa-chevron-right.pull-right.text-muted ng-show="$index == index"
 		          | {{restaurant.name}}
-		        / #q1.panel-collapse.collapse
-		        /   hr>/
-		        /   | It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal.
 		  .col-lg-4
 		    #accordion2.hpanel.panel-group aria-multiselectable="true" role="tablist"
 		      .panel-body
 		        h4.m-t-none.m-b-none Posiłki
 		        small.text-muted Wszystkie posiłki z danej restauracji
-		      .panel-body ng-repeat=("item in restaurants[index].meals")
+		      .panel-body ng-repeat=("meal in restaurants[index].meals")
 		        a aria-expanded="true" data-parent="#accordion2" data-toggle="collapse"
 		          span.pull-right.text-muted
 		          	| Cena:
 		          	b<>
-		          		| {{item.price}}
-		          | {{item.name}}
+		          		| {{meal.price}}
+		          | {{meal.name}}
 		  .col-md-4
 			  .hpanel.stats
 			    .panel-body
@@ -34,7 +31,7 @@
 			     	div
 			        h1.m-t-lg.text-success
 			        	| {{restaurants[index].name}}
-			     	button.btn.btn-block.btn-primary type="button" ui-sref="meals({restaurantid: select})" style="margin-top: 50px"
+			     	button.btn.btn-block.btn-primary type="button" ui-sref="meals({restaurantid: selectedRestaurant})" style="margin-top: 50px"
 							| Zatwierdź
 
 

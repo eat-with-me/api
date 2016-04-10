@@ -19,7 +19,6 @@
 					        small.stat-label Cena
 					        h4
 					          | {{meal.price}} zł
-					          / i.fa.fa-level-up.text-success
 					      h4.m-b-xs
 									|	{{ meal.name }}
 		  .col-md-4
@@ -30,7 +29,7 @@
 			      h4.m-b-xs
 							|	Twoje zamówienie
 			    #notes.collapse
-			      .panel-body.note-link ng-repeat=("meal in todoList track by $index")
+			      .panel-body.note-link ng-repeat=("meal in mealsList track by $index")
 			        a data-toggle="tab" href="#note1"
 			          h4.pull-right.text-muted
 			          	| {{meal.price}} zł
@@ -41,13 +40,13 @@
 			    .panel-body
 			      .pull-right.text-right
 			        h4
-			          | {{sum}} zł
+			          | {{totalPrice}} zł
 			      h4.m-b-xs Podsumowanie
 
 			    .panel-body
 						button.btn.btn-danger.btn-block type="button" ng-click="clearMeal()"
 							| Wyczyść
 
-						button.btn.btn-primary.btn-block type="button" ng-click="showAlert()"
+						button.btn.btn-primary.btn-block type="button" ng-click="showOrder()"
 							| Zamawiam!
 

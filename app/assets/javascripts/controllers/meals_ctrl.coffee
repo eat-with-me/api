@@ -7,30 +7,29 @@ angular.module 'EatingApp'
         $scope.restaurant = data
         console.log(data)
         
-        $scope.todoList = []
-        $scope.arr = []
-        $scope.sar = []
+        $scope.mealsList = []
+        $scope.finalMealsList = []
 
 
-        $scope.sum = 0
-        $scope.addMeal = (war) ->
-            $scope.sum = $scope.sum + war.price
-            $scope.todoList.push(war)
-            console.log($scope.todoList)
+        $scope.totalPrice = 0
+        $scope.addMeal = (mealNumber) ->
+            $scope.totalPrice = $scope.totalPrice + mealNumber.price
+            $scope.mealsList.push(mealNumber)
+            console.log($scope.mealsList)
 
-        $scope.removeMeal = (war) ->
-            $scope.sum = $scope.sum - $scope.todoList[war].price
-            $scope.todoList.splice(war, 1);
-            console.log($scope.todoList)
+        $scope.removeMeal = (mealNumber) ->
+            $scope.totalPrice = $scope.totalPrice - $scope.mealsList[mealNumber].price
+            $scope.mealsList.splice(mealNumber, 1);
+            console.log($scope.mealsList)
 
         $scope.clearMeal = ->
-            $scope.sum = 0
-            $scope.todoList = []
+            $scope.totalPrice = 0
+            $scope.mealsList = []
 
-        $scope.showAlert = ->
-            console.log($scope.todoList)
-            for i in [0...$scope.todoList.length]
-                $scope.sar[i] = $scope.todoList[i].name
-            console.log($scope.arr)
-            alert("Rzeczy do zamówienia: " + "\n"+ "\n" +$scope.sar + "\n" + "\n"+ "\n"+ "Cena ogólna: " + $scope.sum+"$") 
-            
+        $scope.showOrder = ->
+            for i in [0...$scope.mealsList.length]
+                $scope.finalMealsList[i] = $scope.mealsList[i].name
+            alert("Rzeczy do zamówienia: " + "\n"+ "\n" +$scope.finalMealsList + "\n" + "\n"+ "\n"+ "Cena ogólna: " + $scope.totalPrice+"zł") 
+            $scope.finalMealsList = []
+            $scope.mealsList = []
+            $scope.totalPrice = 0
