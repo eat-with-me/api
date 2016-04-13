@@ -63,3 +63,4 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-angular', '~> 1.3.15'
   gem 'rails-assets-angular-ui-router', '~> 0.2.13'
 end
+gem 'apipie-rails'
