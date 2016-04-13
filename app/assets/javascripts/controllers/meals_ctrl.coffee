@@ -1,5 +1,5 @@
 angular.module 'EatingApp'
-  .controller 'MealsCtrl', ($http, $scope, $stateParams)->
+  .controller 'MealsCtrl', ($http, $scope, $stateParams, $interval)->
    
     $scope.restaurantid = $stateParams.restaurantid
     
@@ -7,36 +7,44 @@ angular.module 'EatingApp'
         $scope.restaurant = data
         console.log(data)
         
-        $scope.mealsList = []
-        $scope.finalMealsList = []
+    $scope.mealsList = []
+    $scope.finalMealsList = []
+    $scope.totalPrice = 0
 
-            
+    $scope.endTime = "23:59"
+    $scope.timeRemaining = ""
 
+    #TAJMER
+    $scope.updateTime = ->
+        $scope.timeRemaining = moment().to(moment($scope.endTime, "HH:mm"))
+        $scope.duration = moment.duration(moment($scope.endTime, "HH:mm").diff(moment())).asHours()
+
+    $interval($scope.updateTime, 500)
+
+    $scope.addMeal = (mealNumber) ->
+        $scope.totalPrice = $scope.totalPrice + mealNumber.price
+        $scope.mealsList.push(mealNumber)
+        console.log($scope.mealsList)
+
+    $scope.removeMeal = (mealNumber) ->
+        $scope.totalPrice = $scope.totalPrice - $scope.mealsList[mealNumber].price
+        $scope.mealsList.splice(mealNumber, 1);
+        console.log($scope.mealsList)
+
+    $scope.clearMeal = ->
         $scope.totalPrice = 0
-        $scope.addMeal = (mealNumber) ->
-            $scope.totalPrice = $scope.totalPrice + mealNumber.price
-            $scope.mealsList.push(mealNumber)
-            console.log($scope.mealsList)
+        $scope.mealsList = []
 
-        $scope.removeMeal = (mealNumber) ->
-            $scope.totalPrice = $scope.totalPrice - $scope.mealsList[mealNumber].price
-            $scope.mealsList.splice(mealNumber, 1);
-            console.log($scope.mealsList)
+    $scope.showOrder = ->
+        for i in [0...$scope.mealsList.length]
+            $scope.finalMealsList[i] = $scope.mealsList[i].name
+        alert("Rzeczy do zamówienia: " + "\n"+ "\n" +$scope.finalMealsList + "\n" + "\n"+ "\n"+ "Cena ogólna: " + $scope.totalPrice+"zł") 
+        $scope.finalMealsList = []
+        $scope.mealsList = []
+        $scope.totalPrice = 0
 
-        $scope.clearMeal = ->
-            $scope.totalPrice = 0
-            $scope.mealsList = []
-
-        $scope.showOrder = ->
-            for i in [0...$scope.mealsList.length]
-                $scope.finalMealsList[i] = $scope.mealsList[i].name
-            alert("Rzeczy do zamówienia: " + "\n"+ "\n" +$scope.finalMealsList + "\n" + "\n"+ "\n"+ "Cena ogólna: " + $scope.totalPrice+"zł") 
-            $scope.finalMealsList = []
-            $scope.mealsList = []
-            $scope.totalPrice = 0
-
-        $scope.enableAcceptButton = ->
-            if $scope.mealsList.length>0
-                return false
-            else
-                return true
+    $scope.enableAcceptButton = ->
+        if $scope.mealsList.length>0
+            return false
+        else
+            return true

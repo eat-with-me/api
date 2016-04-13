@@ -6,7 +6,7 @@
 		      .panel-body
 		        h4.m-t-none.m-b-none Restauracje
 		        small.text-muted Wszystkie restauracje z których możesz zamówić jedzienie
-		      .panel-body ng-repeat=("restaurant in restaurants") ng-click="addTodo($index);"
+		      .panel-body ng-repeat=("restaurant in restaurants") ng-click="addRestaurant($index);"
 		        a aria-expanded="true" data-parent="#accordion" data-toggle="collapse" style="font-size: 18px;" 
 		          i.fa.fa-chevron-right.pull-right.text-muted ng-show="$index == index"
 		          | {{restaurant.name}}

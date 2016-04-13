@@ -7,10 +7,10 @@ angular.module 'EatingApp'
       $scope.index = 0
 
 
-    $scope.addTodo = (index) ->
-      $scope.index = index
-      $scope.selectedRestaurant = $scope.restaurants[$scope.index].id
+  $scope.addRestaurant = (index) ->
+    $scope.index = index
+    $scope.selectedRestaurant = $scope.restaurants[$scope.index].id
 
-        #kawalek pięknej pętli Norberta - kazał zostawić
-        #for i in [0...$scope.restaurants[0].meals.length]
-        #    $scope.arr[i] = $scope.restaurants[0].meals[i].name
+      #kawalek pięknej pętli Norberta - kazał zostawić
+      #for i in [0...$scope.restaurants[0].meals.length]
+      #    $scope.arr[i] = $scope.restaurants[0].meals[i].name
