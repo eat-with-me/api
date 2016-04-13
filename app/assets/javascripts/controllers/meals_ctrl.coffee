@@ -2,7 +2,7 @@ angular.module 'EatingApp'
   .controller 'MealsCtrl', ($http, $scope, $stateParams)->
    
     $scope.restaurantid = $stateParams.restaurantid
-
+    
     $http.get("/restaurants/#{$stateParams.restaurantid}").success (data)->
         $scope.restaurant = data
         console.log(data)
@@ -10,6 +10,7 @@ angular.module 'EatingApp'
         $scope.mealsList = []
         $scope.finalMealsList = []
 
+            
 
         $scope.totalPrice = 0
         $scope.addMeal = (mealNumber) ->
@@ -33,3 +34,9 @@ angular.module 'EatingApp'
             $scope.finalMealsList = []
             $scope.mealsList = []
             $scope.totalPrice = 0
+
+        $scope.enableAcceptButton = ->
+            if $scope.mealsList.length>0
+                return false
+            else
+                return true

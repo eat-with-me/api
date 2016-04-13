@@ -17,7 +17,7 @@
 		        small.text-muted Wszystkie posiłki z danej restauracji
 		      .panel-body ng-repeat=("meal in restaurants[index].meals")
 		        a aria-expanded="true" data-parent="#accordion2" data-toggle="collapse"
-		          span.pull-right.text-muted
+		          span.pull-right.text-muted 
 		          	| Cena:
 		          	b<>
 		          		| {{meal.price}}
@@ -33,5 +33,12 @@
 			        	| {{restaurants[index].name}}
 			     	button.btn.btn-block.btn-primary type="button" ui-sref="meals({restaurantid: selectedRestaurant})" style="margin-top: 50px"
 							| Zatwierdź
+				.hpanel.stats
+			    .panel-body
+			    	div
+			    		h5
+			    			| Wprowadź godzinę, o której zamówienie się kończy
+			    	div
+			    		input.form-control type="time"
 
 

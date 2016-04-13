@@ -14,3 +14,6 @@
  *= require_tree .
  *= require_self
  */
+.custom-red .panel-body{
+	background-color: red!important;
+}
