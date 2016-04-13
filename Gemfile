@@ -29,7 +29,6 @@ gem 'rails-assets-bootstrap', '~> 3.3.6'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'slim-rails', '~> 0.2.1'
 gem 'devise'
-gem 'rails-assets-moment'
 
 group :development, :test do
   # Spring speeds up development by keeping your application running
