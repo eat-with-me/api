@@ -4,13 +4,16 @@ angular.module 'EatingApp'
     $http.get("/restaurants").success (data)->
       console.log(data)
       $scope.restaurants = data
-      $scope.index = 0
 
+    $scope.time = ''
 
-  $scope.addRestaurant = (index) ->
-    $scope.index = index
-    $scope.selectedRestaurant = $scope.restaurants[$scope.index].id
+    $scope.addRestaurant = (index) ->
+      $scope.index = index
+      $scope.selectedRestaurant = $scope.restaurants[$scope.index].id
 
-      #kawalek pięknej pętli Norberta - kazał zostawić
-      #for i in [0...$scope.restaurants[0].meals.length]
-      #    $scope.arr[i] = $scope.restaurants[0].meals[i].name
+    $scope.enableAcceptButton = ->
+        if $scope.index > -1 && $scope.time
+            return false
+        else
+            return true
+

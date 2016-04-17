@@ -31,7 +31,7 @@
 			     	div
 			        h1.m-t-lg.text-success
 			        	| {{restaurants[index].name}}
-			     	button.btn.btn-block.btn-primary type="button" ui-sref="meals({restaurantid: selectedRestaurant})" style="margin-top: 50px"
+			     	button.btn.btn-block.btn-primary type="button" ui-sref="meals({restaurantid: selectedRestaurant})" style="margin-top: 50px" ng-disabled="enableAcceptButton()" 
 							| Zatwierdź
 				.hpanel.stats
 			    .panel-body
@@ -39,6 +39,6 @@
 			    		h5
 			    			| Wprowadź godzinę, o której zamówienie się kończy
 			    	div
-			    		input.form-control type="time"
+			    		input.form-control type="time" ng-model="time"
 
 
