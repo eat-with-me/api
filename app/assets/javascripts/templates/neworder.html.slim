@@ -1,3 +1,9 @@
+button.btn.btn-block.btn-primary type="button" style="margin-top: 50px" ng-click="assertTime()"
+	| Generuj
+button.btn.btn-block.btn-primary type="button" style="margin-top: 50px" ng-click="siema()"
+	| Wyslij
+
+
 .wrapper
 	.content
 		.row
@@ -37,7 +43,7 @@
 			    .panel-body
 			    	div
 			    		h5
-			    			| Wprowadź godzinę, o której zamówienie się kończy
+			    			| Wprowadź godzinę, o której zamówienie się kończy {{time}}
 			    	div
 			    		input.form-control type="time" ng-model="time"
 
