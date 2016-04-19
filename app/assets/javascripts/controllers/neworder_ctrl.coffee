@@ -27,9 +27,9 @@
       if ((a.hour() < moment().hour()) || ((a.hour() == moment().hour()) && (a.minute() < moment().minute())))
         a.set('day',a.day()+1)
 
-      console.log(a.format())
-      data1 = {restaurant_id : $scope.index, closing_time : a.format(), group_id : $stateParams.groupid }
-      console.log(data1);
+      #console.log(a.format())
+      data1 = {restaurant_id : $scope.index+1, closing_time : a.format(), group_id : $stateParams.groupid }
+      #console.log(data1);
       $http.post("/groups/#{$stateParams.groupid}/orders", data1).success (data1, status) ->
       alert("Sie dodało")
     
