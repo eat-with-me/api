@@ -1,0 +1,42 @@
+
+.back-link
+  = link_to "Strona główna", root_path, :class =>"btn btn-primary"
+
+
+.login-container
+  .row
+    .col-md-12
+      .text-center.m-b-md
+        h3 Zaloguj się
+        -if !notice.nil?
+          p.alert.alert-success
+            = notice
+        -if !alert.nil?
+          p.alert.alert-danger
+            = alert
+      .hpanel
+        .panel-body
+          = form_for(resource, as: resource_name, url: session_path(resource_name), html: {id: "loginForm"}) do |f|
+            .form-group
+              = f.label :email, class: "control-label"
+              = f.email_field :email, autofocus: true, class: "form-control", id: "username", placeholder: "Email"
+              / span.help-block.small Your unique username to app
+            .form-group
+              = f.label :password, class: "control-label"
+              = f.password_field :password, autocomplete: "off", class: "form-control", id: "password", placeholder: "Hasło"
+            -if devise_mapping.rememberable?
+              / span.help-block.small Yur strong password
+              .checkbox
+                = f.check_box :remember_me, style: "margin: auto; position: relative"
+                = f.label :remember_me
+                p.help-block.small (if this is a private computer)
+            = f.submit "Zaloguj", class: "btn btn-success btn-block"
+            br
+            p.text-center
+              = render "devise/shared/links"
+  .row
+    .col-md-12.text-center
+      strong> Jedzmy razem
+      | - Jedzmy razem
+      br/
+      | 2015 Copyright EatWithMe
