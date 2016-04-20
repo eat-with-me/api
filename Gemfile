@@ -33,6 +33,12 @@ gem 'factory_girl_rails', '~> 4.5.0'
 gem 'devise'
 gem 'rails-assets-moment'
 
+# activeadmin
+gem 'activeadmin', '~> 1.0.0.pre2'
+gem 'cancan' # or cancancan
+gem 'draper'
+gem 'pundit'
+
 group :development, :test do
   # Spring speeds up development by keeping your application running
   # in the background. Read more: https://github.com/rails/spring

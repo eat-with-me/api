@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
+
   apipie
+
   devise_for :users
 
   resources :groups, only: [:index] do

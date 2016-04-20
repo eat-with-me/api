@@ -18,3 +18,5 @@ meal1 = restaurant.meals[0]
 meal2 = restaurant.meals[1]
 
 purchaser.meals_lists.create([{meal: meal1, amount: 20},{meal: meal2, amount: 10}])
+
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')

@@ -11,7 +11,7 @@
  * file per style scope.
  *
  *= require bootstrap
- *= require_tree .
+ *= require homer
  *= require_self
  */
 .custom-red .panel-body{
