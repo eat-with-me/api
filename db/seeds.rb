@@ -8,6 +8,13 @@
 
 include FactoryGirl::Syntax::Methods
 
-create_list(:group_with_orders, 3)
+group = create_list(:group_with_orders, 3)
 
-create_list(:restaurant_with_meals, 5)
+restaurant = create_list(:restaurant_with_meals, 5)
+
+purchaser = group[0].orders[0].purchasers.create(user: group[0].users[0])
+restaurant = group[0].orders[0].restaurant
+meal1 = restaurant.meals[0]
+meal2 = restaurant.meals[1]
+
+purchaser.meals_lists.create([{meal: meal1, amount: 20},{meal: meal2, amount: 10}])
