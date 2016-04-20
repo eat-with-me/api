@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe RestaurantsController, type: :controller do
   describe 'GET' do
     it 'returns http success' do
+      sign_in create(:user)
       restaurants = create_list(:restaurant_with_meals, 5)
 
       get :index
@@ -13,6 +14,7 @@ RSpec.describe RestaurantsController, type: :controller do
     end
 
     it 'returns http success' do
+      sign_in create(:user)
       restaurant = create(:restaurant_with_meals)
 
       get :one, restaurant_id: restaurant.id
