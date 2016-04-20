@@ -23,11 +23,13 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem 'apipie-rails'
 gem 'sprockets', '~> 2.12.4'
 gem 'angular-rails-templates', '~> 0.2.0'
 gem 'rails-assets-bootstrap', '~> 3.3.6'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'slim-rails', '~> 0.2.1'
+gem 'factory_girl_rails', '~> 4.5.0'
 gem 'devise'
 gem 'rails-assets-moment'
 
@@ -56,7 +58,6 @@ group :development do
 end
 
 group :production do
-  gem 'factory_girl_rails', '~> 4.5.0'
   gem 'rails_12factor'
 end
 
@@ -64,4 +65,3 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-angular', '~> 1.3.15'
   gem 'rails-assets-angular-ui-router', '~> 0.2.13'
 end
-gem 'apipie-rails'
