@@ -15,9 +15,9 @@
 		      a href="#"
 		      .panel-body
 		        .pull-right.text-right
-		          small.stat-label Godzina zakończenia
-		          h4
-		            | {{order.closing_time}}
+		          small.stat-label Godzina zakończenia 
+		          h4 ng-bind="assertTime(order.closing_time)"
+		            |{{order.closing_time}}
 		        h4.m-b-xs
 		        	| {{order.restaurant.name}}
         

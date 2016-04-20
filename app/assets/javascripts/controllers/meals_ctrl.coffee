@@ -11,7 +11,8 @@ angular.module 'EatingApp'
     $scope.finalMealsList = []
     $scope.totalPrice = 0
 
-    $scope.endTime = "23:59"
+
+    $scope.endTime = "13:00"
     $scope.timeRemaining = ""
 
     #TAJMER
