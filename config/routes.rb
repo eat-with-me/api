@@ -6,9 +6,7 @@ Rails.application.routes.draw do
     resources :orders, only: [:index, :create, :show]
     post "/purchasers", to: 'orders#purchasers_create'
   end
-  resources :restaurants, only: [:index] do
-    get "", to: 'restaurants#one'
-  end
+  resources :restaurants, only: [:index, :show]
 
   root 'home#index'
 end

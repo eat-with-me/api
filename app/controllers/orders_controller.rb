@@ -20,7 +20,7 @@ class OrdersController < ApplicationController
   end
 
   def_param_group :show do
-    api :POST, "/groups/:group_id/orders/:order_id", "Szczegóły zamówienia"
+    api :GET, "/groups/:group_id/orders/:order_id", "Szczegóły zamówienia"
     param :order_id,
           Integer,
           :desc => "ID zamowienia\n\n\n",
@@ -93,7 +93,9 @@ class OrdersController < ApplicationController
       .to_json(
         include: {
           restaurant: {},
-          purchasers: {include: :meals}
+          purchasers: {include: [:meals, :user]
+          }
+
         }
       )
   end
