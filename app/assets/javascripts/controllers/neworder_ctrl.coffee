@@ -2,6 +2,7 @@
  .controller 'NewOrderCtrl', ($http, $scope, $stateParams)->
 
     $scope.groupid = $stateParams.groupid
+    $scope.orderid = $stateParams.orderid
 
     $http.get("/restaurants").success (data)->
       console.log(data)

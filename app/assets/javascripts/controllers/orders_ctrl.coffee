@@ -4,7 +4,7 @@ angular.module 'EatingApp'
     
     $scope.assertTime = (closingTime) ->
     	closingTime.toString()
-    	closingTime.substring(11, 19)
+    	closingTime.substring(11, 16)
 	   
 
     $http.get("/groups/#{$stateParams.groupid}/orders").success (data)->

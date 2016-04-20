@@ -5,14 +5,11 @@ angular.module 'EatingApp'
     #console.log($stateParams)
     
 
-    #$http.get("/groups/#{$stateParams.groupid}/orders/#{$stateParams.orderid}").success (data)->
-    $http.get("/restaurants/#{$stateParams.orderid}").success (data)->
-        $scope.restaurant = data
-        #console.log(data)
-    
-    $http.get("/groups/#{$stateParams.groupid}/orders").success (data)->
-        $scope.endTime = data[$scope.orderid].closing_time.toString().substring(11, 16)
-        console.log($scope.endTime)
+    $http.get("/groups/#{$stateParams.groupid}/orders/#{$stateParams.orderid}").success (data)->
+        $scope.restaurantname = data.restaurant.name
+        $scope.meals = data.restaurant.meal
+        $scope.endTime = data.closing_time.toString().substring(11, 16)
+        console.log(data)
 
     $scope.mealsList = []
     $scope.finalMealsList = []

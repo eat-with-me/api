@@ -9,11 +9,11 @@
 					    	h4
 									| Posiłki z
 									span.text-primary<>
-										| {{restaurant.name}}:
+										| {{restaurantname}}:
 				.row
 					.col-md-12
 
-					  .hpanel.filter-item  ng-repeat=("meal in restaurant.meals") ng-click="addMeal(meal)" style="cursor: pointer;"
+					  .hpanel.filter-item  ng-repeat=("meal in meals") ng-click="addMeal(meal)" style="cursor: pointer;"
 					    a href="#"
 					    .panel-body
 					      .pull-right.text-right

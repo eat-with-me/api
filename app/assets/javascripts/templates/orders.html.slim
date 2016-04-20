@@ -11,7 +11,7 @@
 
 		.row
 		  .col-md-6.col-md-offset-3
-		    .hpanel.filter-item ng-repeat=("order in orders") ui-sref="meals({orderid: order.restaurant.id, groupid: groupid})" style="cursor: pointer;"
+		    .hpanel.filter-item ng-repeat=("order in orders") ui-sref="meals({orderid: order.id, groupid: groupid})" style="cursor: pointer;"
 		      a href="#"
 		      .panel-body
 		        .pull-right.text-right
