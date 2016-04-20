@@ -11,13 +11,12 @@
 
 		.row
 		  .col-md-6.col-md-offset-3
-		    .hpanel.filter-item ng-repeat=("order in orders") ui-sref="meals({restaurantid: order.restaurant.id})" style="cursor: pointer;"
+		    .hpanel.filter-item ng-repeat=("order in orders") ui-sref="meals({orderid: order.restaurant.id, groupid: groupid})" style="cursor: pointer;"
 		      a href="#"
 		      .panel-body
 		        .pull-right.text-right
 		          small.stat-label Godzina zakończenia 
 		          h4 ng-bind="assertTime(order.closing_time)"
-		            |{{order.closing_time}}
 		        h4.m-b-xs
 		        	| {{order.restaurant.name}}
         

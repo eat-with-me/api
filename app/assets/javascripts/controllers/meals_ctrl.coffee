@@ -1,18 +1,25 @@
 angular.module 'EatingApp'
   .controller 'MealsCtrl', ($http, $scope, $stateParams, $interval)->
    
-    $scope.restaurantid = $stateParams.restaurantid
+    $scope.orderid = $stateParams.orderid
+    #console.log($stateParams)
     
-    $http.get("/restaurants/#{$stateParams.restaurantid}").success (data)->
+
+    #$http.get("/groups/#{$stateParams.groupid}/orders/#{$stateParams.orderid}").success (data)->
+    $http.get("/restaurants/#{$stateParams.orderid}").success (data)->
         $scope.restaurant = data
-        console.log(data)
-        
+        #console.log(data)
+    
+    $http.get("/groups/#{$stateParams.groupid}/orders").success (data)->
+        $scope.endTime = data[$scope.orderid].closing_time.toString().substring(11, 16)
+        console.log($scope.endTime)
+
     $scope.mealsList = []
     $scope.finalMealsList = []
     $scope.totalPrice = 0
 
 
-    $scope.endTime = "13:00"
+    #$scope.endTime = "16:00"
     $scope.timeRemaining = ""
 
     #TAJMER
