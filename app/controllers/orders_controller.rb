@@ -1,4 +1,6 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_user!
+
   resource_description do
     short 'Zamówienia'
   end
@@ -92,7 +94,9 @@ class OrdersController < ApplicationController
       .where(id: offer_order_param)[0]
       .to_json(
         include: {
-          restaurant: {},
+          restaurant: {
+            include: :meals
+          },
           purchasers: {include: [:meals, :user]
           }
 
