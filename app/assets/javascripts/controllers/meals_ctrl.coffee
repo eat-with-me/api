@@ -7,7 +7,7 @@ angular.module 'EatingApp'
 
     $http.get("/groups/#{$stateParams.groupid}/orders/#{$stateParams.orderid}").success (data)->
         $scope.restaurantname = data.restaurant.name
-        $scope.meals = data.restaurant.meal
+        $scope.meals = data.restaurant.meals
         $scope.endTime = data.closing_time.toString().substring(11, 16)
         console.log(data)
 
