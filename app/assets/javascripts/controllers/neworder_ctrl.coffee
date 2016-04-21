@@ -1,5 +1,5 @@
  angular.module 'EatingApp'
- .controller 'NewOrderCtrl', ($http, $scope, $stateParams)->
+ .controller 'NewOrderCtrl', ($http, $scope, $stateParams, $state)->
 
     $scope.groupid = $stateParams.groupid
 
@@ -24,6 +24,7 @@
 
      
     $scope.addNewOrder = ->
+
       a = ($scope.time).toString()
       a = a.substring(15, 21)
       a = moment(a, "HH:mm")
@@ -34,12 +35,11 @@
       data1 = {restaurant_id : $scope.index+1, closing_time : a.format(), group_id : $stateParams.groupid }
       console.log(data1);
       $http.post("/groups/#{$stateParams.groupid}/orders", data1).success (data2, status) ->
-        $scope.siema = response.data2.id
-        console.log($scope.siema)
-      alert("Sie dodało")
+        $scope.orderid = data2.id
+        console.log($scope.orderid)
+        alert("siedodałokurwamacjebanawdupeszmatadziwka!!!@#")
+        $state.go("meals",{groupid:$stateParams.groupid,orderid:$scope.orderid})
 
-    $scope.chuj = ->
-      console.log($scope.siema)
     #------------------------------------------------- 
   # $scope.siema = ->
       #data1 = {restaurant_id : $scope.index, closing_time : a.format(), group_id : $stateParams.groupid }
