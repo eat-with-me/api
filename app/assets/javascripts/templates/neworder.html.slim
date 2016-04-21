@@ -31,7 +31,7 @@
 			     	div
 			        h1.m-t-lg.text-success
 			        	| {{restaurants[index].name}}
-			     	button.btn.btn-block.btn-primary type="button" ui-sref="meals({groupid: groupid})" ng-click="addNewOrder()" style="margin-top: 50px" ng-disabled="enableAcceptButton()" 
+			     	button.btn.btn-block.btn-primary type="button" ui-sref="meals({groupid: groupid, orderid: siema})" ng-click="addNewOrder(); chuj()" style="margin-top: 50px" ng-disabled="enableAcceptButton()" 
 							| Zatwierdź
 				.hpanel.stats
 			    .panel-body

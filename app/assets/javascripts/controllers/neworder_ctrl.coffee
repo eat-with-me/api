@@ -9,6 +9,8 @@
 
     $scope.time = ""
     a = ""
+    $scope.siema = 0
+    
 
     $scope.addRestaurant = (index) ->
       $scope.index = index
@@ -24,7 +26,6 @@
     $scope.addNewOrder = ->
       a = ($scope.time).toString()
       a = a.substring(15, 21)
-
       a = moment(a, "HH:mm")
       if ((a.hour() < moment().hour()) || ((a.hour() == moment().hour()) && (a.minute() < moment().minute())))
         a.set('day',a.day()+1)
@@ -32,9 +33,13 @@
       console.log(a.format())
       data1 = {restaurant_id : $scope.index+1, closing_time : a.format(), group_id : $stateParams.groupid }
       console.log(data1);
-      $http.post("/groups/#{$stateParams.groupid}/orders", data1).success (data1, status) ->
+      $http.post("/groups/#{$stateParams.groupid}/orders", data1).success (data2, status) ->
+        $scope.siema = response.data2.id
+        console.log($scope.siema)
       alert("Sie dodało")
-    
+
+    $scope.chuj = ->
+      console.log($scope.siema)
     #------------------------------------------------- 
   # $scope.siema = ->
       #data1 = {restaurant_id : $scope.index, closing_time : a.format(), group_id : $stateParams.groupid }
