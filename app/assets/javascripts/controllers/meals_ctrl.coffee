@@ -5,18 +5,20 @@ angular.module 'EatingApp'
     $scope.groupid = $stateParams.groupid
     #ALERT WHEN USER CHCE CLOSE WINDOW------------------------------
     $scope.$on '$stateChangeStart', (event) ->
-      answer = confirm('Are you sure you want to leave this page?')
-      if !answer
-        event.preventDefault()
+      if $scope.mealsList.length !=0
+        answer = confirm('Masz niezapisane rzeczy w koszyku. Na pewno chcesz wyjść?')
+        if !answer
+          event.preventDefault()
     
     window.onbeforeunload = (event) ->
-      message = 'Sure you want to leave?'
-      if typeof event == 'undefined'
-        event = window.event
-      if event
-        event.returnValue = message
-      return message
-    #---------------------------------------------------------------
+      if $scope.mealsList.length !=0
+        message = 'Masz niezapisane rzeczy w koszyku. Na pewno chcesz wyjść?'
+        if typeof event == 'undefined'
+          event = window.event
+        if event 
+          event.returnValue = message
+        return message
+    #----------------------------------------------------------------
 
     $http.get("/groups/#{$stateParams.groupid}/orders/#{$stateParams.orderid}").success (data)->
         $scope.restaurantname = data.restaurant.name
