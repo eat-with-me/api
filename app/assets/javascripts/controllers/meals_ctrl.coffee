@@ -2,14 +2,26 @@ angular.module 'EatingApp'
   .controller 'MealsCtrl', ($http, $scope, $stateParams, $interval)->
    
     $scope.orderid = $stateParams.orderid
-    #console.log($stateParams)
+    $scope.groupid = $stateParams.groupid
+    #ALERT WHEN USER CHCE CLOSE WINDOW------------------------------
+    $scope.$on '$stateChangeStart', (event) ->
+      answer = confirm('Are you sure you want to leave this page?')
+      if !answer
+        event.preventDefault()
     
+    window.onbeforeunload = (event) ->
+      message = 'Sure you want to leave?'
+      if typeof event == 'undefined'
+        event = window.event
+      if event
+        event.returnValue = message
+      return message
+    #---------------------------------------------------------------
 
     $http.get("/groups/#{$stateParams.groupid}/orders/#{$stateParams.orderid}").success (data)->
         $scope.restaurantname = data.restaurant.name
         $scope.meals = data.restaurant.meals
         $scope.endTime = data.closing_time.toString().substring(11, 16)
-        console.log(data)
 
     $scope.mealsList = []
     $scope.finalMealsList = []
@@ -29,12 +41,10 @@ angular.module 'EatingApp'
     $scope.addMeal = (mealNumber) ->
         $scope.totalPrice = $scope.totalPrice + mealNumber.price
         $scope.mealsList.push(mealNumber)
-        console.log($scope.mealsList)
 
     $scope.removeMeal = (mealNumber) ->
         $scope.totalPrice = $scope.totalPrice - $scope.mealsList[mealNumber].price
         $scope.mealsList.splice(mealNumber, 1);
-        console.log($scope.mealsList)
 
     $scope.clearMeal = ->
         $scope.totalPrice = 0
@@ -42,8 +52,14 @@ angular.module 'EatingApp'
 
     $scope.showOrder = ->
         for i in [0...$scope.mealsList.length]
-            $scope.finalMealsList[i] = $scope.mealsList[i].name
+            $scope.finalMealsList[i] = $scope.mealsList[i].id
         alert("Rzeczy do zamówienia: " + "\n"+ "\n" +$scope.finalMealsList + "\n" + "\n"+ "\n"+ "Cena ogólna: " + $scope.totalPrice+"zł") 
+        console.log($scope.finalMealsList)
+        #zaczety post do zamowienia----------------------------------
+        data1 = {order : { id : $scope.orderid, meals : $scope.finalMealsList } }
+        $http.post("/groups/#{$stateParams.groupid}/purchasers", data1).success (data2, status) ->
+          console.log(data2)
+        #-----------------------------------------------
         $scope.finalMealsList = []
         $scope.mealsList = []
         $scope.totalPrice = 0

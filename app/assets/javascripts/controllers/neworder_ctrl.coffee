@@ -35,8 +35,8 @@
       data1 = {restaurant_id : $scope.index+1, closing_time : a.format(), group_id : $stateParams.groupid }
       console.log(data1);
       $http.post("/groups/#{$stateParams.groupid}/orders", data1).success (data2, status) ->
+        console.log(data2)
         $scope.orderid = data2.id
-        console.log($scope.orderid)
         alert("siedodałokurwamacjebanawdupeszmatadziwka!!!@#")
         $state.go("meals",{groupid:$stateParams.groupid,orderid:$scope.orderid})
 

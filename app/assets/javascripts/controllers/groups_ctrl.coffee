@@ -3,3 +3,6 @@ angular.module 'EatingApp'
     $http.get("/groups").success (data)->
     	console.log(data)
     	$scope.groups = data
+
+
+    
