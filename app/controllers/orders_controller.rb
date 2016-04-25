@@ -54,7 +54,7 @@ class OrdersController < ApplicationController
 
   def_param_group :purchasers_create do
     api :POST, "/groups/:group_id/purchasers", "Dodawanie zamowienia użytkowinika"
-    param :meals, Hash, :desc => 'posiłki' do
+    param :order, Hash, :desc => 'posiłki' do
       param :id, String, :desc => "id zamowienia(order id)", :required => true
       param :meals, Array, :desc => 'tablica id-ków posiłków - np. ["1", "2", "3"]', :required => true
     end

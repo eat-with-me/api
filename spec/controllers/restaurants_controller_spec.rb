@@ -17,7 +17,7 @@ RSpec.describe RestaurantsController, type: :controller do
       sign_in create(:user)
       restaurant = create(:restaurant_with_meals)
 
-      get :one, restaurant_id: restaurant.id
+      get :show, id: restaurant.id
       output = JSON.parse(response.body)
 
       expect(output["name"]).to eq(restaurant[:name])

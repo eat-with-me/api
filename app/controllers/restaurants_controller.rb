@@ -11,8 +11,8 @@ class RestaurantsController < ApplicationController
   end
 
   def_param_group :show do
-    api :GET, "/restaurants/restaurant_id", "Szczegóły zamówienia"
-    param :restaurant_id,
+    api :GET, "/restaurants/:id", "Szczegóły zamówienia"
+    param :id,
           Integer,
           :desc => "ID restauracji\n\n\n",
           :required => true
