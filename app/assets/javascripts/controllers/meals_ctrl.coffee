@@ -57,11 +57,11 @@ angular.module 'EatingApp'
             $scope.finalMealsList[i] = $scope.mealsList[i].id
         alert("Rzeczy do zamówienia: " + "\n"+ "\n" +$scope.finalMealsList + "\n" + "\n"+ "\n"+ "Cena ogólna: " + $scope.totalPrice+"zł") 
         console.log($scope.finalMealsList)
-        #zaczety post do zamowienia----------------------------------
-        data1 = {order : { id : $scope.orderid, meals : $scope.finalMealsList } }
+        
+        data1 = {order : { id : $scope.orderid, meals : $scope.finalMealsList} }
         $http.post("/groups/#{$stateParams.groupid}/purchasers", data1).success (data2, status) ->
           console.log(data2)
-        #-----------------------------------------------
+
         $scope.finalMealsList = []
         $scope.mealsList = []
         $scope.totalPrice = 0
