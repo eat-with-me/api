@@ -10,7 +10,7 @@
     $scope.time = ""
     a = ""
     $scope.siema = 0
-    
+
 
     $scope.addRestaurant = (index) ->
       $scope.index = index
