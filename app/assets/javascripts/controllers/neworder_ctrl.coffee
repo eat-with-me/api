@@ -9,15 +9,13 @@
 
     $scope.time = ""
     a = ""
-    $scope.siema = 0
+    $scope.currentID = -1
 
-
-    $scope.addRestaurant = (index) ->
-      $scope.index = index
-      $scope.selectedRestaurant = $scope.restaurants[$scope.index].id
-
+    $scope.addRestaurant = (restaurant) ->
+      $scope.currentID = restaurant.id-1
+      $scope.selectedRestaurant = $scope.currentID
     $scope.enableAcceptButton = ->
-        if $scope.index > -1 && $scope.time
+        if $scope.currentID > -1 && $scope.time
             return false
         else
             return true
@@ -32,7 +30,7 @@
         a.set('day',a.day()+1)
 
       console.log(a.format())
-      data1 = {restaurant_id : $scope.index+1, closing_time : a.format(), group_id : $stateParams.groupid }
+      data1 = {restaurant_id : $scope.currentID+1, closing_time : a.format(), group_id : $stateParams.groupid }
       console.log(data1);
       $http.post("/groups/#{$stateParams.groupid}/orders", data1).success (data2, status) ->
         console.log(data2)

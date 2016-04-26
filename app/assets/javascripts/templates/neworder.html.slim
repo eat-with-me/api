@@ -9,16 +9,16 @@
 		      .panel-body
 		      	h5.m-t-none.m-b-none Wyszukaj restauracje:
 		        input.form-control type="text" ng-model="search.name"
-		      .panel-body ng-repeat=("restaurant in restaurants | filter:search") ng-click="addRestaurant($index);"
+		      .panel-body ng-repeat=("restaurant in restaurants | filter:search") ng-click="addRestaurant(restaurant);"
 		        a aria-expanded="true" data-parent="#accordion" data-toggle="collapse" style="font-size: 18px;" 
-		          i.fa.fa-chevron-right.pull-right.text-muted ng-show="$index == index"
+		          i.fa.fa-chevron-right.pull-right.text-muted ng-show="restaurant.id == currentID+1"
 		          | {{restaurant.name}}
 		  .col-lg-4
 		    #accordion2.hpanel.panel-group aria-multiselectable="true" role="tablist"
 		      .panel-body
 		        h4.m-t-none.m-b-none Posiłki
 		        small.text-muted Wszystkie posiłki z danej restauracji
-		      .panel-body ng-repeat=("meal in restaurants[index].meals")
+		      .panel-body ng-repeat=("meal in restaurants[currentID].meals")
 		        a aria-expanded="true" data-parent="#accordion2" data-toggle="collapse"
 		          span.pull-right.text-muted 
 		          	| Cena:
@@ -33,7 +33,7 @@
 			    			| Wybrałeś
 			     	div
 			        h1.m-t-lg.text-success
-			        	| {{restaurants[index].name}}
+			        	| {{restaurants[currentID].name}}
 			     	button.btn.btn-block.btn-primary type="button" ng-click="addNewOrder()" style="margin-top: 50px" ng-disabled="enableAcceptButton()" 
 							| Zatwierdź
 				.hpanel.stats
