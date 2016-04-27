@@ -10,4 +10,3 @@ angular.module 'EatingApp'
     $http.get("/groups/#{$stateParams.groupid}/orders").success (data)->
     	console.log(data)
     	$scope.orders = data
-    	SweetAlert.swal("Good job!", "You clicked the button!", "success");

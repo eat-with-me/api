@@ -4,5 +4,4 @@ angular.module 'EatingApp'
     	console.log(data)
     	$scope.groups = data
 
-
     

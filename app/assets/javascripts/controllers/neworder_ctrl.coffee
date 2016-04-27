@@ -35,7 +35,7 @@
       $http.post("/groups/#{$stateParams.groupid}/orders", data1).success (data2, status) ->
         console.log(data2)
         $scope.orderid = data2.id
-        alert("siedodałokurwamacjebanawdupeszmatadziwka!!!@#")
+        sweetAlert("Dodałeś zamówienie!")
         $state.go("meals",{groupid:$stateParams.groupid,orderid:$scope.orderid})
 
     #------------------------------------------------- 

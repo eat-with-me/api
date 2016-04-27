@@ -10,9 +10,11 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
+ *= require sweetalert
  *= require bootstrap
  *= require homer
  *= require_self
+
  */
 .custom-red .panel-body{
 	background-color: red!important;
