@@ -64,7 +64,6 @@ RSpec.describe OrdersController, type: :controller do
       post :purchasers_create, @purchasers
       get :show, @order
       output = JSON.parse(response.body)
-      ap output
       # puts output
     end
 

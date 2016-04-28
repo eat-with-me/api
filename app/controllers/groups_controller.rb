@@ -38,7 +38,8 @@ class GroupsController < ApplicationController
 
   param_group :index
   def index
-    render :json => current_user.groups
+    render :json => current_user.groups.to_json(
+        include: :users)
   end
 
   param_group :create

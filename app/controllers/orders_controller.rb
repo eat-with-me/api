@@ -100,10 +100,11 @@ class OrdersController < ApplicationController
           restaurant: {
             include: :meals
           },
-          purchasers: {include: {
-            meals_lists: {include: :meal},
-            user: {}
-          }
+          purchasers: {
+            include: {
+              meals_lists: {include: :meal},
+              user: {}
+            }
           }
 
         }
