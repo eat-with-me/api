@@ -14,8 +14,8 @@ class GroupsController < ApplicationController
   end
 
   def_param_group :index do
-    api :GET, "/groups", "Wszystkie grupy do których należy użytkownik"
-    description "== Wszystkie grupy"
+    api :GET, "/groups", "Wszystkie grupy do których należy użytkownik + wszyscy użytkownicy"
+    description "== Wszystkie grupy + użytkownicy tych grup"
   end
 
   def_param_group :create do
