@@ -1,7 +1,7 @@
-	.wrapper
+.wrapper
 	.content
 		.row
-		  .col-md-4.col-md-offset-2
+		  .col-sm-4
 				.row
 					.col-md-12
 					  .hpanel 
@@ -14,7 +14,6 @@
 					.col-md-12
 
 					  .hpanel.filter-item ng-repeat=("meal in meals") ng-click="addMeal(meal)" style="cursor: pointer;"
-					    a href="#"
 					    .panel-body
 					      .pull-right.text-right
 					        small.stat-label Cena
@@ -22,19 +21,18 @@
 					          | {{meal.price}} zł
 					      h4.m-b-xs
 									|	{{ meal.name }}
-		  .col-md-4
+
+		  .col-sm-4
 			  .hpanel.panel-group 
 			    .hpanel.hbggreen
   					.panel-body 
     					.pull-right.text-right
-    						 h3 
+    						 h4
     						 	| {{timeRemaining}}
     					h4.m-b-xs
-    						 h3
+    						 h4
     						 	| Koniec zamówienia:
 
-			    .panel-body
-			      .text-center.text-muted.font-bold Całe zamówienie
 			    .panel-section
 			      h4.m-b-xs
 							|	Twoje zamówienie
@@ -62,6 +60,18 @@
 						button.btn.btn-primary.btn-block type="button" ng-click="showOrder()" ng-disabled="enableAcceptButton()" 
 							| Zamawiam!
 
-						
+		  .col-sm-4
+			  .hpanel.panel-group 
+			  	.hpanel.hbgwhite
+				    .panel-body
+				      h4
+				      	| Całe zamówienie
+			    .hpanel.hgreen ng-repeat=("zamowienie in zamowienia")
+  					.panel-heading.hbuilt
+    					| {{zamowienie.user.email}}
+  					.panel-body style=("display: block;") 
+    					p ng-repeat=("meal in zamowienie.meals")
+					      | {{meal.name}}
 
+			    		
 
