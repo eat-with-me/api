@@ -57,6 +57,7 @@ group :development, :test do
   gem 'rails-assets-angular-mocks', '~> 1.3.17'
   gem 'coffeelint', '~> 1.10.0'
   gem 'slim_lint'
+  gem 'awesome_print'
 end
 
 group :development do

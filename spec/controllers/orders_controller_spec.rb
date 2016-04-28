@@ -51,21 +51,27 @@ RSpec.describe OrdersController, type: :controller do
         group_id: group[:id],
         order: {
           id: group.orders[0].id,
-          meals: [meals[3].id,meals[1].id,meals[2].id]
+          meals: [
+            {meal_id: meals[3].id, amount: 12},
+            {meal_id: meals[1].id, amount: 4},
+            {meal_id: meals[2].id, amount: 20}
+          ]
         }
       }
     end
 
-    it 'creates' do
-      post :create, @order
+    it 'gets' do
+      post :purchasers_create, @purchasers
+      get :show, @order
       output = JSON.parse(response.body)
-
+      ap output
       # puts output
     end
 
     it 'create' do
       post :purchasers_create, @purchasers
       output = JSON.parse(response.body)
+      # puts output
       expect(output.length).to be(3)
     end
   end

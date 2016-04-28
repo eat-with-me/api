@@ -18,7 +18,7 @@ class OrdersController < ApplicationController
   end
 
   def purchasers_create_param
-    params.permit(order: [:id, meals: []])
+    params.permit(order: [:id, meals: [:meal_id, :amount]])
   end
 
   def_param_group :show do
@@ -56,7 +56,10 @@ class OrdersController < ApplicationController
     api :POST, "/groups/:group_id/purchasers", "Dodawanie zamowienia użytkowinika"
     param :order, Hash, :desc => 'posiłki' do
       param :id, String, :desc => "id zamowienia(order id)", :required => true
-      param :meals, Array, :desc => 'tablica id-ków posiłków - np. ["1", "2", "3"]', :required => true
+      param :meals , Hash, :desc => 'tablica posiłków' do
+        param :meal_id, Integer, :desc => "id posiłku", :required => true
+        param :amount, Integer, :desc => "ilość danego posiłku", :required => true
+      end
     end
     param :group_id,
           Integer,
@@ -97,7 +100,10 @@ class OrdersController < ApplicationController
           restaurant: {
             include: :meals
           },
-          purchasers: {include: [:meals, :user]
+          purchasers: {include: {
+            meals_lists: {include: :meal},
+            user: {}
+          }
           }
 
         }
@@ -112,14 +118,12 @@ class OrdersController < ApplicationController
 
     render(json: 0) && return if order.nil?
 
-    meals = Meal.where(id: purchasers[:order][:meals])
-
     purchaser = order.purchasers.where(user_id: current_user.id)[0]
     purchaser = order.purchasers.create(user: current_user) if purchaser.nil?
 
     purchaser.meals_lists.clear
 
-    purchaser.meals << meals
+    purchaser.meals_lists.create(purchasers[:order][:meals])
     purchaser.save
 
     render :json => purchaser.meals
