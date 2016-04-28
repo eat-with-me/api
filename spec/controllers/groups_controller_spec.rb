@@ -15,5 +15,22 @@ RSpec.describe GroupsController, type: :controller do
       expect(group.users[0].email).to eq(user.email)
     end
 
+    it 'adds user' do
+      user1 = create(:user)
+      user2 = create(:user)
+      sign_in user1
+      group = create(:group)
+      group.users << user2
+
+      get :add_user, {token: group.token}
+      output = JSON.parse(response.body)
+
+      puts group.users
+
+      expect(group.users.length).to eq(2)
+      expect(group.users[0].email).to eq(user1.email)
+      expect(group.users[1].email).to eq(user2.email)
+    end
+
   end
 end

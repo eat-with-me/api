@@ -12,5 +12,7 @@ Rails.application.routes.draw do
   end
   resources :restaurants, only: [:index, :show]
 
+  get "/join/:token", to: 'groups#add_user'
+
   root 'home#index'
 end
