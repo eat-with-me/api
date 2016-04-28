@@ -78,7 +78,7 @@ class OrdersController < ApplicationController
   param_group :index
   def index
     render :json => Group.find(offer_group_param).orders.to_json(
-      include: :restaurant
+      include: [:restaurant, :purchasers]
     )
   end
 
