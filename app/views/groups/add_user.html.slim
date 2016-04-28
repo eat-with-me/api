@@ -1,0 +1,21 @@
+.back-link
+  = link_to "Strona główna", root_path, :class =>"btn btn-primary"
+
+
+.login-container
+  .row
+    .col-md-12
+      .text-center.m-b-md
+      .hpanel
+        .panel-body.text-center style="padding-top: 80px; padding-bottom: 80px"
+          - if @result
+            h3 Zostałeś dodany do grupy
+          -else
+            h3 Już jesteś w tej grupie :)
+
+  .row
+    .col-md-12.text-center
+      strong> Jedzmy razem
+      | - Jedzmy razem
+      br/
+      | 2015 Copyright EatWithMe

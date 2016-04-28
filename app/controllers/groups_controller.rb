@@ -52,8 +52,12 @@ class GroupsController < ApplicationController
   param_group :add_user
   def add_user
     group = Group.where(group_token_param)
-    group[0].users << current_user
-    render :json => group
+    user = group[0].users.where(id: current_user.id)
+    @result = false
+    if user.length == 0
+      group[0].users << current_user
+      @result = true
+    end
   end
 
   def delete
