@@ -30,7 +30,9 @@ class GroupsController < ApplicationController
 
   param_group :create
   def create
-    render :json => Group.create(group_name_param)
+    group = Group.create(group_name_param)
+    group.users << current_user
+    render :json => group
   end
 
   def delete
