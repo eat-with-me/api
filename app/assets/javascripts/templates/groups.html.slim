@@ -1,5 +1,6 @@
 .wrapper
 	.content
+
 		.row
 			.col-md-4.col-md-offset-4
 				.hpanel
@@ -7,7 +8,16 @@
 				    | Wybierz grupę
 				  .panel-body.no-padding
 				    .list-group
+				      a.list-group-item ng-click="addGroup()"
+					      h5.text-success
+		      				i.fa.fa-plus>
+		        			| Dodaj nową grupę
+
+				  .panel-body.no-padding
+				    .list-group					  
 				      a.list-group-item ng-repeat=("group in groups") ui-sref="orders({groupid: group.id})"
 					      h5.list-group-item-heading
 					      	| {{group.name}}
+				      
+
 					      

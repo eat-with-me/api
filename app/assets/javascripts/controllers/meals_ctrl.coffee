@@ -3,7 +3,6 @@ angular.module 'EatingApp'
    
     $scope.orderid = $stateParams.orderid
     $scope.groupid = $stateParams.groupid
-    $scope.jedzenie = []
     #ALERT WHEN USER CHCE CLOSE WINDOW------------------------------
     $scope.$on '$stateChangeStart', (event) ->
       if $scope.mealsList.length !=0
@@ -26,10 +25,7 @@ angular.module 'EatingApp'
         $scope.meals = data.restaurant.meals
         $scope.endTime = data.closing_time.toString().substring(11, 16)
         $scope.zamowienia = data.purchasers
-        console.log($scope.zamowienia)
-        for i in [0...$scope.zamowienia.length]
-            $scope.jedzenie[i] = $scope.zamowienia[i].meals 
-        console.log($scope.zamowienia)
+        console.log($scope.zamowienia   )
 
 
 
@@ -63,12 +59,11 @@ angular.module 'EatingApp'
     $scope.showOrder = ->
         for i in [0...$scope.mealsList.length]
             $scope.finalMealsList[i] = $scope.mealsList[i].id 
-        console.log($scope.finalMealsList)
         
         data1 = {order : { id : $scope.orderid, meals : $scope.finalMealsList} }
         $http.post("/groups/#{$stateParams.groupid}/purchasers", data1).success (data2, status) ->
-          console.log(data2)
         sweetAlert("Twoja lista posiłków została dodana!", "Odpręż się i czekaj! :)", "success")
+        location.reload()
         $scope.finalMealsList = []
         $scope.mealsList = []
         $scope.totalPrice = 0

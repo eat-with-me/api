@@ -14,9 +14,16 @@
 		    .hpanel.filter-item ng-repeat=("order in orders") ui-sref="meals({orderid: order.id, groupid: groupid})" style="cursor: pointer;"
 		      a href="#"
 		      .panel-body
-		        .pull-right.text-right
+		        .pull-left.text-left
+		          small.stat-label 
+		          h4
+		          	| {{order.restaurant.name}}
+		        .pull-right.text-center
 		          small.stat-label Godzina zakończenia 
 		          h4 ng-bind="assertTime(order.closing_time)"
-		        h4.m-b-xs
-		        	| {{order.restaurant.name}}
+		        .pull-center.text-center
+		          small.stat-label Liczba zamówień:
+		          h4 
+		          	| {{order.purchasers.length}}
+		        
         

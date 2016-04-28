@@ -34,14 +34,13 @@
 			     	div
 			        h1.m-t-lg.text-success
 			        	| {{restaurants[currentID].name}}
-			     	button.btn.btn-block.btn-primary type="button" ng-click="addNewOrder()" style="margin-top: 50px" ng-disabled="enableAcceptButton()" 
-							| Zatwierdź
-				.hpanel.stats
-			    .panel-body
 			    	div
 			    		h5
 			    			| Wprowadź godzinę, o której zamówienie się zakończy:
 			    	div
 			    		input.form-control type="time" ng-model="time"
+				     	button.btn.btn-block.btn-primary type="button" ng-click="addNewOrder()" style="margin-top: 20px" ng-disabled="enableAcceptButton()" 
+								| Zatwierdź
+
 
 

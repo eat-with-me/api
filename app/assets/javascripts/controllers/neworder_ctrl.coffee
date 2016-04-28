@@ -35,8 +35,14 @@
       $http.post("/groups/#{$stateParams.groupid}/orders", data1).success (data2, status) ->
         console.log(data2)
         $scope.orderid = data2.id
-        sweetAlert("Dodałeś zamówienie!", "Zacznij wybierać swoje posiłki!", "success")
-        $state.go("meals",{groupid:$stateParams.groupid,orderid:$scope.orderid})
+        swal
+          title: "Dodałeś zamówienie"
+          type: "success"
+          confirmButtonColor: "#00FF33" 
+          ->
+            $state.go("meals",{groupid:$stateParams.groupid,orderid:$scope.orderid})
+
+        
 
     #------------------------------------------------- 
   # $scope.siema = ->
