@@ -25,7 +25,7 @@ class GroupsController < ApplicationController
 
   param_group :index
   def index
-    render :json => Group.all
+    render :json => current_user.groups
   end
 
   param_group :create
