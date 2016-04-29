@@ -41,11 +41,12 @@
 			        a data-toggle="tab" 
 			          h4.pull-right.text-muted
 			          	| {{meal.price}} zł
+			          input type="number" min="1" max="10" size="2" ng-model="meal.amount" 
 
 			        h4.text-success
 			        	i.fa.fa-close.text-danger<> ng-click="removeMeal($index)" style="cursor: pointer;font-size: 15px;"
 			        	| {{meal.name}}
-			        		input.form-control type="number" value="1" name="ilość"
+			        	
     	
 			    .panel-body
 			      .pull-right.text-right
@@ -72,7 +73,7 @@
     					| {{zamowienie.user.email}}
   					.panel-body style=("display: block;") 
     					p ng-repeat=("mealObj in zamowienie.meals_lists")
-					      | Nazwa posiłki: {{mealObj.meal.name}} Ilość: {{mealObj.amount}}
+					      | Nazwa posiłku: {{mealObj.meal.name}} Ilość: {{mealObj.amount}}
 
 			    		
 

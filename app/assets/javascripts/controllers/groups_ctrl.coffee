@@ -22,7 +22,7 @@ angular.module 'EatingApp'
     			console.log(inputValue)
     			data1 = {name : inputValue}
     			$http.post("/groups", data1).success (data2, status) ->
-			      location.reload()
+			      $scope.groups.push(data2)
     			swal
     				title: "Dodałeś grupę"
     				type: "success"
