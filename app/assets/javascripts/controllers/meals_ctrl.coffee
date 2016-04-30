@@ -24,23 +24,21 @@ angular.module 'EatingApp'
     $http.get("/groups/#{$stateParams.groupid}/orders/#{$stateParams.orderid}").success (data)->
         $scope.restaurantname = data.restaurant.name
         $scope.meals = data.restaurant.meals
-        $scope.endTime = data.closing_time.toString().substring(11, 16)
+        #$scope.endTime = moment(data.closing_time,"YYYY-MM-DDTHH:mm:ss.SSS")
         $scope.zamowienia = data.purchasers
-        console.log($scope.zamowienia)
 
     $scope.mealsList = []
-
-
     $scope.totalPrice = 0
 
-
-    #$scope.endTime = "16:00"
-    $scope.timeRemaining = ""
+    $scope.endTime = moment("16:24","HH:mm")
 
     #TAJMER
     $scope.updateTime = ->
-        $scope.timeRemaining = moment().to(moment($scope.endTime, "HH:mm"))
-        $scope.duration = moment.duration(moment($scope.endTime, "HH:mm").diff(moment())).asHours()
+      if $scope.endTime.isBefore(moment())
+        $scope.timeRemaining = "ZAKOŃCZONE"
+      else 
+        $scope.timeRemaining = moment().to($scope.endTime)
+        $scope.duration = moment.duration($scope.endTime.diff(moment())).asHours()
 
     $interval($scope.updateTime, 500)
 
