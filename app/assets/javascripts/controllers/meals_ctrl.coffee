@@ -29,16 +29,29 @@ angular.module 'EatingApp'
 
     $scope.mealsList = []
     $scope.totalPrice = 0
+    $scope.end = 0
 
-    $scope.endTime = moment("16:24","HH:mm")
+    $scope.endTime = moment("18:29","HH:mm")
 
     #TAJMER
     $scope.updateTime = ->
       if $scope.endTime.isBefore(moment())
         $scope.timeRemaining = "ZAKOŃCZONE"
+        document.getElementsByClassName('hbggreen')[0].firstElementChild.style.background = "gray"
+
       else 
         $scope.timeRemaining = moment().to($scope.endTime)
         $scope.duration = moment.duration($scope.endTime.diff(moment())).asHours()
+        if $scope.endTime - moment() < 600000 && $scope.end == 0
+          document.getElementsByClassName('hbggreen')[0].firstElementChild.style.background = "orange"
+          swal
+            title: "Ambaras!"
+            text: "Zostało 10 minut"
+            type: "warning"
+            showCancelButton: false
+            closeOnConfirm: false
+            confirmButtonColor: "#00FF33"
+          $scope.end=1
 
     $interval($scope.updateTime, 500)
 
@@ -70,7 +83,6 @@ angular.module 'EatingApp'
         
         data1 = {order : { id : $scope.orderid, meals : mealsObjTab} }
         $http.post("/groups/#{$stateParams.groupid}/purchasers", data1).success (data2, status) ->
-          console.log(data2)
           $scope.chujsa.push(data2)
         sweetAlert("Twoja lista posiłków została dodana!", "Odpręż się i czekaj! :)", "success")
         
