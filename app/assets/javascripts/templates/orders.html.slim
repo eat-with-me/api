@@ -1,29 +1,51 @@
 .wrapper
 	.content
-		.row
-		  .col-md-6.col-md-offset-3
-		    .hpanel ui-sref="neworder({groupid: groupid})" style="cursor: pointer;"
-		      .panel-body
-		      	h4.text-success
-		      		i.fa.fa-plus>
-		        	| 
+			.col-md-17.col-md-offset-2
+				h1
+					| {{groupName}}
+				.row
 
-
-		.row
-		  .col-md-6.col-md-offset-3
-		    .hpanel.filter-item ng-repeat=("order in orders") ui-sref="meals({orderid: order.id, groupid: groupid})" style="cursor: pointer;"
-		      a href="#"
-		      .panel-body
-		        .pull-left.text-left
-		          small.stat-label 
-		          h4
-		          	| {{order.restaurant.name}}
-		        .pull-right.text-center
-		          small.stat-label Godzina zakończenia 
-		          h4 ng-bind="assertTime(order.closing_time)"
-		        .pull-center.text-center
-		          small.stat-label Liczba zamówień:
-		          h4 
-		          	| {{order.purchasers.length}}
-		        
-        
+				  .col-lg-6
+				    .hpanel ui-sref="neworder({groupid: groupid})" style="cursor: pointer;"
+				      .panel-body
+				      	h4.text-success
+				      		i.fa.fa-plus>
+				        	| Nowe zamówienie
+				    .hpanel.filter-item ng-repeat=("order in orders") ui-sref="meals({orderid: order.id, groupid: groupid})" style="cursor: pointer;"
+				      a href="#"
+				      .panel-body
+				        .pull-left.text-left
+				          small.stat-label 
+				          h4
+				          	| {{order.restaurant.name}}
+				        .pull-right.text-center
+				          small.stat-label Godzina zakończenia 
+				          h4 ng-bind="assertTime(order.closing_time)"
+				        .pull-center.text-center
+				          small.stat-label Liczba zamówień:
+				          h4 
+				          	| {{order.purchasers.length}}
+				  .col-lg-3
+				  	.hpanel ng-click="getLink()" 
+				      .panel-body
+				      	center
+					      	button.btn.btn-outline.btn-success type="button" ng-click="getLink()"   
+									| Uzyskaj link do udostępnienia grupy
+		  			.hpanel	
+							.panel-heading
+								| Użytkownicy w tej grupie
+							.panel-body 
+								.table-responsive
+									table.table.table-striped cellpadding="1" cellspacing="1" 
+										thead
+											tr
+												th Id
+												th Email
+										tbody
+											tr ng-repeat=("user in users")
+												td 
+													| {{user.id}}
+												td 
+													| {{user.email}}
+			        
+	        
