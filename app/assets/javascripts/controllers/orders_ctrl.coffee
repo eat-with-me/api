@@ -6,11 +6,11 @@ angular.module 'EatingApp'
 
     
 	   
-    $http.get("/groups").success (data1)->
-      $scope.users = data1[$scope.groupid-1].users
+    $http.get("/groups/#{$stateParams.groupid}").success (data1)->
+      $scope.users = data1.users
       console.log($scope.users)
-      $scope.token =data1[$scope.groupid-1].token
-      $scope.groupName =data1[$scope.groupid].name
+      $scope.token =data1.token
+      $scope.groupName =data1.name
       $scope.tokenURL = $scope.protocoll + "://" +$scope.hostt + "/join/" + $scope.token
 
 
