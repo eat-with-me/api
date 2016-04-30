@@ -41,5 +41,16 @@ RSpec.describe GroupsController, type: :controller do
       expect(output[0]["users"].length).to eq(8)
     end
 
+    it 'show' do
+      user = create(:user)
+      user2 = create(:user)
+      sign_in user
+      group = create(:group_with_orders)
+      group.users << [user, user2]
+
+      get :show, {id: group.id}
+      output = JSON.parse(response.body)
+      expect(output["users"].length).to eq(8)
+    end
   end
 end

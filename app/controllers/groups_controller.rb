@@ -13,9 +13,22 @@ class GroupsController < ApplicationController
     params.permit(:token)
   end
 
+  def group_id_param
+    params.permit(:id)
+  end
+
   def_param_group :index do
     api :GET, "/groups", "Wszystkie grupy do których należy użytkownik + wszyscy użytkownicy"
     description "== Wszystkie grupy + użytkownicy tych grup"
+  end
+
+  def_param_group :show do
+    api :GET, "/groups/:id", "Dane grupy + wszyscy użytkownicy tejże grupy"
+    param :id,
+          Integer,
+          :desc => "Id grupy\n\n\n",
+          :required => true
+    description "== Dane grupy + wszyscy użytkownicy tejże grupy"
   end
 
   def_param_group :create do
@@ -49,6 +62,12 @@ class GroupsController < ApplicationController
     render :json => group
   end
 
+  param_group :show
+  def show
+    render :json => current_user.groups.where(group_id_param).first.to_json(
+        include: :users)
+  end
+
   param_group :add_user
   def add_user
     group = Group.where(group_token_param)
@@ -63,4 +82,5 @@ class GroupsController < ApplicationController
   def delete
     render :json => Group.all
   end
+
 end

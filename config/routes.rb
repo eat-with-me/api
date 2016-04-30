@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :groups, only: [:index, :create] do
+  resources :groups, only: [:index, :create, :show] do
     resources :orders, only: [:index, :create, :show]
     post "/purchasers", to: 'orders#purchasers_create'
   end
