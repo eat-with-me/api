@@ -24,6 +24,7 @@ angular.module 'EatingApp'
     			$http.post("/groups", data1).success (data2, status) ->
             $scope.groupid = data2.id
             $scope.groups.push(data2)
+            
             swal
               title: "Dodałeś grupę"
               type: "success"
