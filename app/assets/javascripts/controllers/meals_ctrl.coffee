@@ -26,9 +26,7 @@ angular.module 'EatingApp'
         $scope.meals = data.restaurant.meals
         $scope.endTime = data.closing_time.toString().substring(11, 16)
         $scope.zamowienia = data.purchasers
-        #console.log($scope.zamowienia)
-
-
+        console.log($scope.zamowienia)
 
     $scope.mealsList = []
 
@@ -75,6 +73,7 @@ angular.module 'EatingApp'
         data1 = {order : { id : $scope.orderid, meals : mealsObjTab} }
         $http.post("/groups/#{$stateParams.groupid}/purchasers", data1).success (data2, status) ->
           console.log(data2)
+          $scope.chujsa.push(data2)
         sweetAlert("Twoja lista posiłków została dodana!", "Odpręż się i czekaj! :)", "success")
         
         $scope.mealsList = []

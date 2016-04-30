@@ -1,5 +1,5 @@
 angular.module 'EatingApp'
-  .controller 'GroupsCtrl', ($http, $scope)->
+  .controller 'GroupsCtrl', ($http, $scope, $state)->
     $http.get("/groups").success (data)->
     	console.log(data)
     	$scope.groups = data
@@ -22,8 +22,12 @@ angular.module 'EatingApp'
     			console.log(inputValue)
     			data1 = {name : inputValue}
     			$http.post("/groups", data1).success (data2, status) ->
-			      $scope.groups.push(data2)
-    			swal
-    				title: "Dodałeś grupę"
-    				type: "success"
-    				confirmButtonColor: "#00FF33"    
+            $scope.groupid = data2.id
+            $scope.groups.push(data2)
+            swal
+              title: "Dodałeś grupę"
+              type: "success"
+              confirmButtonColor: "#00FF33"
+              ->
+                $state.go("groups",{groupid:$scope.groupid})
+              
