@@ -17,7 +17,7 @@ angular.module 'EatingApp'
     $http.get("/groups/#{$stateParams.groupid}/orders").success (data)->
     	$scope.orders = data
     $scope.assertTime = (closingTime) ->
-        closingTime = moment(closingTime, "YYYY-MM-DDTHH:mm:ss.SSS")
+        closingTime = moment(closingTime, "YYYY-MM-DDTHH:mm:ss.SSSZ")
         closingTime = closingTime.format("D MMMM, HH:mm") 
 
     $scope.getLink = ->

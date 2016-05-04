@@ -24,28 +24,30 @@ angular.module 'EatingApp'
     $http.get("/groups/#{$stateParams.groupid}/orders/#{$stateParams.orderid}").success (data)->
         $scope.restaurantname = data.restaurant.name
         $scope.meals = data.restaurant.meals
-        $scope.endTime = moment(data.closing_time,"YYYY-MM-DDTHH:mm:ss.SSS")
+        $scope.endTime = moment(data.closing_time,"YYYY-MM-DDTHH:mm:ss.SSSZ")
         $scope.zamowienia = data.purchasers
 
     $scope.mealsList = []
     $scope.totalPrice = 0
     $scope.end = 0
 
+    
     #TAJMER
     $scope.updateTime = ->
       if $scope.endTime.isBefore(moment())
         $scope.timeRemaining = "ZAKOŃCZONE"
-        document.getElementsByClassName('hbggreen')[0].firstElementChild.style.background = "gray"
-        break
+        $scope.divStyle =
+          background : "gray"
 
       else 
         $scope.timeRemaining = moment().to($scope.endTime)
         $scope.duration = moment.duration($scope.endTime.diff(moment())).asHours()
         if $scope.endTime - moment() < 600000 && $scope.end == 0
-          document.getElementsByClassName('hbggreen')[0].firstElementChild.style.background = "orange"
+          $scope.divStyle =
+            background : "darkorange"
           swal
             title: "Ambaras!"
-            text: "Zostało 10 minut"
+            text: "Zostało 10 minut na składanie zamówień"
             type: "warning"
             showCancelButton: false
             closeOnConfirm: false
