@@ -9,8 +9,10 @@ FactoryGirl.define do
       end
 
       after(:create) do |group, evaluator|
-        create_list(:order, evaluator.orders_count, group: group)
-        [*0..evaluator.users_count].each do
+        owner = FactoryGirl.create(:user)
+        group.users << owner
+        create_list(:order, evaluator.orders_count, group: group, owner: owner)
+        [*1..evaluator.users_count].each do
           group.users << FactoryGirl.create(:user)
         end
       end

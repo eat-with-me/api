@@ -7,7 +7,7 @@ rails s -b 0.0.0.0
 
 ## Po spullowaniu zmian:
 ```
-bundle install 
+bundle install
 rake db:drop db:create db:migrate db:seed (trzeba miec szamkniety server)
 restar servera
 ```
@@ -29,7 +29,7 @@ git stash
 
 ###### położenie zmian
 ```
-git stash pop 
+git stash pop
 ```
 
 ###### ściąganie danych z serwera
@@ -43,3 +43,18 @@ edytuje plik z konfliktem i później
 git add -A
 git rebase --continue
 ```
+
+###### deploy
+```
+git push heroku master
+```
+
+```
+heroku pg:reset DATABASE_URL
+```
+
+```
+heroku run:detached rake db:migrate db:seed
+```
+
+
