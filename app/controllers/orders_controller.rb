@@ -87,6 +87,8 @@ class OrdersController < ApplicationController
     order = Group.find(offer_group_param)
       .orders
       .create(offer_create_param)
+    order.owner = current_user
+    order.save!
     render :json => order
   end
 
