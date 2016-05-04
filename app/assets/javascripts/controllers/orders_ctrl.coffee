@@ -4,8 +4,11 @@ angular.module 'EatingApp'
     $scope.hostt = location.host;
     $scope.protocoll = $location.protocol()
 
+    $scope.closed =[]
+    $scope.open=[]
+    $scope.chuj = ""
     
-	   
+    
     $http.get("/groups/#{$stateParams.groupid}").success (data1)->
       $scope.users = data1.users
       console.log($scope.users)
@@ -13,9 +16,16 @@ angular.module 'EatingApp'
       $scope.groupName =data1.name
       $scope.tokenURL = $scope.protocoll + "://" +$scope.hostt + "/join/" + $scope.token
 
-
     $http.get("/groups/#{$stateParams.groupid}/orders").success (data)->
-    	$scope.orders = data
+      for i in [0...data.length]
+          $scope.chuj = moment(data[i].closing_time,"YYYY-MM-DDTHH:mm:ss.SSSZ")  
+          if $scope.chuj < moment()
+            $scope.closed.push(data[i])
+          else
+            $scope.open.push(data[i])
+      console.log($scope.closed)
+      $scope.orders = data
+
     $scope.assertTime = (closingTime) ->
         closingTime = moment(closingTime, "YYYY-MM-DDTHH:mm:ss.SSSZ")
         closingTime = closingTime.format("D MMMM, HH:mm") 
