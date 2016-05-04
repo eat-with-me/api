@@ -6,11 +6,15 @@ FactoryGirl.define do
 
     factory :restaurant_with_meals do
       transient do
-        meals_count 10
+        meals_count 5
       end
 
       after(:create) do |restaurant, evaluator|
-        create_list(:meal, evaluator.meals_count, restaurant: restaurant)
+        type1 = create(:meal_type)
+        create_list(:meal, evaluator.meals_count, restaurant: restaurant, meal_type: type1)
+
+        type2 = create(:meal_type)
+        create_list(:meal, evaluator.meals_count, restaurant: restaurant, meal_type: type2)
       end
     end
   end

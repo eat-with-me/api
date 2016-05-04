@@ -25,14 +25,18 @@ class RestaurantsController < ApplicationController
   param_group :index
   def index
     render :json => Restaurant.all.to_json(
-      include: :meals
+      include: {
+        meals: {include: :meal_type}
+      }
     )
   end
 
   param_group :show
   def show
     render :json => Restaurant.find(restaurant_param).to_json(
-      include: :meals
+      include: {
+        meals: {include: :meal_type}
+      }
     )
   end
 end

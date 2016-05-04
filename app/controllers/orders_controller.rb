@@ -102,7 +102,11 @@ class OrdersController < ApplicationController
           },
           purchasers: {
             include: {
-              meals_lists: {include: :meal},
+              meals_lists: {
+                include: {
+                  meal: {include: :meal_type}
+                }
+              },
               user: {}
             }
           }
