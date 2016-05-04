@@ -40,7 +40,7 @@
 			      .panel-body.note-link ng-repeat=("meal in mealsList track by $index")
 			        a data-toggle="tab" 
 			          h4.pull-right.text-muted
-			          	| {{meal.price}} zł
+			          	| {{meal.price*meal.amount}} zł
 			          input type="number" min="1" max="10" size="2" ng-model="meal.amount" 
 
 			        h4.text-success
