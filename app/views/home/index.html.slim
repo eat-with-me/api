@@ -2,14 +2,23 @@
 nav.navbar.navbar-default.navbar-fixed-top
   .container-fluid
     .navbar-header
-      a.navbar-brand href="#"  EatWithMe
-    ul.nav.navbar-nav
-      li
-        a href="/#/groups"  Home
-    ul.nav.navbar-nav.navbar-right
-    	li
-  			= link_to(destroy_user_session_path,  :method => :delete) do 
-	    				| Logout
+      button.navbar-toggle data-target="#myNavbar" data-toggle="collapse" type="button" 
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+      navbar-brand.img 
+       img src="logo.png" style="width:220px; height: 50px;"
+    #myNavbar.collapse.navbar-collapse
+    
+      ul.nav.navbar-nav.navbar-right
+        li
+          a href="/#/groups"  HOME
+        li
+          = link_to(destroy_user_session_path,  :method => :delete) do  
+            span.glyphicon.glyphicon-log-out
+
+             
+
 
 p.notice
   = notice
