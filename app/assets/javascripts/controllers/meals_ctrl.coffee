@@ -22,11 +22,18 @@ angular.module 'EatingApp'
         return message
     #----------------------------------------------------------------
 
-    $http.get("/groups/#{$stateParams.groupid}/orders/#{$stateParams.orderid}").success (data)->
+    $http.get("/groups/#{$stateParams.groupid}/orders/#{$stateParams.orderid}").success (data)->  
         $scope.restaurantname = data.restaurant.name
         $scope.meals = data.restaurant.meals
         $scope.endTime = moment(data.closing_time,"YYYY-MM-DDTHH:mm:ss.SSSZ")
         $scope.zamowienia = data.purchasers
+        $scope.ownerr = data.owner.id
+        
+        console.log($scope.ownerr)
+        if $scope.zamowienia.length == 0
+          $scope.shippingCostPerPerson = data.restaurant.shipping_cost
+        else
+          $scope.shippingCostPerPerson = data.restaurant.shipping_cost/$scope.zamowienia.length
 
     $scope.mealsList = []
     $scope.totalPrice = 0
@@ -86,8 +93,13 @@ angular.module 'EatingApp'
         
         data1 = {order : { id : $scope.orderid, meals : mealsObjTab} }
         $http.post("/groups/#{$stateParams.groupid}/purchasers", data1).success (data2, status) ->
-          $scope.chujsa.push(data2)
-        sweetAlert("Twoja lista posiłków została dodana!", "Odpręż się i czekaj! :)", "success")
+          console.log data2
+          console.log $scope.zamowienia
+          for i in [0...$scope.zamowienia.length]
+            if $scope.zamowienia[i].user_id == $scope.ownerr
+              console.log $scope.zamowienia[i].meals_lists
+
+        sweetAlert("Twoja lista posiłków została dodana!", "Odpręż się i czekaj! :)")
         
         $scope.mealsList = []
         $scope.totalPrice = 0

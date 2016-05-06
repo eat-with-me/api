@@ -12,7 +12,7 @@
 		      .panel-body ng-repeat=("restaurant in restaurants | filter:search") ng-click="addRestaurant(restaurant);"
 		        a aria-expanded="true" data-parent="#accordion" data-toggle="collapse" style="font-size: 18px;" 
 		          i.fa.fa-chevron-right.pull-right.text-muted ng-show="restaurant.id == currentID+1"
-		          | {{restaurant.name}}
+		          | {{restaurant.name}} 
 		  .col-lg-4
 		    #accordion2.hpanel.panel-group aria-multiselectable="true" role="tablist"
 		      .panel-body

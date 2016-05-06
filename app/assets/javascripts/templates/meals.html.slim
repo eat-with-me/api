@@ -9,7 +9,7 @@
 					    	h4
 									| Posiłki z
 									span.text-primary<>
-										| {{restaurantname}}:
+										| {{restaurantname}}: 
 				.row
 					.col-md-12
 
@@ -51,8 +51,13 @@
 			    .panel-body ng-hide="hideActionPanel"
 			      .pull-right.text-right
 			        h4
-			          | {{totalPrice}} zł
-			      h4.m-b-xs Podsumowanie
+			          | {{shippingCostPerPerson}}	zł
+			      h4.m-b-xs Koszt Dostawy na osobę:
+			    .panel-body ng-hide="hideActionPanel"
+			      .pull-right.text-right
+			        h4
+			          | {{totalPrice}}	 zł
+			      h4.m-b-xs Podsumowanie:
 
 			    .panel-body ng-hide="hideActionPanel"
 			    	

@@ -23,6 +23,7 @@ angular.module 'EatingApp'
           data1 = {name : inputValue}
           $http.post("/groups", data1).success (data2, status) ->
             $scope.groupid = data2.id
+            console.log(data2)
             $scope.groups.push(data2)
             
             swal
