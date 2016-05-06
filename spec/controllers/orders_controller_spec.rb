@@ -70,8 +70,7 @@ RSpec.describe OrdersController, type: :controller do
     it 'create' do
       post :purchasers_create, @purchasers
       output = JSON.parse(response.body)
-      # puts output
-      expect(output.length).to be(3)
+      expect(output["meals_lists"].length).to be(3)
     end
   end
 end

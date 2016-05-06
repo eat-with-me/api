@@ -134,7 +134,16 @@ class OrdersController < ApplicationController
     purchaser.meals_lists.create(purchasers[:order][:meals])
     purchaser.save
 
-    render :json => purchaser.meals
+    render :json => purchaser
+      .to_json(
+        include: {
+          meals_lists: {
+            include: {
+              meal: {include: :meal_type}
+            }
+          },
+          user: {}
+        })
   end
 
 end
