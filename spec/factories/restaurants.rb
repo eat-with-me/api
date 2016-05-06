@@ -2,6 +2,7 @@ FactoryGirl.define do
   factory :restaurant do
     sequence(:name) { |n| "Producent Pizzy #{n}" }
     phone_number "231 241 241"
+    shipping_cost "3.00"
 
 
     factory :restaurant_with_meals do

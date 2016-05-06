@@ -6,6 +6,7 @@ RSpec.describe Restaurant, type: :model do
 
     expect(restaurant.name.length > 0).to be(true)
     expect(restaurant.phone_number).to eq("231 241 241")
+    expect(restaurant.shipping_cost).to eq(3.0)
   end
 
   it "adds Restaurant with meals" do
