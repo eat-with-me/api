@@ -5,7 +5,6 @@ angular.module 'EatingApp'
     $scope.groupid = $stateParams.groupid
     $scope.hideActionPanel=false
     $scope.hideIfAlreadyOrder=false
-    $scope.endStyle = 
     
     #ALERT WHEN USER CHCE CLOSE WINDOW------------------------------
     $scope.$on '$stateChangeStart', (event) ->

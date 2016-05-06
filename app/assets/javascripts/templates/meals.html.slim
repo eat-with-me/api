@@ -1,7 +1,7 @@
-.wrapper
+.wrapper ng-hide="hideActionPanel"
 	.content
 		.row
-		  .col-sm-4 ng-hide="hideActionPanel"
+		  .col-sm-4 
 				.row
 					.col-md-12
 					  .hpanel 
@@ -13,7 +13,7 @@
 				.row
 					.col-md-12
 
-					  .hpanel.filter-item ng-repeat=("meal in meals") ng-click="addMeal(meal)" style="cursor: pointer;" ng-hide="hideActionPanel"
+					  .hpanel.filter-item ng-repeat=("meal in meals") ng-click="addMeal(meal)" style="cursor: pointer;"
 					    .panel-body
 					      .pull-right.text-right
 					        small.stat-label Cena
@@ -33,7 +33,7 @@
     						 h4
     						 	| Koniec zamówienia:
 				.hpanel 
-					.panel-body ng-hide="hideActionPanel"
+					.panel-body
 						h4
 							| Teraz cena dostawy wynosi: 
 							span.text-primary<>
@@ -43,11 +43,11 @@
 							span.text-primary<>
 								| {{priceAfter}} zł
 
-			    .panel-section ng-hide="hideActionPanel"
+			    .panel-section
 			      h4.m-b-xs
 							|	Twoje zamówienie
 			    #notes.collapse
-			      .panel-body.note-link ng-repeat=("meal in mealsList track by $index") ng-hide="hideActionPanel"
+			      .panel-body.note-link ng-repeat=("meal in mealsList track by $index") 
 			        a data-toggle="tab" 
 			          h4.pull-right.text-muted
 			          	| {{meal.price*meal.amount}} zł
@@ -57,13 +57,13 @@
 			        	i.fa.fa-close.text-danger<> ng-click="removeMeal($index)" style="cursor: pointer;font-size: 15px;"
 			        	| {{meal.name}}
 			        	
-			    .panel-body ng-hide="hideActionPanel"
+			    .panel-body
 			      .pull-right.text-right
 			        h4
 			          | {{totalPrice}}	 zł
 			      h4.m-b-xs Podsumowanie:
 
-			    .panel-body ng-hide="hideActionPanel"
+			    .panel-body
 			    	
 						button.btn.btn-danger.btn-block type="button" ng-click="clearMeal()"
 							| Wyczyść
@@ -76,7 +76,7 @@
 			  	.hpanel.hbgwhite
 				    .panel-body
 				      h4
-				      	| Całe zamówienie
+				      	| Całe zamówienie:
 			    .hpanel.hgreen ng-repeat=("zamowienie in zamowienia")
   					.panel-heading.hbuilt
     					| {{zamowienie.user.email}}
@@ -86,5 +86,33 @@
 					      | Nazwa posiłku: {{mealObj.meal.name}} Ilość: {{mealObj.amount}}
 					    | Cena całkowita = {{getTotal($index)}}
 
-			    		
+
+.wrapper ng-show="hideActionPanel"
+	.content
+		.row
+		  .col-sm-4 
+		  .col-sm-4
+				.row
+				  .hpanel.panel-group 
+				    .hpanel.hbggreen 
+	  					.panel-body ng-style="divStyle"
+	    					.pull-right.text-right
+	    						 h4
+	    						 	| {{timeRemaining}}
+	    					h4.m-b-xs
+	    						 h4
+	    						 	| Koniec zamówienia:
+ 				  .hpanel.panel-group 
+				  	.hpanel.hbgwhite
+					    .panel-body
+					      h4
+					      	| Całe zamówienie:
+				    .hpanel.hgreen ng-repeat=("zamowienie in zamowienia")
+	  					.panel-heading.hbuilt
+	    					| {{zamowienie.user.email}}
+	  					.panel-body style=("display: block;") 
+
+	    					p ng-repeat=("mealObj in zamowienie.meals_lists track by $index")
+						      | Nazwa posiłku: {{mealObj.meal.name}} Ilość: {{mealObj.amount}}
+						    | Cena całkowita = {{getTotal($index)}}
 
