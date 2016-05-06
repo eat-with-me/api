@@ -93,7 +93,7 @@ angular.module 'EatingApp'
       if(mealNumber.amount > 1)
         mealNumber.amount = mealNumber.amount - 1
       else
-        $scope.mealsList.splice($scope.mealsList.indexOf(mealNumber, 1))
+        $scope.mealsList.splice($scope.mealsList.indexOf(mealNumber), 1)
 
     $scope.clearMeal = ->
         $scope.totalPrice = 0
