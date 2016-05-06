@@ -68,15 +68,15 @@ angular.module 'EatingApp'
           $scope.divStyle =
             background : "darkorange"
           swal
-            title: "Ambaras!"
-            text: "Zostało 10 minut na składanie zamówień"
+            title: "Pamiętaj!"
+            text: "Niedługo koniec zamówienia od " + $scope.restaurantname
             type: "warning"
             showCancelButton: false
             closeOnConfirm: false
             confirmButtonColor: "#00FF33"
           $scope.end=1
 
-    $interval($scope.updateTime, 500)
+    $interval($scope.updateTime, 100)
 
     $scope.addMeal = (mealNumber) ->
         $scope.totalPrice = $scope.totalPrice + mealNumber.price
