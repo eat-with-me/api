@@ -4,6 +4,7 @@ angular.module 'EatingApp'
     $scope.orderid = $stateParams.orderid
     $scope.groupid = $stateParams.groupid
     $scope.hideActionPanel=false
+    $scope.hideIfAlreadyOrder=false
     
     #ALERT WHEN USER CHCE CLOSE WINDOW------------------------------
     $scope.$on '$stateChangeStart', (event) ->
@@ -30,6 +31,19 @@ angular.module 'EatingApp'
         $scope.ownerr = data.owner.id
         $scope.shippingCostPerPerson = data.restaurant.shipping_cost
         $scope.iloscChlopa = $scope.zamowienia.length
+        $scope.priceNow = $scope.shippingCostPerPerson/$scope.iloscChlopa
+        
+        if $scope.iloscChlopa == 0
+          $scope.priceNow = $scope.shippingCostPerPerson/($scope.iloscChlopa+1)
+          $scope.priceAfter = $scope.shippingCostPerPerson/($scope.iloscChlopa+1)
+        else if $scope.iloscChlopa > 0
+          $scope.iloscChlopa = $scope.zamowienia.length
+          $scope.priceAfter = $scope.shippingCostPerPerson/($scope.iloscChlopa+1)
+
+        for i in [0...$scope.zamowienia.length]
+            if $scope.zamowienia[i].user_id == $scope.ownerr
+              $scope.hideIfAlreadyOrder = true
+
         console.log $scope.zamowienia
         
         console.log($scope.ownerr)

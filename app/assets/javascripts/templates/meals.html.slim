@@ -37,11 +37,11 @@
 						h4
 							| Teraz cena dostawy wynosi: 
 							span.text-primary<>
-								| {{shippingCostPerPerson/iloscChlopa}}
+								| {{priceNow}}
 						h4
 							| Jeśli dołączysz do zamówienia, wyniesie ona: 
 							span.text-primary<>
-								| {{shippingCostPerPerson/(iloscChlopa+1)}}: 
+								| {{priceAfter}}: 
 
 			    .panel-section ng-hide="hideActionPanel"
 			      h4.m-b-xs
