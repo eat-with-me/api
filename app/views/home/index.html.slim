@@ -12,7 +12,8 @@ nav.navbar.navbar-default.navbar-fixed-top
     
       ul.nav.navbar-nav.navbar-right
         li
-          a href="/#/groups"  HOME
+          a href="/#/groups"  
+            span.glyphicon.glyphicon-home
         li
           = link_to(destroy_user_session_path,  :method => :delete) do  
             span.glyphicon.glyphicon-log-out
