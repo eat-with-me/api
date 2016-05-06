@@ -1,7 +1,7 @@
 .wrapper
 	.content
 		.row
-		  .col-sm-4 
+		  .col-sm-4 ng-hide="hideActionPanel"
 				.row
 					.col-md-12
 					  .hpanel 
@@ -13,7 +13,7 @@
 				.row
 					.col-md-12
 
-					  .hpanel.filter-item ng-repeat=("meal in meals") ng-click="addMeal(meal)" style="cursor: pointer;"
+					  .hpanel.filter-item ng-repeat=("meal in meals") ng-click="addMeal(meal)" style="cursor: pointer;" ng-hide="hideActionPanel"
 					    .panel-body
 					      .pull-right.text-right
 					        small.stat-label Cena
@@ -32,6 +32,16 @@
     					h4.m-b-xs
     						 h4
     						 	| Koniec zamówienia:
+				.hpanel 
+					.panel-body
+						h4
+							| Teraz cena dostawy wynosi: 
+							span.text-primary<>
+								| {{shippingCostPerPerson/iloscChlopa}}
+						h4
+							| Jeśli dołączysz do zamówienia, wyniesie ona: 
+							span.text-primary<>
+								| {{shippingCostPerPerson/(iloscChlopa+1)}}: 
 
 			    .panel-section ng-hide="hideActionPanel"
 			      h4.m-b-xs
@@ -47,12 +57,6 @@
 			        	i.fa.fa-close.text-danger<> ng-click="removeMeal($index)" style="cursor: pointer;font-size: 15px;"
 			        	| {{meal.name}}
 			        	
-    	
-			    .panel-body ng-hide="hideActionPanel"
-			      .pull-right.text-right
-			        h4
-			          | {{shippingCostPerPerson}}	zł
-			      h4.m-b-xs Koszt Dostawy na osobę:
 			    .panel-body ng-hide="hideActionPanel"
 			      .pull-right.text-right
 			        h4
@@ -77,8 +81,10 @@
   					.panel-heading.hbuilt
     					| {{zamowienie.user.email}}
   					.panel-body style=("display: block;") 
-    					p ng-repeat=("mealObj in zamowienie.meals_lists")
+
+    					p ng-repeat=("mealObj in zamowienie.meals_lists track by $index")
 					      | Nazwa posiłku: {{mealObj.meal.name}} Ilość: {{mealObj.amount}}
+					    | Cena całkowita = {{getTotal($index)}}
 
 			    		
 

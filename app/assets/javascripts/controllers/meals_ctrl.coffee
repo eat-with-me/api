@@ -28,12 +28,11 @@ angular.module 'EatingApp'
         $scope.endTime = moment(data.closing_time,"YYYY-MM-DDTHH:mm:ss.SSSZ")
         $scope.zamowienia = data.purchasers
         $scope.ownerr = data.owner.id
+        $scope.shippingCostPerPerson = data.restaurant.shipping_cost
+        $scope.iloscChlopa = $scope.zamowienia.length
+        console.log $scope.zamowienia
         
         console.log($scope.ownerr)
-        if $scope.zamowienia.length == 0
-          $scope.shippingCostPerPerson = data.restaurant.shipping_cost
-        else
-          $scope.shippingCostPerPerson = data.restaurant.shipping_cost/$scope.zamowienia.length
 
     $scope.mealsList = []
     $scope.totalPrice = 0
@@ -94,7 +93,6 @@ angular.module 'EatingApp'
         data1 = {order : { id : $scope.orderid, meals : mealsObjTab} }
         $http.post("/groups/#{$stateParams.groupid}/purchasers", data1).success (data2, status) ->
           console.log data2.meals_lists
-          console.log $scope.zamowienia
           for i in [0...$scope.zamowienia.length]
             if $scope.zamowienia[i].user_id == $scope.ownerr
               $scope.zamowienia[i].meals_lists = data2.meals_lists
@@ -108,3 +106,10 @@ angular.module 'EatingApp'
             return false
         else
             return true
+
+    $scope.getTotal = (siema) ->
+      total = 0
+      for i in [0...$scope.zamowienia[siema].meals_lists.length]
+        total += ($scope.zamowienia[siema].meals_lists[i].amount * $scope.zamowienia[siema].meals_lists[i].meal.price +
+          ($scope.shippingCostPerPerson/$scope.zamowienia.length))
+      return total
