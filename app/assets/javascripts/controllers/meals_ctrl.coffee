@@ -107,9 +107,12 @@ angular.module 'EatingApp'
         data1 = {order : { id : $scope.orderid, meals : mealsObjTab} }
         $http.post("/groups/#{$stateParams.groupid}/purchasers", data1).success (data2, status) ->
           console.log data2.meals_lists
-          for i in [0...$scope.zamowienia.length]
-            if $scope.zamowienia[i].user_id == $scope.ownerr
-              $scope.zamowienia[i].meals_lists = data2.meals_lists
+          if $scope.zamowienia.length>0
+            for i in [0...$scope.zamowienia.length]
+              if $scope.zamowienia[i].user_id == $scope.ownerr
+                $scope.zamowienia[i].meals_lists = data2.meals_lists
+          else
+            $scope.zamowienia[0].meals_lists = data2.meals_lists
 
         sweetAlert("Twoja lista posiłków została dodana!", "Odpręż się i czekaj! :)")
 
@@ -124,6 +127,5 @@ angular.module 'EatingApp'
     $scope.getTotal = (siema) ->
       total = 0
       for i in [0...$scope.zamowienia[siema].meals_lists.length]
-        total += ($scope.zamowienia[siema].meals_lists[i].amount * $scope.zamowienia[siema].meals_lists[i].meal.price +
-          ($scope.shippingCostPerPerson/$scope.zamowienia.length))
+        total += ($scope.zamowienia[siema].meals_lists[i].amount * $scope.zamowienia[siema].meals_lists[i].meal.price) + $scope.priceAfter
       return total
