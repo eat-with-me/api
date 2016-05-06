@@ -50,11 +50,11 @@
 			      .panel-body.note-link ng-repeat=("meal in mealsList track by $index") 
 			        a data-toggle="tab" 
 			          h4.pull-right.text-muted
-			          	| {{meal.price*meal.amount}} zł
-			          input type="number" min="1" max="10" size="2" ng-model="meal.amount" 
+			          	| {{meal.price}} zł
+			          input type="number" min="1" max="10" size="2" ng-model="meal.amount" ng-init="est.mpg=5"
 
 			        h4.text-success
-			        	i.fa.fa-close.text-danger<> ng-click="removeMeal($index)" style="cursor: pointer;font-size: 15px;"
+			        	i.fa.fa-close.text-danger<> ng-click="removeMeal(meal)" style="cursor: pointer;font-size: 15px;"
 			        	| {{meal.name}}
 			        	
 			    .panel-body
@@ -81,7 +81,6 @@
   					.panel-heading.hbuilt
     					| {{zamowienie.user.email}}
   					.panel-body style=("display: block;") 
-
     					p ng-repeat=("mealObj in zamowienie.meals_lists track by $index")
 					      | Nazwa posiłku: {{mealObj.meal.name}} Ilość: {{mealObj.amount}}
 					    | Cena całkowita = {{getTotal($index)}}

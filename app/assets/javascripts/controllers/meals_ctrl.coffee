@@ -3,8 +3,14 @@ angular.module 'EatingApp'
    
     $scope.orderid = $stateParams.orderid
     $scope.groupid = $stateParams.groupid
+    
     $scope.hideActionPanel=false
-    $scope.hideIfAlreadyOrder=false
+    $scope.hideIfAlreadyOrder=false #co to jest za widz xd
+
+    $scope.mealsList = []
+    $scope.totalPrice = 0
+    $scope.end = 0
+
     
     #ALERT WHEN USER CHCE CLOSE WINDOW------------------------------
     $scope.$on '$stateChangeStart', (event) ->
@@ -23,6 +29,7 @@ angular.module 'EatingApp'
         return message
     #----------------------------------------------------------------
 
+    #GET STRUCTURE---------------------------------------------------
     $http.get("/groups/#{$stateParams.groupid}/orders/#{$stateParams.orderid}").success (data)->  
         $scope.restaurantname = data.restaurant.name
         $scope.meals = data.restaurant.meals
@@ -43,17 +50,9 @@ angular.module 'EatingApp'
         for i in [0...$scope.zamowienia.length]
             if $scope.zamowienia[i].user_id == $scope.ownerr
               $scope.hideIfAlreadyOrder = true
-
-        console.log $scope.zamowienia
-        
-        console.log($scope.ownerr)
-
-    $scope.mealsList = []
-    $scope.totalPrice = 0
-    $scope.end = 0
-
+    #----------------------------------------------------------------
     
-    #TAJMER
+    #--Time & view update -------------------------------------------
     $scope.updateTime = ->
       if $scope.endTime.isBefore(moment())
         $scope.timeRemaining = "ZAKOŃCZONE"
@@ -64,6 +63,7 @@ angular.module 'EatingApp'
       else 
         $scope.timeRemaining = moment().to($scope.endTime)
         $scope.duration = moment.duration($scope.endTime.diff(moment())).asHours()
+        
         if $scope.endTime - moment() < 600000 && $scope.end == 0
           $scope.divStyle =
             background : "darkorange"
@@ -77,14 +77,23 @@ angular.module 'EatingApp'
           $scope.end=1
 
     $interval($scope.updateTime, 100)
+    #----------------------------------------------------------------
 
+    #------Meals related---------------------------------------------
     $scope.addMeal = (mealNumber) ->
+        if($scope.mealsList.indexOf(mealNumber) != -1)
+          mealNumber.amount = mealNumber.amount + 1
+        else
+          mealNumber.amount = 1
+          $scope.mealsList.push(mealNumber)
         $scope.totalPrice = $scope.totalPrice + mealNumber.price
-        $scope.mealsList.push(mealNumber)
 
     $scope.removeMeal = (mealNumber) ->
-        $scope.totalPrice = $scope.totalPrice - $scope.mealsList[mealNumber].price
-        $scope.mealsList.splice(mealNumber, 1);
+      $scope.totalPrice = $scope.totalPrice - mealNumber.price
+      if(mealNumber.amount > 1)
+        mealNumber.amount = mealNumber.amount - 1
+      else
+        $scope.mealsList.splice($scope.mealsList.indexOf(mealNumber, 1))
 
     $scope.clearMeal = ->
         $scope.totalPrice = 0
@@ -113,9 +122,7 @@ angular.module 'EatingApp'
                 $scope.zamowienia[i].meals_lists = data2.meals_lists
               else if $scope.zamowienia[i].user_id != $scope.ownerr
                 console.log("siema")
-
         sweetAlert("Twoja lista posiłków została dodana!", "Odpręż się i czekaj! :)")
-
         $scope.totalPrice = 0
 
     $scope.enableAcceptButton = ->
