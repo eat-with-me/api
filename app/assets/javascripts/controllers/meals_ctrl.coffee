@@ -116,12 +116,10 @@ angular.module 'EatingApp'
         data1 = {order : { id : $scope.orderid, meals : mealsObjTab} }
         $http.post("/groups/#{$stateParams.groupid}/purchasers", data1).success (data2, status) ->
           console.log data2.meals_lists
-          if $scope.zamowienia.length>1
-            for i in [0...$scope.zamowienia.length]
-              if $scope.zamowienia[i].user_id == $scope.ownerr
-                $scope.zamowienia[i].meals_lists = data2.meals_lists
-              else if $scope.zamowienia[i].user_id != $scope.ownerr
-                console.log("siema")
+          for i in [0...$scope.zamowienia.length]
+            if $scope.zamowienia[i].user_id == $scope.ownerr
+              $scope.zamowienia[i].meals_lists = data2.meals_lists
+
         sweetAlert("Twoja lista posiłków została dodana!", "Odpręż się i czekaj! :)")
         $scope.totalPrice = 0
 
