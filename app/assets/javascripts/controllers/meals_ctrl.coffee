@@ -121,7 +121,6 @@ angular.module 'EatingApp'
               $scope.zamowienia[i].meals_lists = data2.meals_lists
 
         sweetAlert("Twoja lista posiłków została dodana!", "Odpręż się i czekaj! :)")
-        $scope.totalPrice = 0
 
     $scope.enableAcceptButton = ->
         if $scope.mealsList.length>0
