@@ -30,7 +30,7 @@ angular.module 'EatingApp'
     #----------------------------------------------------------------
 
     #GET STRUCTURE---------------------------------------------------
-    $http.get("/groups/#{$stateParams.groupid}/orders/#{$stateParams.orderid}").success (data)->  
+    $http.get("/groups/#{$stateParams.groupid}/orders/#{$stateParams.orderid}").success (data)->
         $scope.restaurantname = data.restaurant.name
         $scope.meals = data.restaurant.meals
         $scope.endTime = moment(data.closing_time,"YYYY-MM-DDTHH:mm:ss.SSSZ")
@@ -39,6 +39,8 @@ angular.module 'EatingApp'
         $scope.shippingCostPerPerson = data.restaurant.shipping_cost
         $scope.iloscChlopa = $scope.zamowienia.length
         $scope.priceNow = $scope.shippingCostPerPerson/$scope.iloscChlopa
+        console.log(data)
+        console.log($scope.zamowienia)
         
         if $scope.iloscChlopa == 0
           $scope.priceNow = $scope.shippingCostPerPerson/($scope.iloscChlopa+1)
@@ -46,10 +48,10 @@ angular.module 'EatingApp'
         else if $scope.iloscChlopa > 0
           $scope.iloscChlopa = $scope.zamowienia.length
           $scope.priceAfter = $scope.shippingCostPerPerson/($scope.iloscChlopa+1)
-
         for i in [0...$scope.zamowienia.length]
             if $scope.zamowienia[i].user_id == $scope.ownerr
               $scope.hideIfAlreadyOrder = true
+
     #----------------------------------------------------------------
     
     #--Time & view update -------------------------------------------
@@ -115,11 +117,7 @@ angular.module 'EatingApp'
         
         data1 = {order : { id : $scope.orderid, meals : mealsObjTab} }
         $http.post("/groups/#{$stateParams.groupid}/purchasers", data1).success (data2, status) ->
-          console.log data2.meals_lists
-          for i in [0...$scope.zamowienia.length]
-            if $scope.zamowienia[i].user_id == $scope.ownerr
-              $scope.zamowienia[i].meals_lists = data2.meals_lists
-
+          $scope.GetFunction ->
         sweetAlert("Twoja lista posiłków została dodana!", "Odpręż się i czekaj! :)")
 
     $scope.enableAcceptButton = ->
@@ -134,3 +132,26 @@ angular.module 'EatingApp'
         total += ($scope.zamowienia[siema].meals_lists[i].amount * $scope.zamowienia[siema].meals_lists[i].meal.price) 
       total += $scope.priceNow
       return total
+
+    $scope.GetFunction = ->
+      $http.get("/groups/#{$stateParams.groupid}/orders/#{$stateParams.orderid}").success (data)->
+          $scope.restaurantname = data.restaurant.name
+          $scope.meals = data.restaurant.meals
+          $scope.endTime = moment(data.closing_time,"YYYY-MM-DDTHH:mm:ss.SSSZ")
+          $scope.zamowienia = data.purchasers
+          $scope.ownerr = data.owner.id
+          $scope.shippingCostPerPerson = data.restaurant.shipping_cost
+          $scope.iloscChlopa = $scope.zamowienia.length
+          $scope.priceNow = $scope.shippingCostPerPerson/$scope.iloscChlopa
+          console.log(data)
+          console.log($scope.zamowienia)
+          
+          if $scope.iloscChlopa == 0
+            $scope.priceNow = $scope.shippingCostPerPerson/($scope.iloscChlopa+1)
+            $scope.priceAfter = $scope.shippingCostPerPerson/($scope.iloscChlopa+1)
+          else if $scope.iloscChlopa > 0
+            $scope.iloscChlopa = $scope.zamowienia.length
+            $scope.priceAfter = $scope.shippingCostPerPerson/($scope.iloscChlopa+1)
+          for i in [0...$scope.zamowienia.length]
+              if $scope.zamowienia[i].user_id == $scope.ownerr
+                $scope.hideIfAlreadyOrder = true

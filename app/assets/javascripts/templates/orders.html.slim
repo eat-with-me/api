@@ -57,21 +57,26 @@
 				      	center
 					      	button.btn.btn-outline.btn-success type="button" ng-click="getLink()"   
 									| Generuj link
-		  			.hpanel	
-							.panel-heading
-								| Użytkownicy w tej grupie
-							.panel-body 
-								.table-responsive
-									table.table.table-striped cellpadding="1" cellspacing="1" 
-										thead
-											tr
-												th Id
-												th Email
-										tbody
-											tr ng-repeat=("user in users")
-												td 
-													| {{user.id}}
-												td 
-													| {{user.email}}
+					.hpanel
+						.panel-heading
+							.panel-tools
+								a.showhide ng-click="showme=true"
+									i.fa.fa-chevron-down
+								a.showhide ng-click="showme=false"
+									i.fa.fa-chevron-up
+							| Użytkownicy w tej grupie:					
+						.panel-body ng-show="showme" 
+							.table-responsive
+								table.table.table-striped cellpadding="1" cellspacing="1" 
+									thead
+										tr
+											th Id
+											th Email
+									tbody
+										tr ng-repeat=("user in users")
+											td 
+												| {{user.id}}
+											td 
+												| {{user.email}}
 			        
 

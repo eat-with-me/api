@@ -35,33 +35,49 @@
 				.hpanel 
 					.panel-body
 						h4
-							| Teraz cena dostawy wynosi: 
+							| Koszt dowozu restauracji: 
+							span.text-primary<>
+								| {{shippingCostPerPerson}} zł
+						h4 
+							| Aktualny koszt dowozu podzielony na wszystkich: 
 							span.text-primary<>
 								| {{priceNow}} zł
-						h4
-							| Jeśli dołączysz do zamówienia, wyniesie ona: 
-							span.text-primary<>
-								| {{priceAfter}} zł
 
 			    .panel-section
 			      h4.m-b-xs
 							|	Twoje zamówienie
 			    #notes.collapse
-			      .panel-body.note-link ng-repeat=("meal in mealsList track by $index") 
-			        a data-toggle="tab" 
-			          h4.pull-right.text-muted
-			          	| Cena:{{meal.price * meal.amount}} zł
 
-			        h4.text-success
-			        	i.fa.fa-close.text-danger<> ng-click="removeMeal(meal)" style="cursor: pointer;font-size: 15px;"
-			        	| {{meal.name}}
-			        h4.pull-right.text-info
-			        	| ilość:{{meal.amount}} 
+
+
+						.panel-body.note-link ng-repeat=("meal in mealsList track by $index") 
+							.pull-left.text-left
+								small.stat-label 
+									h4.text-success
+										| {{meal.name}}
+
+
+
+							.pull-right.text-center 
+								h4.text-info 
+									| ilość:{{meal.amount}} 
+									i.fa.fa-close.text-danger<> ng-click="removeMeal(meal)" style="cursor: pointer;font-size: 15px;"
+
+							.pull-center.text-center
+								h4	
+									|	 cena: {{meal.price * meal.amount}} zł
+
+
+
+
+
+
+
 			    .panel-body
 			      .pull-right.text-right
 			        h4
 			          | {{totalPrice}}	 zł
-			      h4.m-b-xs Razem:
+			      h4.m-b-xs Razem(bez kosztu dostawy):
 
 			    .panel-body
 			    	
@@ -77,10 +93,15 @@
 				    .panel-body
 				      h4
 				      	| Całe zamówienie:
-			    .hpanel.hgreen ng-repeat=("zamowienie in zamowienia")
+			    .hpanel.hgreen  ng-repeat=("zamowienie in zamowienia")
   					.panel-heading.hbuilt
+  						.panel-tools
+  							a.showhide ng-click="showme=true"
+  								i.fa.fa-chevron-down 
+  							a.showhide ng-click="showme=false"
+  								i.fa.fa-chevron-up 
     					| {{zamowienie.user.email}}
-  					.panel-body style=("display: block;") 
+  					.panel-body style=("display: block;") ng-show="showme" 
     					p ng-repeat=("mealObj in zamowienie.meals_lists track by $index")
 					      | Nazwa posiłku: {{mealObj.meal.name}} Ilość: {{mealObj.amount}}
 					    | Cena całkowita = {{getTotal($index)}}
