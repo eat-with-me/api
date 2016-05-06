@@ -58,3 +58,15 @@ heroku run:detached rake db:migrate db:seed
 ```
 
 
+###### ADMIN
+Wchodzimy na
+```
+/admin
+```
+
+```
+login: admin@example.com
+hasło: password
+```
+
+
