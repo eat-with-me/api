@@ -1,7 +1,7 @@
 .wrapper
 	.content
 		.row
-		  .col-sm-4
+		  .col-sm-4 
 				.row
 					.col-md-12
 					  .hpanel 
@@ -22,7 +22,7 @@
 					      h4.m-b-xs
 									|	{{ meal.name }}
 
-		  .col-sm-4
+		  .col-sm-4 
 			  .hpanel.panel-group 
 			    .hpanel.hbggreen 
   					.panel-body ng-style="divStyle"
@@ -33,11 +33,11 @@
     						 h4
     						 	| Koniec zamówienia:
 
-			    .panel-section
+			    .panel-section ng-hide="hideActionPanel"
 			      h4.m-b-xs
 							|	Twoje zamówienie
 			    #notes.collapse
-			      .panel-body.note-link ng-repeat=("meal in mealsList track by $index")
+			      .panel-body.note-link ng-repeat=("meal in mealsList track by $index") ng-hide="hideActionPanel"
 			        a data-toggle="tab" 
 			          h4.pull-right.text-muted
 			          	| {{meal.price*meal.amount}} zł
@@ -48,13 +48,13 @@
 			        	| {{meal.name}}
 			        	
     	
-			    .panel-body
+			    .panel-body ng-hide="hideActionPanel"
 			      .pull-right.text-right
 			        h4
 			          | {{totalPrice}} zł
 			      h4.m-b-xs Podsumowanie
 
-			    .panel-body
+			    .panel-body ng-hide="hideActionPanel"
 			    	
 						button.btn.btn-danger.btn-block type="button" ng-click="clearMeal()"
 							| Wyczyść

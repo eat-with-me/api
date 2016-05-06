@@ -3,6 +3,7 @@ angular.module 'EatingApp'
    
     $scope.orderid = $stateParams.orderid
     $scope.groupid = $stateParams.groupid
+    $scope.hideActionPanel=false
     
     #ALERT WHEN USER CHCE CLOSE WINDOW------------------------------
     $scope.$on '$stateChangeStart', (event) ->
@@ -38,6 +39,7 @@ angular.module 'EatingApp'
         $scope.timeRemaining = "ZAKOŃCZONE"
         $scope.divStyle =
           background : "gray"
+        $scope.hideActionPanel=true
 
       else 
         $scope.timeRemaining = moment().to($scope.endTime)

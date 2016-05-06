@@ -8,7 +8,7 @@
 		        small.text-muted Wszystkie restauracje z których możesz zamówić jedzienie
 		      .panel-body
 		      	h5.m-t-none.m-b-none Wyszukaj restauracje:
-		        input.form-control type="text" ng-model="search.name"
+		        input.form-control type="text" placeholder="Wprowadź nazwę restauracji" ng-model="search.name"
 		      .panel-body ng-repeat=("restaurant in restaurants | filter:search") ng-click="addRestaurant(restaurant);"
 		        a aria-expanded="true" data-parent="#accordion" data-toggle="collapse" style="font-size: 18px;" 
 		          i.fa.fa-chevron-right.pull-right.text-muted ng-show="restaurant.id == currentID+1"
