@@ -30,6 +30,9 @@
     font-size: 11px !important;
     letter-spacing: 4px;
     opacity:0.9;
+    -webkit-box-shadow: 0 8px 6px -6px #999;
+    -moz-box-shadow: 0 8px 6px -6px #999;
+    box-shadow: 0 8px 6px -6px #999;
 }
 
 /* Add a gray color to all navbar links */
@@ -69,13 +72,3 @@
     background-color: red !important;
 }
 
-.navbar-brand
-{
-    padding: 0;
-    padding-left: 7px;
-}
-.img {
-    display: inline-block;
-    max-width: 20%;
-    height: auto;
-}
