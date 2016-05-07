@@ -16,6 +16,10 @@
  *= require_self
 
  */
+.odstep {
+    padding-right: 240px;
+    padding-left: 240px;
+}
 .custom-red .panel-body{
 	background-color: red!important;
 }

@@ -110,29 +110,43 @@
 .wrapper ng-show="hideActionPanel"
 	.content
 		.row
-		  .col-sm-4 
-		  .col-sm-4
-				.row
-				  .hpanel.panel-group 
-				    .hpanel.hbggreen 
-	  					.panel-body ng-style="divStyle"
-	    					.pull-right.text-right
-	    						 h4
-	    						 	| {{timeRemaining}}
-	    					h4.m-b-xs
-	    						 h4
-	    						 	| Koniec zamówienia:
- 				  .hpanel.panel-group 
-				  	.hpanel.hbgwhite
-					    .panel-body
-					      h4
-					      	| Całe zamówienie:
-				    .hpanel.hgreen ng-repeat=("zamowienie in zamowienia")
-	  					.panel-heading.hbuilt
-	    					| {{zamowienie.user.email}}
-	  					.panel-body style=("display: block;") 
-	    					h6 ng-repeat=("mealObj in zamowienie.meals_lists track by $index")
-						      | Nazwa posiłku: {{mealObj.meal.name}} Ilość: {{mealObj.amount}}
+			.odstep
+				.col-sm-6 
+					.row
+						.hpanel.panel-group 
+							.hpanel.hbggreen 
+								.panel-body ng-style="divStyle"
+									.pull-right.text-right
+										h4
+											| {{timeRemaining}}
+									h4.m-b-xs
+										h4
+											| Koniec zamówienia:
+						.hpanel.panel-group 
+							.hpanel.hbgwhite
+								.panel-body
+									.col-sm-4
+										h4
+											| Zamawiający: {{ownerr}}
+									.col-sm-8
+										h4
+											| Dane Restauracji: 
+
+										h4
+											| Nazwa Restauracji: {{restaurantname}}
+										h4
+											| Numer Telefonu: {{phoneNumber}}
+				.col-sm-6
+					.hpanel.hbgwhite
+						.panel-body
+							h4
+								| Lista Posiłków do zamówienia:
+					.hpanel.hgreen ng-repeat=("zamowienie in zamowienia")
+						.panel-heading.hbuilt
+							| {{zamowienie.user.email}}
+						.panel-body style=("display: block;") 
+							h6 ng-repeat=("mealObj in zamowienie.meals_lists track by $index")
+								| Nazwa posiłku: {{mealObj.meal.name}} Ilość: {{mealObj.amount}}
 						.panel-footer
 							b
 								| Cena całkowita = {{getTotal($index)}} zł

@@ -32,6 +32,7 @@ angular.module 'EatingApp'
     #GET STRUCTURE---------------------------------------------------
     $http.get("/groups/#{$stateParams.groupid}/orders/#{$stateParams.orderid}").success (data)->
         $scope.restaurantname = data.restaurant.name
+        $scope.phoneNumber = data.restaurant.phone_number
         $scope.meals = data.restaurant.meals
         $scope.endTime = moment(data.closing_time,"YYYY-MM-DDTHH:mm:ss.SSSZ")
         $scope.zamowienia = data.purchasers
@@ -59,7 +60,7 @@ angular.module 'EatingApp'
       if $scope.endTime.isBefore(moment())
         $scope.timeRemaining = "ZAKOŃCZONE"
         $scope.divStyle =
-          background : "gray"
+          background : "#34495e"
         $scope.hideActionPanel=true
 
       else 
