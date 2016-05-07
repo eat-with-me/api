@@ -17,42 +17,52 @@
 							.pnael-body
 						    .hpanel.filter-item ng-repeat=("order in open") ui-sref="meals({orderid: order.id, groupid: groupid})" style="cursor: pointer;"
 						      .panel-body 
-						        .pull-left.text-left
-						          small.stat-label 
-						          h4
-						          	| {{order.restaurant.name}}
-						        .pull-right.text-center
-						          small.stat-label Data zakończenia 
-						          h4 ng-bind="assertTime(order.closing_time)"
-						        .pull-center.text-center
-						          small.stat-label Liczba zamówień:
-						          h4 
-						          	| {{order.purchasers.length}}
+						        .col-sm-4 
+							        .pull-left.text-left
+							          small.stat-label Restauracja:
+							          h4 
+							          	| {{order.restaurant.name}}
+						        .col-sm-4 
+							        .pull-center.text-center
+							          small.stat-label Liczba zamówień:
+							          h4 
+							          	| {{order.purchasers.length}}
+						        .col-sm-4 
+							        .pull-right.text-right
+							          small.stat-label 
+							          | Data zakończenia 
+							          h4 ng-bind="assertTime(order.closing_time)"
 						    .pull-center.text-center
 						    	h4 ng-if="!open.length"
 						    		| Nie ma żadnych trwających zamówień
+
 		  			.hpanel	
 							.panel-heading
 								| Zamknięte zamówienia
-							.pnael-body
+
 						    .hpanel.filter-item ng-repeat=("order in closed") ui-sref="meals({orderid: order.id, groupid: groupid})" style="cursor: pointer;"
 						      .panel-body 
-						        .pull-left.text-left
-						          small.stat-label 
-						          h4
-						          	| {{order.restaurant.name}}
-						        .pull-right.text-center
-						          small.stat-label Data zakończenia 
-						          h4 ng-bind="assertTime(order.closing_time)"
-						        .pull-center.text-center
-						          small.stat-label Liczba zamówień:
-						          h4 
-						          	| {{order.purchasers.length}}
+						        .col-sm-4 
+							        .pull-left.text-left
+							          small.stat-label Restauracja:
+							          h4 
+							          	| {{order.restaurant.name}}
+						        .col-sm-4 
+							        .pull-center.text-center
+							          small.stat-label Liczba zamówień:
+							          h4 
+							          	| {{order.purchasers.length}}
+						        .col-sm-4 
+							        .pull-right.text-right
+							          small.stat-label 
+							          | Data zakończenia 
+							          h4 ng-bind="assertTime(order.closing_time)"
 						    .pull-center.text-center
 						    	h4 ng-if="!closed.length"
 						    		| Nie ma żadnych zakończonych zamówień
+
 				  .col-lg-3
-				  	.hpanel ng-click="getLink()" 
+				  	.hpanel 
 				      .panel-body
 				      	center
 					      	button.btn.btn-outline.btn-success type="button" ng-click="getLink()"   

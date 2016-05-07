@@ -26,7 +26,7 @@
 			  .hpanel.panel-group 
 			    .hpanel.hbggreen 
   					.panel-body ng-style="divStyle"
-    					.pull-right.text-right
+    					.pull-right.text-right 
     						 h4
     						 	| {{timeRemaining}}
     					h4.m-b-xs
@@ -104,7 +104,9 @@
   					.panel-body style=("display: block;") ng-show="showme" 
     					p ng-repeat=("mealObj in zamowienie.meals_lists track by $index")
 					      | Nazwa posiłku: {{mealObj.meal.name}} Ilość: {{mealObj.amount}}
-					    | Cena całkowita = {{getTotal($index)}}
+					    h5
+					    	| Cena całkowita = {{getTotal($index)}} zł
+
 
 
 .wrapper ng-show="hideActionPanel"
@@ -134,4 +136,5 @@
 
 	    					p ng-repeat=("mealObj in zamowienie.meals_lists track by $index")
 						      | Nazwa posiłku: {{mealObj.meal.name}} Ilość: {{mealObj.amount}}
-						    | Cena całkowita = {{getTotal($index)}} zł
+						    b
+						    	| Cena całkowita = {{getTotal($index)}} zł
