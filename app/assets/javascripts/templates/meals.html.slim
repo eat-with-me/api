@@ -67,12 +67,6 @@
 								h4	
 									|	 cena: {{meal.price * meal.amount}} zł
 
-
-
-
-
-
-
 			    .panel-body
 			      .pull-right.text-right
 			        h4
@@ -93,19 +87,23 @@
 				    .panel-body
 				      h4
 				      	| Całe zamówienie:
-			    .hpanel.hgreen  ng-repeat=("zamowienie in zamowienia")
-  					.panel-heading.hbuilt
-  						.panel-tools
-  							a.showhide ng-click="showme=true"
-  								i.fa.fa-chevron-down 
-  							a.showhide ng-click="showme=false"
-  								i.fa.fa-chevron-up 
-    					| {{zamowienie.user.email}}
-  					.panel-body style=("display: block;") ng-show="showme" 
-    					p ng-repeat=("mealObj in zamowienie.meals_lists track by $index")
-					      | Nazwa posiłku: {{mealObj.meal.name}} Ilość: {{mealObj.amount}}
-					    h5
-					    	| Cena całkowita = {{getTotal($index)}} zł
+			    .hpanel.hgreen  
+			    	.col-md-12 ng-repeat=("zamowienie in zamowienia")
+	  					.panel-heading.hbuilt
+	  						.panel-tools
+	  							a.showhide ng-click="showme=true"
+	  								i.fa.fa-chevron-down 
+	  							a.showhide ng-click="showme=false"
+	  								i.fa.fa-chevron-up 
+	    					| {{zamowienie.user.email}}
+	  					.panel-body style=("display: block;") ng-show="showme" 
+	    					h6 ng-repeat=("mealObj in zamowienie.meals_lists track by $index")
+	    						b
+						      	| Nazwa posiłku: {{mealObj.meal.name}} Ilość: {{mealObj.amount}}
+						.panel-footer ng-show="showme" 
+							h6
+								b
+									| Cena całkowita = {{getTotal($index)}} zł
 
 
 
@@ -133,8 +131,8 @@
 	  					.panel-heading.hbuilt
 	    					| {{zamowienie.user.email}}
 	  					.panel-body style=("display: block;") 
-
-	    					p ng-repeat=("mealObj in zamowienie.meals_lists track by $index")
+	    					h6 ng-repeat=("mealObj in zamowienie.meals_lists track by $index")
 						      | Nazwa posiłku: {{mealObj.meal.name}} Ilość: {{mealObj.amount}}
-						    b
-						    	| Cena całkowita = {{getTotal($index)}} zł
+						.panel-footer
+							b
+								| Cena całkowita = {{getTotal($index)}} zł
