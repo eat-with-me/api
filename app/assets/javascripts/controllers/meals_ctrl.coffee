@@ -10,6 +10,7 @@ angular.module 'EatingApp'
     $scope.mealsList = []
     $scope.totalPrice = 0
     $scope.end = 0
+    $scope.allUserPrice = 0
 
     
     #ALERT WHEN USER CHCE CLOSE WINDOW------------------------------
@@ -40,6 +41,7 @@ angular.module 'EatingApp'
         $scope.shippingCostPerPerson = data.restaurant.shipping_cost
         $scope.iloscChlopa = $scope.zamowienia.length
         $scope.priceNow = $scope.shippingCostPerPerson/$scope.iloscChlopa
+        $scope.GetCount ->
         console.log(data)
         console.log($scope.zamowienia)
         
@@ -127,10 +129,10 @@ angular.module 'EatingApp'
         else
             return true
 
-    $scope.getTotal = (siema) ->
+    $scope.getTotal = (userNumber) ->
       total = 0
-      for i in [0...$scope.zamowienia[siema].meals_lists.length]
-        total += ($scope.zamowienia[siema].meals_lists[i].amount * $scope.zamowienia[siema].meals_lists[i].meal.price) 
+      for i in [0...$scope.zamowienia[userNumber].meals_lists.length]
+        total += ($scope.zamowienia[userNumber].meals_lists[i].amount * $scope.zamowienia[userNumber].meals_lists[i].meal.price) 
       total += $scope.priceNow
       return total
 
@@ -156,3 +158,9 @@ angular.module 'EatingApp'
           for i in [0...$scope.zamowienia.length]
               if $scope.zamowienia[i].user_id == $scope.ownerr
                 $scope.hideIfAlreadyOrder = true
+
+    $scope.GetCount = ->
+      for i in [0...$scope.zamowienia.length]
+        for j in [0...$scope.zamowienia[i].meals_lists.length]
+          $scope.allUserPrice += ($scope.zamowienia[i].meals_lists[j].amount * $scope.zamowienia[i].meals_lists[j].meal.price)
+      $scope.allUserPrice += $scope.shippingCostPerPerson

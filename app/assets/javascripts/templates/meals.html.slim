@@ -128,6 +128,8 @@
 									.col-sm-4
 										h4
 											| Zamawiający: {{ownerr}}
+										h4
+											| Do zapłaty: {{allUserPrice}} zł
 									.col-sm-8
 										h4
 											| Dane Restauracji: 
@@ -138,7 +140,7 @@
 											| Numer Telefonu: {{phoneNumber}}
 				.col-sm-6
 					.hpanel.hbgwhite
-						.panel-body
+						.panel-body 
 							h4
 								| Lista Posiłków do zamówienia:
 					.hpanel.hgreen ng-repeat=("zamowienie in zamowienia")
