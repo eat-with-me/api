@@ -163,4 +163,7 @@ angular.module 'EatingApp'
       for i in [0...$scope.zamowienia.length]
         for j in [0...$scope.zamowienia[i].meals_lists.length]
           $scope.allUserPrice += ($scope.zamowienia[i].meals_lists[j].amount * $scope.zamowienia[i].meals_lists[j].meal.price)
-      $scope.allUserPrice += $scope.shippingCostPerPerson
+      if $scope.zamowienia.length ==0
+        $scope.allUserPrice = 0
+      else
+        $scope.allUserPrice += $scope.shippingCostPerPerson

@@ -5,7 +5,7 @@ angular.module 'EatingApp'
     $stateProvider
       .state('groups', {
         url: '/groups',
-        templateUrl: 'groups.html'
+        templateUrl: 'groups.html',
         controller: 'GroupsCtrl'
       })
       .state('orders',{

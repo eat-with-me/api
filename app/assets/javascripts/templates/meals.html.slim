@@ -123,8 +123,8 @@
 										h4
 											| Koniec zamówienia:
 						.hpanel.panel-group 
-							.hpanel.hbgwhite
-								.panel-body
+							.hpanel.hbgwhite 
+								.panel-body 
 									.col-sm-4
 										h4
 											| Zamawiający: {{ownerr}}
@@ -143,7 +143,7 @@
 						.panel-body 
 							h4
 								| Lista Posiłków do zamówienia:
-					.hpanel.hgreen ng-repeat=("zamowienie in zamowienia")
+					.hpanel.hnavyblue ng-repeat=("zamowienie in zamowienia")
 						.panel-heading.hbuilt
 							| {{zamowienie.user.email}}
 						.panel-body style=("display: block;") 
