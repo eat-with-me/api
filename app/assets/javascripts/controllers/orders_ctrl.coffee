@@ -8,13 +8,14 @@ angular.module 'EatingApp'
     $scope.open=[]
     $scope.chuj = ""
     
-    
-    $http.get("/groups/#{$stateParams.groupid}").success (data1)->
-      $scope.users = data1.users
-      console.log($scope.users)
-      $scope.token =data1.token
-      $scope.groupName =data1.name
-      $scope.tokenURL = $scope.protocoll + "://" +$scope.hostt + "/join/" + $scope.token
+    $interval ->
+      $http.get("/groups/#{$stateParams.groupid}").success (data1)->
+        $scope.users = data1.users
+        console.log($scope.users)
+        $scope.token =data1.token
+        $scope.groupName =data1.name
+        $scope.tokenURL = $scope.protocoll + "://" +$scope.hostt + "/join/" + $scope.token
+    ,3000
 
     $http.get("/groups/#{$stateParams.groupid}/orders").success (data)->
       for i in [0...data.length]

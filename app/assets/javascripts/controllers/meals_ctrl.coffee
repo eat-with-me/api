@@ -31,29 +31,29 @@ angular.module 'EatingApp'
     #----------------------------------------------------------------
 
     #GET STRUCTURE---------------------------------------------------
-    $http.get("/groups/#{$stateParams.groupid}/orders/#{$stateParams.orderid}").success (data)->
-        $scope.restaurantname = data.restaurant.name
-        $scope.phoneNumber = data.restaurant.phone_number
-        $scope.meals = data.restaurant.meals
-        $scope.endTime = moment(data.closing_time,"YYYY-MM-DDTHH:mm:ss.SSSZ")
-        $scope.zamowienia = data.purchasers
-        $scope.ownerr = data.owner.id
-        $scope.shippingCostPerPerson = data.restaurant.shipping_cost
-        $scope.iloscChlopa = $scope.zamowienia.length
-        $scope.priceNow = $scope.shippingCostPerPerson/$scope.iloscChlopa
-        $scope.GetCount ->
-        console.log(data)
-        console.log($scope.zamowienia)
-        
-        if $scope.iloscChlopa == 0
-          $scope.priceNow = $scope.shippingCostPerPerson/($scope.iloscChlopa+1)
-          $scope.priceAfter = $scope.shippingCostPerPerson/($scope.iloscChlopa+1)
-        else if $scope.iloscChlopa > 0
+    $interval ->  
+      $http.get("/groups/#{$stateParams.groupid}/orders/#{$stateParams.orderid}").success (data)->
+          $scope.restaurantname = data.restaurant.name
+          $scope.phoneNumber = data.restaurant.phone_number
+          $scope.meals = data.restaurant.meals
+          $scope.endTime = moment(data.closing_time,"YYYY-MM-DDTHH:mm:ss.SSSZ")
+          $scope.zamowienia = data.purchasers
+          $scope.ownerr = data.owner.email
+          $scope.shippingCostPerPerson = data.restaurant.shipping_cost
           $scope.iloscChlopa = $scope.zamowienia.length
-          $scope.priceAfter = $scope.shippingCostPerPerson/($scope.iloscChlopa+1)
-        for i in [0...$scope.zamowienia.length]
-            if $scope.zamowienia[i].user_id == $scope.ownerr
-              $scope.hideIfAlreadyOrder = true
+          $scope.priceNow = $scope.shippingCostPerPerson/$scope.iloscChlopa
+          $scope.GetCount ->
+          
+          if $scope.iloscChlopa == 0
+            $scope.priceNow = $scope.shippingCostPerPerson/($scope.iloscChlopa+1)
+            $scope.priceAfter = $scope.shippingCostPerPerson/($scope.iloscChlopa+1)
+          else if $scope.iloscChlopa > 0
+            $scope.iloscChlopa = $scope.zamowienia.length
+            $scope.priceAfter = $scope.shippingCostPerPerson/($scope.iloscChlopa+1)
+          for i in [0...$scope.zamowienia.length]
+              if $scope.zamowienia[i].user_id == $scope.ownerr
+                $scope.hideIfAlreadyOrder = true
+    ,3000
 
     #----------------------------------------------------------------
     
