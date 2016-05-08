@@ -23,3 +23,4 @@ angular.module 'EatingApp'
         templateUrl: 'meals.html'
         controller: 'MealsCtrl'
         })
+
