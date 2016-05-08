@@ -613,7 +613,7 @@ FactoryGirl.define do
           [*0..(meals.length - 1)].each do |i|
 
             type_id = MealType.where(name: meals[i][:meal_type]).first.id
-            create(:meal, name: meals[i][:name],restaurant: restaurant, meal_type_id: type_id)
+            create(:meal, name: meals[i][:name], price: meals[i][:price],restaurant: restaurant, meal_type_id: type_id)
           end
         else
 
