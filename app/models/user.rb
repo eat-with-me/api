@@ -7,4 +7,5 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :groups
   has_many :orders, through: :purchasers
   has_many :purchasers
+  has_many :rates
 end

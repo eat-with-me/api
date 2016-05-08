@@ -113,7 +113,6 @@ class OrdersController < ApplicationController
             }
           },
           owner: {}
-
         }
       )
   end
