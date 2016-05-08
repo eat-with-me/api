@@ -1,239 +1,151 @@
-| chujowow
 .nav-container
-  nav.nav-1.dark.overlay style="position: absolute;"
-    .navbar style="background: none;"
+  nav.nav-1
+    .navbar style="height: 70px; background: #f6f8fa"
       .container
         .row
-          .col-md-6.col-sm-6.col-xs-4
-            ul.menu
-              li
-                a ui-sref="landing" style="font-size: 25px"
-                  | iAgent
+          .col-md-3.col-sm-6.col-xs-4
+            a href="#" 
+              img alt="Logo" src="logoE24v2.png" style="padding-top: 7px" /
+          .col-md-4.text-left.col-sm-6.col-md-push-6.col-xs-8.text-left
+            a.btn.btn-filled.btn-xs href="#" style="background: #f6f8fa; border-color: #62cb31; color: #62cb31"  Zaloguj 
+            a.btn.btn-filled.btn-xs href="#" style="background: #f6f8fa; border-color: #4169E1; color: #4169E1"   Załóż konto
+            
+
 .main-container
-  section.header.header-1.hidden-xs.hidden-sm
-    .background-image-holder.visible-lg style="opacity: 1; overflow: hidden;"
-      = image_tag("bg_09.jpg", :class => "background-image", :style =>"display: block; min-height: 100%; min-width: 100%; width: 120%")
-    .background-image-holder.visible-md style="opacity: 1; overflow: hidden;"
-      = image_tag("bg_09.jpg", :class => "background-image", :style =>"display: block; height: 100%; max-width: none; width: auto;")
-    .container
-      .row
-        .col-md-6
-          h4.text-white style="margin-bottom: 30px "
-            | Ubezpiecz samochód.
-            br
-            | Bez
-            span#typed<>
-          h6.text-white style="text-transform: none"
-            | Nie masz czasu na wypełnianie 50 formularzy?
-            br
-            | Chcesz kupić najlepsze dla siebie ubezpieczenie ale nie wiesz co wybrać?
-            br
-            | Dobrze trafiłeś
-        .col-md-6
-          .inner
-            ul
-              li
-                i.text-white.icon-clock-streamline-time
-                p.text-white
-                  | Wypełnienie formularza zajmuje 1 minutę. Wystarczą wejść na stronę przez komórkę.
-              li
-                i.text-white.icon-list-thumbnails
-                p.text-white
-                  | Postaramy się zawęzić ofertę i wyślemy Ci tylko najlepsze oferty.
-              li
-                i.text-white.icon-lock-locker-streamline
-                p.text-white
-                  | Twoje dane są w pełni bezpieczne a zdjęcia są usuwane po 24 godzinach.
-              li
-                i.text-white.icon-magnifier
-                p.text-white
-                  | Oferty dostniesz na maila, to Ty decydujesz o zakupie. Bez pośpiechu.
-            form.form-email
-              / input.signup-name-field.validate-required name="name" placeholder=("Your Name") type="text" /
-              / input.validate-required.validate-email.signup-email-field name="email" placeholder=("Email Address")
-              input type="submit" value=("Chcę zobaczyć video »")  ng-click="showVideo()"
-              p.sub
-                / | * We don’t share your personal info with anyone. Check out our
-                / a href="privacy.html"  Privacy Policy
-                / | for more information.
-
-  section.header.header-6.visible-sm.visible-xs
-    .col-md-6.col-sm-4.image-block.hidden-xs
-      .background-image-holder.hidden-xs style="opacity: 1; overflow: hidden;"
-        = image_tag("bg_09.jpg", :class => "background-image", :style =>"display: block; height: 100%; max-width: none; width: auto; position: relative; left: -600px")
-      .background-image-holder.visible-xs style="opacity: 1; overflow: hidden;"
-        = image_tag("bg_09.jpg", :class => "background-image", :style =>"display: block; min-height: 100%; min-width: 100%; width: 120%")
-
-    .container ng-controller="FormCtrl"
-      .row
-        .col-md-5.col-sm-7.col-md-push-7.col-sm-push-5
-          h3 style="margin-top: 30px" Dowiedz się co może zaproponować Ci agent
-          p
-            | Płacisz za dużo za
-            b<>
-              | ubezpieczenie swojego samochodu?
-            | Potrzebujesz pomocy przy wyborze ubezpieczenia?
-            br/
-            | Wejdź na stronę przez smartfona, wypełnij krótki formularz i
-            b<>
-              | pozwól agentom przygotować ofertę
-            | specjalnie dla Ciebie
-
-          form.form-email
-            h6
-              | Kliknij w "Przód dowodu" i "Tył dowodu" żeby zrobić zdjęcia
-
-            .row style="padding-top: 20px"
-              .col-sm-6
-                button.btn.btn-block.btn-sm.btn-default ng-model="data.attachment" ngf-select="" ngf-multiple="false" ng-class="{'btn-filled': !!data.attachment}"
-                  | Przód dowodu
-              .col-sm-6
-                button.btn.btn-block.btn-sm.btn-default ng-model="data.attachment2"  ngf-select=""ngf-multiple="false" ng-class="{'btn-filled': !!data.attachment2}"
-                  | Tył dowodu
-            .row style="margin: 20px 0"
-              .col-xs-8 for="inputPassword"  Posiadasz dziecko do 13 roku życia?
-              .col-xs-4.text-right
-                  button.btn.btn-xs.btn-default ng-class="{'btn-filled': data.child_under_13}"ng-click="data.child_under_13 = !data.child_under_13"
-                    | TAK
-            .row style="margin: 20px 0"
-              .col-xs-8 for="inputPassword"  Posiadasz nakaz płatniczy - ROLNIK?
-              .col-xs-4.text-right
-                  button.btn.btn-xs.btn-default  ng-class="{'btn-filled': data.payment_order}" ng-click="data.payment_order = !data.payment_order"
-                    | TAK
-            .row style="margin: 20px 0"
-              .col-xs-8 for="inputPassword"  Pojazd będzie użytkowany powyżej 3 m-cy poza granicami kraju?
-              .col-xs-4.text-right
-                  button.btn.btn-xs.btn-default  ng-class="{'btn-filled': data.abroad_use}" ng-click="data.abroad_use = !data.abroad_use"
-                    | TAK
-            input.signup-name-field.validate-required style="width: 100%" name="name" placeholder="Odbiór w okolicach miasta..." type="text" ng-change="getChosenPosition(city)" ng-model="data.city"
-            input.signup-name-field.validate-required style="width: 100%" name="name" placeholder="Początek ochrony ubezpieczenia" type="text" pickerr="data.insurance_start"
-            input.signup-email-field name="email"  style="width: 100%"placeholder=("Twój email") type="text"  ng-model="data.email"
-            input type="submit" style="width: 100%" value=("Zapytaj o składki") ng-click="upload(email, file, file2)" ng-class="{'custom-button-success': isFormCompleted()}"
-  section.cta.cta-4.hidden-xs.bg-secondary
-    .container
-      .row style="margin-bottom: 0"
-        .col-sm-12.text-center
-          = image_tag("l1.png")
-          = image_tag("l2.png")
-          = image_tag("l3.png")
-          = image_tag("l4.png")
-          = image_tag("l5.png")
-
-  section.features.features-3
+  section.header.header-7
+    .hero-slider
+      ul.slides
+        li
+          .background-image-holder.visible-lg style="opacity: 1; overflow: hidden;"
+            = image_tag("restaurant.jpg", :class => "background-image", :style =>"display: block; height:720px;")
+          .container
+            .row
+              .col-sm-12.text-center
+                h1 style="color: #E9E9E9"
+                  | EatWithMe
+                h3.text-white 
+                  | Wspólne zamawianie jedzenia nigdy nie było tak proste!
+                b.text-white 
+  section.features.features-2
     .container
       .row
         .col-md-10.col-md-offset-1.col-sm-12.text-center
-          h3 Jak to działa
-          p
+          h4 Dlaczego warto jeść z nami?
+          p  Aplikacja EatWithMe pozwala dużo więcej niż zwykłe zamawianie posiłków.
       .row
-        .col-sm-4.text-center.feature
-          i.icon-camera-streamline-video
-          h5
-            | Zrób zdjęcie dowodu rejestracyjnego
-            br/
+        .col-sm-3.text-center.feature
+          = image_tag("talking.jpg", :style =>"width: 300px; height: 170px;") 
+          h5 Funkcje społecznośćiowe.
           p
-            | Wejdź na stronę na Twoim smartfonie i kliknij w "Załaduj zdjęcie dowodu". Zrób zdjęcie dowodu i je nam prześlij.&nbsp;W dowodzie rejestracyjnym znajdują się wszystkie niezbędne dane do sprawdzenia ofert ubezpieczeniowych.
-            br/
-        .col-sm-4.text-center.feature
-          i.icon-browser-streamline-window
-          h5 Poczekaj na oferty
+            | W jednym miejscu spotkaj swoich znajomych - towarzyszy posiłków i zaproponuj im wspólne zamówienie.
+        .col-sm-3.text-center.feature
+          = image_tag("beach.jpg",:style =>"width: 300px;height: 170px;")  
+          h5 Zamawiaj z dowolnego miejsca.
           p
-            | W ciągu 1 godziny otrzymasz od nas maila z 3 najlepszymi ofertami.
-            br/
-        .col-sm-4.text-center.feature
-          i.icon-backpack-streamline-trekking
-          h5 Wybierz i kup ubezpieczenie
+            | Nie ważne gdzie się znajdujesz - na plaży, w biurze czy w lesie tropikalnym. Jeżeli masz przy sobie przyjaciół, możesz zamówić jedzenie ze swoich ulubionych restauracji.
+        .col-sm-3.text-center.feature
+          = image_tag("dollars.jpg",:style =>"width: 300px;height: 170px;") 
+          h5 Rozliczanie gupowych zamówień.
           p
-            | Gdy spodoba Ci się jedna z ofert, podasz nam numer telefonu i załatwimy sprawy formalne.
-  section.features.features-3.bg-dark
+            | Każdy wie ile problemów sprawia rozliczanie się przy składaniu dużych zamówień. Od teraz w przejrzysty sposób, każdy otrzyma informację ile powinien zapłacić,
+        .col-sm-3.text-center.feature
+          = image_tag("goingout.jpg",:style =>"width: 300px; height: 170px;" ) 
+          h5 Wspólne wyjścia do restauracji.
+          p
+            | Czasami zamiast zamawiać jedzenie warto udać się wpólnie do restauracji. Dzięki EatWithMe nie będziesz miał problemów z rezerwacją miejsc. Niebawem dostępne!
+  section.features.features-6.bg-secondary
     .container
       .row
-        .col-md-10.col-md-offset-1.col-sm-12.text-center
-          h3 TO TYLKO 1 MINUTA
-          p
+        .col-sm-12.text-center
+          h3  Jak to działa?
       .row
-        .col-sm-4.text-center.feature
-          i.icon-camera-streamline-video
-          h5 NIE MUSISZ WYPEŁNIAĆ KILKUDZIESIĘCIU FORMULARZY
-          p
-            | Nasz krótki formularz wypełnisz w 1 minutę, wchodząc na stronę przez smartfona. Resztą zajmie się agent.
-            br/
-        .col-sm-4.text-center.feature
-          i.icon-browser-streamline-window
-          h5
-            | NIE MUSISZ NIC WIEDZIEĆ O UBEZPIECZENIACH
-            br/
-          p
-            | Jak będziesz miał jakieś wątpliwości, doradzimy Ci.
-            br/
-        .col-sm-4.text-center.feature
-          i.icon-backpack-streamline-trekking
-          h5 OSZĘDŹ SWÓJ CZAS
-          p
-            | Załatwiaj inne sprawy kiedy nasi agenci będą dobierać dla Ciebie ubezpieczenie.
-            br/
-  section.features.features-7
+        .col-md-3.col-sm-6.text-center.feature
+          i.icon-man-people-streamline-user style="color: #62cb31"
+          h5 Zaloguj się lub zarejestruj jako nowy użytkownik
+          p By móc używać aplikacji konieczna jest rejestracja.
+        .col-md-3.col-sm-6.text-center.feature
+          i.icon-link-streamline style="color: #62cb31"
+          h5 Dołącz do grupy lub załóż własną!
+          p Wybierz z kim chcesz zjeść posiłek. Dołącz do grup znajomych, którzy juz używają aplikacji, lub sam ich zaproś. Roześlij link do swoich znajomych a będziecie mogli wspólnie zamówić jedzenie :3
+        .col-md-3.col-sm-6.text-center.feature
+          i.icon-earth-globe-streamline style="color: #62cb31"
+          h5 Zamów jedzenie razem ze znajomymi
+          p Zawsze możesz sprawdzić czy aktualnie ktoś z twoich przyjaciół nie planuje zamówienia posiłku. Dlaczego nie zamówić i zjeść razem? 
+        .col-md-3.col-sm-6.text-center.feature
+          i.icon-map-streamline-user style="color: #62cb31"
+          h5 Własne zamówienie z wybranej przez Ciebie restauracji
+          p Dla niezdecydowanych - sam wybierz w jakiej restauracji masz ochotę zjeść i przejrzyj dostępne menu. Ustal interesujący Cię czas zamówienia i czekaj na odpowiedź znajomych.
+      .row
+        .col-md-4.col-sm-6.text-center.feature
+          i.icon-caddie-shopping-streamline style="color: #62cb31"
+          h5 Wybierz jedzenie
+          p Spośród wielkiej ilości posiłków każdej restauracji znajdź coś dla siebie, i potwierdź zamówienie. Pamiętaj by zdążyć przed końcem czasu!
+        .col-md-4.col-sm-6.text-center.feature
+          i.icon-clock-streamline-time style="color: #62cb31"
+          h5 Zatwierdź i czekaj na odpowiedź
+          p Zamówienie zakończy się gdy minie czas ustalony przez założyciela. Później możesz wrócić do zakończonych zamówień i ocenić restaurację :)
+        .col-md-4.col-sm-6.text-center.feature
+          i.icon-man-people-streamline-user style="color: #62cb31"
+          h5 Gotowe!
+          p Teraz wystarczy czekać, aż restauracja dostarczy wam posiłek. Smacznego!
+  section.testimonials.testimonials-2
     .container
       .row
-        .col-md-10.col-md-offset-1.col-sm-10.col-sm-offset-1.text-center
-          h6 Czy Moje dane są bezpieczne?
-          h4
-            | Jesteśmy zweryfikowani przez Generalnego Inspektora Ochrony Danych Osobowych. Natomiast
-            b<>
-              | zdjęcia są usuwane
-            | po 1 godzinie od wysłania. Twoje
-            b<>
-              | dane są w pełni bezpieczne.
-            br/
-          a.btn href="#" Zapytaj agenta »
-    img.pull-right alt="" src="" /
+        .col-sm-12.text-center
+          h4 Skład grupy
 
-  section.testimonials.testimonials-2.bg-dark
+      .row
+        .col-md-4.col-sm-6.testimonial
+          img.img-circle.img-small alt="" src="av1.png" style="width: 50px; height: 50px;"
+          h5
+            span 
+            | Bartosz Erbert
+          p Backend
+        .col-md-4.col-sm-6.testimonial
+          img.img-circle.img-small alt="" src="av2.png" style="width: 50px; height: 50px;"
+          h5
+            span 
+            | Konrad Dzień
+          p Frontend
+        .col-md-4.col-sm-6.testimonial
+          img.img-circle.img-small alt="" src="av3.png" style="width: 50px; height: 50px;"
+          h5
+            span 
+            | Norbert Kapica
+          p Frontend
+      .row 
+        .col-md-6.col-sm-6.testimonial
+          .col-sm-5
+          .col-sm-7
+            img.img-circle.img-small alt="" src="av4.png" style="width: 50px; height: 50px;"
+            h5
+              span 
+              | Mateusz Cierpka
+            p Android
+        .col-md-6.col-sm-6.testimonial
+          .col-sm-7 style=""
+            img.img-circle.img-small alt="" src="av5.png" style="width: 50px; height: 50px;"
+            h5
+              span 
+              | Mateusz Fiślak
+            p Android
+  footer.footer.footer-1.bg-secondary
     .container
       .row
-        .col-sm-6.testimonial.col-md-6
-          = image_tag("author_1.jpg", :style => "width: 70px; border-radius: 35px")
-          p
-            | Wcześniej nie mogłam się zebrać o wypełniania masy formularzy, żeby tylko zobaczyć ofertę. Tutaj cały proces zajął mi mniej niż 3 minuty.
-          p
-            em> — Kamila
-        .col-sm-6.testimonial.col-md-6
-          = image_tag("author_2.jpg", :style => "width: 70px; border-radius: 35px")
-          p
-            | Nigdy nie chciało mi się chodzić po agentach, żeby znaleźć najlepszą ofertę, zajmowało to za dużo czasu i energi. Tutaj wypełniłem formularz, a oferty pojawiały się same.
-          p
-            em
-              | — Bartosz
-              br/
-  section.cta.cta-8
-    .container
-      .row
-        .col-sm-12.text-center
-          h4
-            | Cenisz sobie swój CZAS i PIENIĄDZE?
-            br/
-            br/
-          a.btn.btn-filled ng-click="toTop()"  Zapytaj o oferty
-  footer.footer.footer-2.bg-dark
-    .container
-      .row
-        .col-sm-12.text-center
-          ul.menu
+        .col-sm-4
+          ul.social-links
             li
-              a href="#"
-                | FAQ
+              a href="https://www.facebook.com/dzieniu" 
+                i.icon-facebook
             li
-              a href="#"
-                | Polityka prywatności
+              a href="https://www.twitter.com/dzieniu" 
+                i.icon-twitter
             li
-              a href="#"
-                | Warunki umowy
-      .row
-        .col-sm-12.text-center
-          a href="#"
-            | iAgent
+              a href="https://www.youtube.com/MrDzzieniu" 
+                i.icon-youtube-alt
+        .col-sm-4.text-center
           p.sub
-            | © Copyright 2015 iAgent - All Rights Reserved
-
-script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"
-script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/plugins/ScrollToPlugin.min.js"
+            | © Copyright 2016 EatWithMe - All Rights Reserved
+        .col-sm-4.text-right
+          a href="#" 
+            img alt="Logo" src="logoE24v2.png" / 
