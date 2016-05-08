@@ -11,8 +11,9 @@ Rails.application.routes.draw do
     post "/purchasers", to: 'orders#purchasers_create'
   end
   resources :restaurants, only: [:index, :show]
+  resources :welcome, only: [:index]
 
   get "/join/:token", to: 'groups#add_user'
 
-  root 'home#index'
+  root 'welcome#index'
 end

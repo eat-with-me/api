@@ -1,0 +1,17 @@
+doctype html
+html.fairsky
+  head
+    meta charset="utf-8"
+    meta content="IE=edge" http-equiv="X-UA-Compatible"
+    meta content="width=device-width, initial-scale=1.0" name="viewport"
+
+    title Eating
+
+    = stylesheet_link_tag 'welcome', media: 'all'
+    link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous"
+    =  javascript_include_tag 'welcome', media: 'all',
+      'data-turbolinks-track' => true
+    = csrf_meta_tags
+  body
+    = yield
+

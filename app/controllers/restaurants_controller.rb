@@ -1,5 +1,4 @@
 class RestaurantsController < ApplicationController
-  before_action :authenticate_user!
 
   def restaurant_param
     params.permit(:id)["id"]

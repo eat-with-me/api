@@ -1,0 +1,239 @@
+| chujowow
+.nav-container
+  nav.nav-1.dark.overlay style="position: absolute;"
+    .navbar style="background: none;"
+      .container
+        .row
+          .col-md-6.col-sm-6.col-xs-4
+            ul.menu
+              li
+                a ui-sref="landing" style="font-size: 25px"
+                  | iAgent
+.main-container
+  section.header.header-1.hidden-xs.hidden-sm
+    .background-image-holder.visible-lg style="opacity: 1; overflow: hidden;"
+      = image_tag("bg_09.jpg", :class => "background-image", :style =>"display: block; min-height: 100%; min-width: 100%; width: 120%")
+    .background-image-holder.visible-md style="opacity: 1; overflow: hidden;"
+      = image_tag("bg_09.jpg", :class => "background-image", :style =>"display: block; height: 100%; max-width: none; width: auto;")
+    .container
+      .row
+        .col-md-6
+          h4.text-white style="margin-bottom: 30px "
+            | Ubezpiecz samochód.
+            br
+            | Bez
+            span#typed<>
+          h6.text-white style="text-transform: none"
+            | Nie masz czasu na wypełnianie 50 formularzy?
+            br
+            | Chcesz kupić najlepsze dla siebie ubezpieczenie ale nie wiesz co wybrać?
+            br
+            | Dobrze trafiłeś
+        .col-md-6
+          .inner
+            ul
+              li
+                i.text-white.icon-clock-streamline-time
+                p.text-white
+                  | Wypełnienie formularza zajmuje 1 minutę. Wystarczą wejść na stronę przez komórkę.
+              li
+                i.text-white.icon-list-thumbnails
+                p.text-white
+                  | Postaramy się zawęzić ofertę i wyślemy Ci tylko najlepsze oferty.
+              li
+                i.text-white.icon-lock-locker-streamline
+                p.text-white
+                  | Twoje dane są w pełni bezpieczne a zdjęcia są usuwane po 24 godzinach.
+              li
+                i.text-white.icon-magnifier
+                p.text-white
+                  | Oferty dostniesz na maila, to Ty decydujesz o zakupie. Bez pośpiechu.
+            form.form-email
+              / input.signup-name-field.validate-required name="name" placeholder=("Your Name") type="text" /
+              / input.validate-required.validate-email.signup-email-field name="email" placeholder=("Email Address")
+              input type="submit" value=("Chcę zobaczyć video »")  ng-click="showVideo()"
+              p.sub
+                / | * We don’t share your personal info with anyone. Check out our
+                / a href="privacy.html"  Privacy Policy
+                / | for more information.
+
+  section.header.header-6.visible-sm.visible-xs
+    .col-md-6.col-sm-4.image-block.hidden-xs
+      .background-image-holder.hidden-xs style="opacity: 1; overflow: hidden;"
+        = image_tag("bg_09.jpg", :class => "background-image", :style =>"display: block; height: 100%; max-width: none; width: auto; position: relative; left: -600px")
+      .background-image-holder.visible-xs style="opacity: 1; overflow: hidden;"
+        = image_tag("bg_09.jpg", :class => "background-image", :style =>"display: block; min-height: 100%; min-width: 100%; width: 120%")
+
+    .container ng-controller="FormCtrl"
+      .row
+        .col-md-5.col-sm-7.col-md-push-7.col-sm-push-5
+          h3 style="margin-top: 30px" Dowiedz się co może zaproponować Ci agent
+          p
+            | Płacisz za dużo za
+            b<>
+              | ubezpieczenie swojego samochodu?
+            | Potrzebujesz pomocy przy wyborze ubezpieczenia?
+            br/
+            | Wejdź na stronę przez smartfona, wypełnij krótki formularz i
+            b<>
+              | pozwól agentom przygotować ofertę
+            | specjalnie dla Ciebie
+
+          form.form-email
+            h6
+              | Kliknij w "Przód dowodu" i "Tył dowodu" żeby zrobić zdjęcia
+
+            .row style="padding-top: 20px"
+              .col-sm-6
+                button.btn.btn-block.btn-sm.btn-default ng-model="data.attachment" ngf-select="" ngf-multiple="false" ng-class="{'btn-filled': !!data.attachment}"
+                  | Przód dowodu
+              .col-sm-6
+                button.btn.btn-block.btn-sm.btn-default ng-model="data.attachment2"  ngf-select=""ngf-multiple="false" ng-class="{'btn-filled': !!data.attachment2}"
+                  | Tył dowodu
+            .row style="margin: 20px 0"
+              .col-xs-8 for="inputPassword"  Posiadasz dziecko do 13 roku życia?
+              .col-xs-4.text-right
+                  button.btn.btn-xs.btn-default ng-class="{'btn-filled': data.child_under_13}"ng-click="data.child_under_13 = !data.child_under_13"
+                    | TAK
+            .row style="margin: 20px 0"
+              .col-xs-8 for="inputPassword"  Posiadasz nakaz płatniczy - ROLNIK?
+              .col-xs-4.text-right
+                  button.btn.btn-xs.btn-default  ng-class="{'btn-filled': data.payment_order}" ng-click="data.payment_order = !data.payment_order"
+                    | TAK
+            .row style="margin: 20px 0"
+              .col-xs-8 for="inputPassword"  Pojazd będzie użytkowany powyżej 3 m-cy poza granicami kraju?
+              .col-xs-4.text-right
+                  button.btn.btn-xs.btn-default  ng-class="{'btn-filled': data.abroad_use}" ng-click="data.abroad_use = !data.abroad_use"
+                    | TAK
+            input.signup-name-field.validate-required style="width: 100%" name="name" placeholder="Odbiór w okolicach miasta..." type="text" ng-change="getChosenPosition(city)" ng-model="data.city"
+            input.signup-name-field.validate-required style="width: 100%" name="name" placeholder="Początek ochrony ubezpieczenia" type="text" pickerr="data.insurance_start"
+            input.signup-email-field name="email"  style="width: 100%"placeholder=("Twój email") type="text"  ng-model="data.email"
+            input type="submit" style="width: 100%" value=("Zapytaj o składki") ng-click="upload(email, file, file2)" ng-class="{'custom-button-success': isFormCompleted()}"
+  section.cta.cta-4.hidden-xs.bg-secondary
+    .container
+      .row style="margin-bottom: 0"
+        .col-sm-12.text-center
+          = image_tag("l1.png")
+          = image_tag("l2.png")
+          = image_tag("l3.png")
+          = image_tag("l4.png")
+          = image_tag("l5.png")
+
+  section.features.features-3
+    .container
+      .row
+        .col-md-10.col-md-offset-1.col-sm-12.text-center
+          h3 Jak to działa
+          p
+      .row
+        .col-sm-4.text-center.feature
+          i.icon-camera-streamline-video
+          h5
+            | Zrób zdjęcie dowodu rejestracyjnego
+            br/
+          p
+            | Wejdź na stronę na Twoim smartfonie i kliknij w "Załaduj zdjęcie dowodu". Zrób zdjęcie dowodu i je nam prześlij.&nbsp;W dowodzie rejestracyjnym znajdują się wszystkie niezbędne dane do sprawdzenia ofert ubezpieczeniowych.
+            br/
+        .col-sm-4.text-center.feature
+          i.icon-browser-streamline-window
+          h5 Poczekaj na oferty
+          p
+            | W ciągu 1 godziny otrzymasz od nas maila z 3 najlepszymi ofertami.
+            br/
+        .col-sm-4.text-center.feature
+          i.icon-backpack-streamline-trekking
+          h5 Wybierz i kup ubezpieczenie
+          p
+            | Gdy spodoba Ci się jedna z ofert, podasz nam numer telefonu i załatwimy sprawy formalne.
+  section.features.features-3.bg-dark
+    .container
+      .row
+        .col-md-10.col-md-offset-1.col-sm-12.text-center
+          h3 TO TYLKO 1 MINUTA
+          p
+      .row
+        .col-sm-4.text-center.feature
+          i.icon-camera-streamline-video
+          h5 NIE MUSISZ WYPEŁNIAĆ KILKUDZIESIĘCIU FORMULARZY
+          p
+            | Nasz krótki formularz wypełnisz w 1 minutę, wchodząc na stronę przez smartfona. Resztą zajmie się agent.
+            br/
+        .col-sm-4.text-center.feature
+          i.icon-browser-streamline-window
+          h5
+            | NIE MUSISZ NIC WIEDZIEĆ O UBEZPIECZENIACH
+            br/
+          p
+            | Jak będziesz miał jakieś wątpliwości, doradzimy Ci.
+            br/
+        .col-sm-4.text-center.feature
+          i.icon-backpack-streamline-trekking
+          h5 OSZĘDŹ SWÓJ CZAS
+          p
+            | Załatwiaj inne sprawy kiedy nasi agenci będą dobierać dla Ciebie ubezpieczenie.
+            br/
+  section.features.features-7
+    .container
+      .row
+        .col-md-10.col-md-offset-1.col-sm-10.col-sm-offset-1.text-center
+          h6 Czy Moje dane są bezpieczne?
+          h4
+            | Jesteśmy zweryfikowani przez Generalnego Inspektora Ochrony Danych Osobowych. Natomiast
+            b<>
+              | zdjęcia są usuwane
+            | po 1 godzinie od wysłania. Twoje
+            b<>
+              | dane są w pełni bezpieczne.
+            br/
+          a.btn href="#" Zapytaj agenta »
+    img.pull-right alt="" src="" /
+
+  section.testimonials.testimonials-2.bg-dark
+    .container
+      .row
+        .col-sm-6.testimonial.col-md-6
+          = image_tag("author_1.jpg", :style => "width: 70px; border-radius: 35px")
+          p
+            | Wcześniej nie mogłam się zebrać o wypełniania masy formularzy, żeby tylko zobaczyć ofertę. Tutaj cały proces zajął mi mniej niż 3 minuty.
+          p
+            em> — Kamila
+        .col-sm-6.testimonial.col-md-6
+          = image_tag("author_2.jpg", :style => "width: 70px; border-radius: 35px")
+          p
+            | Nigdy nie chciało mi się chodzić po agentach, żeby znaleźć najlepszą ofertę, zajmowało to za dużo czasu i energi. Tutaj wypełniłem formularz, a oferty pojawiały się same.
+          p
+            em
+              | — Bartosz
+              br/
+  section.cta.cta-8
+    .container
+      .row
+        .col-sm-12.text-center
+          h4
+            | Cenisz sobie swój CZAS i PIENIĄDZE?
+            br/
+            br/
+          a.btn.btn-filled ng-click="toTop()"  Zapytaj o oferty
+  footer.footer.footer-2.bg-dark
+    .container
+      .row
+        .col-sm-12.text-center
+          ul.menu
+            li
+              a href="#"
+                | FAQ
+            li
+              a href="#"
+                | Polityka prywatności
+            li
+              a href="#"
+                | Warunki umowy
+      .row
+        .col-sm-12.text-center
+          a href="#"
+            | iAgent
+          p.sub
+            | © Copyright 2015 iAgent - All Rights Reserved
+
+script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"
+script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/plugins/ScrollToPlugin.min.js"
