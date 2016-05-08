@@ -8,9 +8,7 @@
 
 include FactoryGirl::Syntax::Methods
 
-groups = create_list(:group_with_orders, 3)
-
-restaurant = create_list(:restaurant_with_meals, 5)
+groups = create_list(:group_with_orders, 2)
 
 purchaser = groups[0].orders[0].purchasers.create(user: groups[0].users[0])
 restaurant = groups[0].orders[0].restaurant
@@ -27,3 +25,4 @@ end
 
 
 AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')
+
