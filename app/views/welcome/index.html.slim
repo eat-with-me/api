@@ -4,28 +4,28 @@
       .container
         .row
           .col-md-3.col-sm-6.col-xs-4
-            a href="#" 
+            a href="#"
               img alt="Logo" src="logoE24v2.png" style="padding-top: 7px" /
           .col-md-4.text-left.col-sm-6.col-md-push-6.col-xs-8.text-left
-            a.btn.btn-filled.btn-xs href="#" style="background: #f6f8fa; border-color: #62cb31; color: #62cb31"  Zaloguj 
-            a.btn.btn-filled.btn-xs href="#" style="background: #f6f8fa; border-color: #4169E1; color: #4169E1"   Załóż konto
-            
+            = link_to 'Zaloguj się', new_user_session_path, style: "background: #f6f8fa; border-color: #62cb31; color: #62cb31", class: " btn btn-filled btn-xs"
+            = link_to 'Załóż konto', new_user_registration_path, style: "background: #f6f8fa; border-color: #4169E1; color: #4169E1", class: " btn btn-filled btn-xs"
+
 
 .main-container
   section.header.header-7
     .hero-slider
       ul.slides
         li
-          .background-image-holder.visible-lg style="opacity: 1; overflow: hidden;"
-            = image_tag("restaurant.jpg", :class => "background-image", :style =>"display: block; height:720px;")
+          .background-image-holder style="opacity: 1; overflow: hidden;"
+            = image_tag("restaurant.jpg", :class => "background-image", :style =>"display: block; height:720px; max-width: 100%; max-width: inherit")
           .container
             .row
               .col-sm-12.text-center
                 h1 style="color: #E9E9E9"
                   | EatWithMe
-                h3.text-white 
+                h3.text-white
                   | Wspólne zamawianie jedzenia nigdy nie było tak proste!
-                b.text-white 
+                b.text-white
   section.features.features-2
     .container
       .row
@@ -34,22 +34,22 @@
           p  Aplikacja EatWithMe pozwala dużo więcej niż zwykłe zamawianie posiłków.
       .row
         .col-sm-3.text-center.feature
-          = image_tag("talking.jpg", :style =>"width: 300px; height: 170px;") 
+          = image_tag("talking.jpg", :style =>"width: 300px; height: 170px;")
           h5 Funkcje społecznościowe
           p
             | W jednym miejscu spotkaj swoich znajomych - towarzyszy posiłków i zaproponuj im wspólne zamówienie.
         .col-sm-3.text-center.feature
-          = image_tag("beach.jpg",:style =>"width: 300px;height: 170px;")  
+          = image_tag("beach.jpg",:style =>"width: 300px;height: 170px;")
           h5 Zamawiaj z dowolnego miejsca.
           p
             | Nie ważne gdzie się znajdujesz - na plaży, w biurze czy w lesie tropikalnym. Jeżeli masz przy sobie przyjaciół, możesz zamówić jedzenie ze swoich ulubionych restauracji.
         .col-sm-3.text-center.feature
-          = image_tag("dollars.jpg",:style =>"width: 300px;height: 170px;") 
+          = image_tag("dollars.jpg",:style =>"width: 300px;height: 170px;")
           h5 Rozliczanie gupowych zamówień.
           p
             | Każdy wie ile problemów sprawia rozliczanie się przy składaniu dużych zamówień. Od teraz w przejrzysty sposób, każdy otrzyma informację ile powinien zapłacić,
         .col-sm-3.text-center.feature
-          = image_tag("goingout.jpg",:style =>"width: 300px; height: 170px;" ) 
+          = image_tag("goingout.jpg",:style =>"width: 300px; height: 170px;" )
           h5 Wspólne wyjścia do restauracji.
           p
             | Czasami zamiast zamawiać jedzenie warto udać się wpólnie do restauracji. Dzięki EatWithMe nie będziesz miał problemów z rezerwacją miejsc. Niebawem dostępne!
@@ -70,7 +70,7 @@
         .col-md-3.col-sm-6.text-center.feature
           i.icon-magnifier style="color: #62cb31"
           h5 Sprawdź, czy nie ma zamówienia z Twojej restauracji
-          p Zawsze możesz sprawdzić czy aktualnie ktoś z twoich przyjaciół nie planuje zamówienia posiłku. Dlaczego nie zamówić i zjeść razem? 
+          p Zawsze możesz sprawdzić czy aktualnie ktoś z twoich przyjaciół nie planuje zamówienia posiłku. Dlaczego nie zamówić i zjeść razem?
         .col-md-3.col-sm-6.text-center.feature
           i.icon-map-streamline-user style="color: #62cb31"
           h5 Stwórz własne zamówienie z wybranej restauracji
@@ -98,35 +98,35 @@
         .col-md-4.col-sm-6.testimonial
           img.img-circle.img-small alt="" src="av1.png" style="width: 50px; height: 50px;"
           h5
-            span 
+            span
             | Bartosz Erbert
           p Backend
         .col-md-4.col-sm-6.testimonial
           img.img-circle.img-small alt="" src="av2.png" style="width: 50px; height: 50px;"
           h5
-            span 
+            span
             | Konrad Dzień
           p Frontend
         .col-md-4.col-sm-6.testimonial
           img.img-circle.img-small alt="" src="av3.png" style="width: 50px; height: 50px;"
           h5
-            span 
+            span
             | Norbert Kapica
           p Frontend
-      .row 
+      .row
         .col-md-6.col-sm-6.testimonial
           .col-sm-5
           .col-sm-7
             img.img-circle.img-small alt="" src="av4.png" style="width: 50px; height: 50px;"
             h5
-              span 
+              span
               | Mateusz Cierpka
             p Android
         .col-md-6.col-sm-6.testimonial
           .col-sm-7 style=""
             img.img-circle.img-small alt="" src="av5.png" style="width: 50px; height: 50px;"
             h5
-              span 
+              span
               | Mateusz Fiślak
             p Android
   footer.footer.footer-1.bg-secondary
@@ -135,17 +135,17 @@
         .col-sm-4
           ul.social-links
             li
-              a href="https://www.facebook.com/dzieniu" 
+              a href="https://www.facebook.com/dzieniu"
                 i.icon-facebook
             li
-              a href="https://www.twitter.com/dzieniu" 
+              a href="https://www.twitter.com/dzieniu"
                 i.icon-twitter
             li
-              a href="https://www.youtube.com/MrDzzieniu" 
+              a href="https://www.youtube.com/MrDzzieniu"
                 i.icon-youtube-alt
         .col-sm-4.text-center
           p.sub
             | © Copyright 2016 EatWithMe - All Rights Reserved
         .col-sm-4.text-right
-          a href="#" 
-            img alt="Logo" src="logoE24v2.png" / 
+          a href="#"
+            img alt="Logo" src="logoE24v2.png" /
