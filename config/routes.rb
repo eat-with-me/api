@@ -15,5 +15,7 @@ Rails.application.routes.draw do
 
   get "/join/:token", to: 'groups#add_user'
 
+  get "/home", to: 'home#index'
+
   root 'welcome#index'
 end
