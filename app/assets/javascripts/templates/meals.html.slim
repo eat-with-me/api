@@ -12,16 +12,17 @@
 										| {{restaurantname}}: 
 				.row
 					.col-md-12
+						#accordion.hpanel.panel-group aria-multiselectable="true" role="tablist" 
 
-					  .hpanel.filter-item ng-repeat=("meal in meals") ng-click="addMeal(meal)" style="cursor: pointer;"
-					    .panel-body
-					      .pull-right.text-right
-					        small.stat-label Cena
-					        h4
-					          | {{meal.price}} zł
-					      h4.m-b-xs
-									|	{{ meal.name }}	 {{meal.meal_type_id}}
+							.panel-body ng-repeat=("meal in meals track by $index | orderBy: '-meal_type_id'") 
+								.pull-left.text-left
+									span.glyphicon.glyphicon-picture> ng-click="showMoreInfo($index)" style="cursor: pointer;"
+									a aria-expanded="true" data-parent="#accordion" data-toggle="collapse" style="font-size: 18px;" ng-click="addMeal(meal)" 
+										| {{meal.name}}				  
 
+								.pull-right.text-right
+									a aria-expanded="true" data-parent="#accordion" data-toggle="collapse" style="font-size: 18px;" ng-click="addMeal(meal)" 
+									| {{meal.price}} zł
 		  .col-sm-4 
 			  .hpanel.panel-group 
 			    .hpanel.hbggreen 
@@ -39,7 +40,7 @@
 							span.text-primary<>
 								| {{shippingCostPerPerson}} zł
 						h4 
-							| Aktualny koszt dowozu podzielony na wszystkich: 
+							| Aktualny koszt dowozu na osobę: 
 							span.text-primary<>
 								| {{priceNow}} zł
 
@@ -87,7 +88,7 @@
 				    .panel-body
 				      h4
 				      	| Całe zamówienie:
-			    .hpanel.hgreen  
+			    .hpanel.hgreen 
 			    	.col-md-12 ng-repeat=("zamowienie in zamowienia")
 	  					.panel-heading.hbuilt
 	  						.panel-tools
@@ -125,19 +126,23 @@
 						.hpanel.panel-group 
 							.hpanel.hbgwhite 
 								.panel-body 
-									.col-sm-4
-										h4
-											| Zamawiający: {{ownerr}}
-										h4
-											| Do zapłaty: {{allUserPrice}} zł
-									.col-sm-8
-										h4
-											| Dane Restauracji: 
+									h4
+										span.glyphicon.glyphicon-user>
+										| Zamawiający: {{ownerr}}
+									h4 style=("color:red;")
+										span.glyphicon.glyphicon-euro>
+										| Do zapłaty: {{allUserPrice}} zł
+									h4 style=("border-top-style: solid;")
+									h4 
+										| Dane Restauracji: 
+									
+									h4
+										span.glyphicon.glyphicon-cutlery>
+										| Nazwa Restauracji: {{restaurantname}}
+									h4
+										span.glyphicon.glyphicon-earphone>
+										| Numer Telefonu: {{phoneNumber}}
 
-										h4
-											| Nazwa Restauracji: {{restaurantname}}
-										h4
-											| Numer Telefonu: {{phoneNumber}}
 				.col-sm-6
 					.hpanel.hbgwhite
 						.panel-body 

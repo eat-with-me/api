@@ -32,10 +32,10 @@ angular.module 'EatingApp'
 
     #GET STRUCTURE---------------------------------------------------
     $http.get("/groups/#{$stateParams.groupid}/orders/#{$stateParams.orderid}").success (data)->
-        console.log(data)
         $scope.restaurantname = data.restaurant.name
         $scope.phoneNumber = data.restaurant.phone_number
         $scope.meals = data.restaurant.meals
+        $scope.convertMeals ->
         $scope.endTime = moment(data.closing_time,"YYYY-MM-DDTHH:mm:ss.SSSZ")
         $scope.zamowienia = data.purchasers
         $scope.ownerr = data.owner.email
@@ -56,7 +56,26 @@ angular.module 'EatingApp'
   
 
     #----------------------------------------------------------------
-    
+    $scope.convertMeals = ->
+      tablica = []
+      temp = []
+      siemanko =[]
+      for i in [0...$scope.meals.length]
+        if $scope.meals[i].meal_type_id in tablica
+        else 
+          tablica.push($scope.meals[i].meal_type_id)
+
+      for i in [0...tablica.length]
+        for j in [0...$scope.meals.length]
+          if $scope.meals[j].meal_type_id == tablica[i]
+            temp.push($scope.meals[j].name)
+
+              
+        siemanko[i] = {id : tablica[i], meals : temp }
+        temp = []
+      
+      console.log siemanko
+
     #--Time & view update -------------------------------------------
     $scope.updateTime = ->
       if $scope.endTime.isBefore(moment())
@@ -166,3 +185,13 @@ angular.module 'EatingApp'
         $scope.allUserPrice = 0
       else
         $scope.allUserPrice += $scope.shippingCostPerPerson
+
+    $scope.showMoreInfo = (mealIndex)->
+      swal
+        title: $scope.meals[mealIndex].name
+        text: "tu kiedyś będzie opis"
+        imageUrl: "http://kuchnialidla.pl/img/img/PosterLarge/40b1fe1a0a-Okrasa_KW_07_salatka_ala_cezar_RGB_960x540.png"
+        imageSize: "300x300"
+        showCancelButton: false
+        closeOnConfirm: false
+        confirmButtonColor: "#00FF33"

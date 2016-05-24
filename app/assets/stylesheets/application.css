@@ -76,3 +76,58 @@
     background-color: red !important;
 }
 
+.restaurant-col {
+    background: url("rest.jpg") no-repeat;
+    background-position: center;
+    background-clip: content-box;
+    position:absolute;
+    left:0;
+    right:0;
+    top:0;
+    bottom:0;
+    display: block; 
+    height:720px; 
+    z-index:1;
+    max-width: 100%; 
+    max-width: inherit
+    padding-right:100px;
+  -webkit-filter: blur(5px);
+  -moz-filter: blur(5px);
+  -o-filter: blur(5px);
+  -ms-filter: blur(5px);
+  filter: blur(5px);
+
+}
+.work-col {
+    background: url("work.jpg") no-repeat;
+    background-position: center;
+    background-clip: content-box;
+    position:absolute;
+    left:0;
+    right:0;
+    top:0;
+    bottom:0;
+    display: block; 
+    height:720px; 
+    z-index:1;
+    max-width: 100%; 
+    max-width: inherit
+    padding-right:100px;
+  -webkit-filter: blur(5px);
+  -moz-filter: blur(5px);
+  -o-filter: blur(5px);
+  -ms-filter: blur(5px);
+  filter: blur(5px);
+  
+
+}
+.backgroundImageCVR{
+    position:relative;
+    padding:15px;
+}
+.contentt{
+
+    position:relative;
+    z-index:2;
+    color:#fff;
+}
