@@ -11,7 +11,7 @@ angular.module 'EatingApp'
         type: "input"
         showCancelButton: true
         closeOnConfirm: false
-        confirmButtonColor: "#00FF33"
+        confirmButtonColor: "#62cb31"
         inputPlaceholder: "Write something"
         (inputValue) ->
           if (inputValue == false)
@@ -29,7 +29,7 @@ angular.module 'EatingApp'
             swal
               title: "Dodałeś grupę"
               type: "success"
-              confirmButtonColor: "#00FF33"
+              confirmButtonColor: "#62cb31"
               ->
                 $state.go("orders",{groupid:$scope.groupid})
             

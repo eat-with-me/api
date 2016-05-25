@@ -38,9 +38,19 @@
         swal
           title: "Dodałeś zamówienie"
           type: "success"
-          confirmButtonColor: "#00FF33" 
+          confirmButtonColor: "#62cb31" 
           ->
             $state.go("meals",{groupid:$stateParams.groupid,orderid:$scope.orderid})
+
+    $scope.showMoreInfo = (mealIndex)->
+      swal
+        title: $scope.restaurants[$scope.currentID].meals[mealIndex].name
+        text: "Salami pepperoni, ser gouda, sos pomidorowy, oregano"
+        imageUrl: "http://www.zajadam.pl/wp-content/uploads/2009/09/pizza-20-469x313.jpg"
+        imageSize: "300x200"
+        showCancelButton: false
+        closeOnConfirm: false
+        confirmButtonColor: "#62cb31"
 
         
 

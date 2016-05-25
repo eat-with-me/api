@@ -130,4 +130,9 @@
     position:relative;
     z-index:2;
     color:#fff;
+
+}
+.elomelo {
+    background: url("loginback.jpg") no-repeat;
+    background-size:cover
 }

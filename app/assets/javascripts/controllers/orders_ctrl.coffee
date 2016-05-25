@@ -38,5 +38,5 @@ angular.module 'EatingApp'
         imageUrl: "/useradd.png"
         showCancelButton: false
         closeOnConfirm: false
-        confirmButtonColor: "#00FF33"
+        confirmButtonColor: "#62cb31"
         inputValue: $scope.tokenURL

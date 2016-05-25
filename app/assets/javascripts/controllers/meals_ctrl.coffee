@@ -97,7 +97,7 @@ angular.module 'EatingApp'
             type: "warning"
             showCancelButton: false
             closeOnConfirm: false
-            confirmButtonColor: "#00FF33"
+            confirmButtonColor: "#62cb31"
           $scope.end=1
 
     $interval($scope.updateTime, 100)
@@ -140,7 +140,12 @@ angular.module 'EatingApp'
         data1 = {order : { id : $scope.orderid, meals : mealsObjTab} }
         $http.post("/groups/#{$stateParams.groupid}/purchasers", data1).success (data2, status) ->
           $scope.GetFunction ->
-        sweetAlert("Twoja lista posiłków została dodana!", "Odpręż się i czekaj! :)")
+        swal
+          title: "Twoja lista posiłków została dodana!"
+          text: "Odpręż się i czekaj! :)"
+          showCancelButton: false
+          closeOnConfirm: false
+          confirmButtonColor: "#62cb31"
 
     $scope.enableAcceptButton = ->
         if $scope.mealsList.length>0
@@ -189,9 +194,9 @@ angular.module 'EatingApp'
     $scope.showMoreInfo = (mealIndex)->
       swal
         title: $scope.meals[mealIndex].name
-        text: "tu kiedyś będzie opis"
-        imageUrl: "http://kuchnialidla.pl/img/img/PosterLarge/40b1fe1a0a-Okrasa_KW_07_salatka_ala_cezar_RGB_960x540.png"
-        imageSize: "300x300"
+        text: "Salami pepperoni, ser gouda, sos pomidorowy, oregano"
+        imageUrl: "http://www.zajadam.pl/wp-content/uploads/2009/09/pizza-20-469x313.jpg"
+        imageSize: "300x200"
         showCancelButton: false
         closeOnConfirm: false
-        confirmButtonColor: "#00FF33"
+        confirmButtonColor: "#62cb31"
