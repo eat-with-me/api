@@ -195,7 +195,7 @@ angular.module 'EatingApp'
       swal
         title: $scope.meals[mealIndex].name
         text: "Salami pepperoni, ser gouda, sos pomidorowy, oregano"
-        imageUrl: "http://www.zajadam.pl/wp-content/uploads/2009/09/pizza-20-469x313.jpg"
+        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/4/47/PNG_transparency_demonstration_1.png"
         imageSize: "300x200"
         showCancelButton: false
         closeOnConfirm: false

@@ -46,7 +46,7 @@
       swal
         title: $scope.restaurants[$scope.currentID].meals[mealIndex].name
         text: "Salami pepperoni, ser gouda, sos pomidorowy, oregano"
-        imageUrl: "http://www.zajadam.pl/wp-content/uploads/2009/09/pizza-20-469x313.jpg"
+        imageUrl: "https://scontent-arn2-1.xx.fbcdn.net/v/t1.0-9/12495242_1119216114779649_8314414061403439191_n.jpg?oh=1e8a991567db3c7a04cf27b44cdb99ac&oe=580F2DB8"
         imageSize: "300x200"
         showCancelButton: false
         closeOnConfirm: false

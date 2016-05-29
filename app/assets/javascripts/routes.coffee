@@ -1,8 +1,23 @@
 angular.module 'EatingApp'
   .config ($stateProvider, $urlRouterProvider) ->
-    $urlRouterProvider.otherwise('groups')
+    $urlRouterProvider.otherwise('home')
 
     $stateProvider
+      .state('home', {
+        url: '/home',
+        templateUrl: 'home.html',
+        controller: 'HomeCtrl'
+      })
+      .state('events', {
+        url: '/events',
+        templateUrl: 'events.html',
+        controller: 'EventCtrl'
+      })
+      .state('newevent', {
+        url: '/newevent',
+        templateUrl: 'newevent.html',
+        controller: 'NewEventCtrl'
+      })
       .state('groups', {
         url: '/groups',
         templateUrl: 'groups.html',
