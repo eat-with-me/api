@@ -27,5 +27,11 @@ FactoryGirl.define do
     password '12345678'
   end
 
-  sequence(:email) { |n| data[n] }
+  sequence(:email) do |n|
+    if data[n].nil?
+      "example#{n}@gmail.com"
+    else
+      data[n]
+    end
+  end
 end
