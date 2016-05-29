@@ -13,5 +13,6 @@ ActiveAdmin.register Meal do
 #   permitted
 # end
 
+  permit_params :name, :description, :image_url, :price, :meal_type_id, :restaurant_id
 
 end
